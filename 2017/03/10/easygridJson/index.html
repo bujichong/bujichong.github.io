@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next gemini" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-bujichong.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-bujichong.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-bujichong.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="easyui," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="easyUI grid列表数据及测试JSON自动生成器实在是烦透了写easyUI  grid的列表数据，一个一个字符敲，烦的很，尤其很多时候我做静态页需要测试json，测试json写死人，也很花时间，花了一下午用js写了一个自动化生成器，  地址在 这里基本也没什么太特别的，就是填写title和field自动生成list数据，尤其是生成了可以用来显示的json demo字段，我这里做了几个jso">
+<meta name="keywords" content="easyui">
+<meta property="og:type" content="article">
+<meta property="og:title" content="easyUI grid列表数据及测试JSON自动生成器">
+<meta property="og:url" content="//bujichong.com/2017/03/10/easygridJson/index.html">
+<meta property="og:site_name" content="不羁虫的博客">
+<meta property="og:description" content="easyUI grid列表数据及测试JSON自动生成器实在是烦透了写easyUI  grid的列表数据，一个一个字符敲，烦的很，尤其很多时候我做静态页需要测试json，测试json写死人，也很花时间，花了一下午用js写了一个自动化生成器，  地址在 这里基本也没什么太特别的，就是填写title和field自动生成list数据，尤其是生成了可以用来显示的json demo字段，我这里做了几个jso">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="//bujichong.com/images/easyjson-1.png">
+<meta property="og:image" content="//bujichong.com/images/easyjson-2.png">
+<meta property="og:image" content="//bujichong.com/images/easyjson-3.png">
+<meta property="og:image" content="//bujichong.com/images/easyjson-4.png">
+<meta property="og:updated_time" content="2017-10-23T09:21:04.994Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="easyUI grid列表数据及测试JSON自动生成器">
+<meta name="twitter:description" content="easyUI grid列表数据及测试JSON自动生成器实在是烦透了写easyUI  grid的列表数据，一个一个字符敲，烦的很，尤其很多时候我做静态页需要测试json，测试json写死人，也很花时间，花了一下午用js写了一个自动化生成器，  地址在 这里基本也没什么太特别的，就是填写title和field自动生成list数据，尤其是生成了可以用来显示的json demo字段，我这里做了几个jso">
+<meta name="twitter:image" content="//bujichong.com/images/easyjson-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="//bujichong.com/2017/03/10/easygridJson/"/>
+
+
+
+
+
+  <title>easyUI grid列表数据及测试JSON自动生成器 | 不羁虫的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不羁虫的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">前端兼伪文青一枚</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="//bujichong.com/2017/03/10/easygridJson/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="不羁虫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不羁虫的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">easyUI grid列表数据及测试JSON自动生成器</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-10T14:23:00+08:00">
+                2017-03-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2017/03/10/easygridJson/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/03/10/easygridJson/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>easyUI grid列表数据及测试JSON自动生成器<br>实在是烦透了写easyUI  grid的列表数据，一个一个字符敲，烦的很，尤其很多时候我做静态页需要测试json，测试json写死人，也很花时间，花了一下午用js写了一个自动化生成器，</p>
+</blockquote>
+<p>地址在 <a href="/easyjson/index.html">这里</a><br>基本也没什么太特别的，就是填写title和field自动生成list数据，<br>尤其是生成了可以用来显示的json demo字段，<br>我这里做了几个json数据内容类型，<br>让数据看着真实有趣一些，其实也是随机出来的，<br>目的无非是用来测试，看着舒服一些，帮助提高一下生产率。<br>像我自己这样有代码癖，不显示一两行测试数据总感觉功能有问题，<br>有了自动生成以后就不用那么发愁了。<br>小问题也是有的，就是title不能重名，field也不能重名，<br>重名生成的数据会有问题，还有就是第一行数据不能为空，<br>当然，真的用来生成这些数据，这些问题出现的可能性都不大，<br>反正是自己用，这些小问题就不是问题了，<br>对大片大片的列表数据终于可以不惧了。</p>
+<h2 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a>使用方法：</h2><h3 id="1，先在记事本里把需要写成列的字段打出来，格式："><a href="#1，先在记事本里把需要写成列的字段打出来，格式：" class="headerlink" title="1，先在记事本里把需要写成列的字段打出来，格式："></a>1，先在记事本里把需要写成列的字段打出来，格式：</h3><p><img src="/images/easyjson-1.png" alt=""><br>把需要转换的记录粘贴进第三个输入框：<br><img src="/images/easyjson-2.png" alt=""></p>
+<h3 id="2，生成如下，当然你也可以一行行点增加input行添加数据行："><a href="#2，生成如下，当然你也可以一行行点增加input行添加数据行：" class="headerlink" title="2，生成如下，当然你也可以一行行点增加input行添加数据行："></a>2，生成如下，当然你也可以一行行点增加input行添加数据行：</h3><p><img src="/images/easyjson-3.png" alt=""></p>
+<h3 id="3，最后再改字符格式，是否有事件，再次生成，如下图："><a href="#3，最后再改字符格式，是否有事件，再次生成，如下图：" class="headerlink" title="3，最后再改字符格式，是否有事件，再次生成，如下图："></a>3，最后再改字符格式，是否有事件，再次生成，如下图：</h3><p>修改红色箭头指的地方还可以修改生成的demo json条数、字符长度、和total数值<br><img src="/images/easyjson-4.png" alt=""><br>到这里就结束了，复制粘贴就可以了<br>此外，我还做了点细节小处理，<br>在页面任何状态下，<br>直接点小键盘的 “+”和 “-”是可以快在末尾速增加删除一行的，<br>按键 ~ 直接生成数据(我发现百度中文输入法的时候，会改变这个键值会有问题)，<br>至于input输入，<br>你当然就可以用默认的tab键进行切换了，<br>基本可以纯键盘输入完成，最后只要复制粘贴就可以了，<br>还是比较方便吧，目的就是加快生产效率。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/easyui/" rel="tag"># easyui</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/10/kemusan/" rel="next" title="来来来，教教你怎么考科目三，我的科目三完整笔记">
+                <i class="fa fa-chevron-left"></i> 来来来，教教你怎么考科目三，我的科目三完整笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/28/soicon/" rel="prev" title="整理了一套图标 soIcon">
+                整理了一套图标 soIcon <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">不羁虫</p>
+              <p class="site-description motion-element" itemprop="description">疏行懒言，年轻无为，卖马为生</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/bujichong" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:bujichong@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方法："><span class="nav-number">1.</span> <span class="nav-text">使用方法：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1，先在记事本里把需要写成列的字段打出来，格式："><span class="nav-number">1.1.</span> <span class="nav-text">1，先在记事本里把需要写成列的字段打出来，格式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2，生成如下，当然你也可以一行行点增加input行添加数据行："><span class="nav-number">1.2.</span> <span class="nav-text">2，生成如下，当然你也可以一行行点增加input行添加数据行：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3，最后再改字符格式，是否有事件，再次生成，如下图："><span class="nav-number">1.3.</span> <span class="nav-text">3，最后再改字符格式，是否有事件，再次生成，如下图：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2014 &mdash; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">不羁虫</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cyth2lWfv';
+      var conf = '1e44d8c789d6fc0966c03496d5a82ea2';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

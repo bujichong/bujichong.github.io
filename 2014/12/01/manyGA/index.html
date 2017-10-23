@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next gemini" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-bujichong.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-bujichong.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-bujichong.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数据监测,google GA," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="谷歌分析生成的跟踪代码中会有一个唯一的数字ID帐户号码,例如:UA-XXXX-1,每个ID 会对应一个相应的GA配置文件，通常我们会按照官方提供的代码去部署，但是无法满足我们更多个性化应用需求，例如：我的网站有多个域，我希望不同的域的访问使用不同谷歌分析帐户；或者我希望同一网站部署多个帐户,帐户A分析所有的流量，帐户B只统计部分频道的流量； 下面我们先来看一段代码： 1234567891011&amp;l">
+<meta name="keywords" content="数据监测,google GA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为同一网站配置多个GA账号">
+<meta property="og:url" content="//bujichong.com/2014/12/01/manyGA/index.html">
+<meta property="og:site_name" content="不羁虫的博客">
+<meta property="og:description" content="谷歌分析生成的跟踪代码中会有一个唯一的数字ID帐户号码,例如:UA-XXXX-1,每个ID 会对应一个相应的GA配置文件，通常我们会按照官方提供的代码去部署，但是无法满足我们更多个性化应用需求，例如：我的网站有多个域，我希望不同的域的访问使用不同谷歌分析帐户；或者我希望同一网站部署多个帐户,帐户A分析所有的流量，帐户B只统计部分频道的流量； 下面我们先来看一段代码： 1234567891011&amp;l">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-23T07:14:55.957Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="为同一网站配置多个GA账号">
+<meta name="twitter:description" content="谷歌分析生成的跟踪代码中会有一个唯一的数字ID帐户号码,例如:UA-XXXX-1,每个ID 会对应一个相应的GA配置文件，通常我们会按照官方提供的代码去部署，但是无法满足我们更多个性化应用需求，例如：我的网站有多个域，我希望不同的域的访问使用不同谷歌分析帐户；或者我希望同一网站部署多个帐户,帐户A分析所有的流量，帐户B只统计部分频道的流量； 下面我们先来看一段代码： 1234567891011&amp;l">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="//bujichong.com/2014/12/01/manyGA/"/>
+
+
+
+
+
+  <title>为同一网站配置多个GA账号 | 不羁虫的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不羁虫的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">前端兼伪文青一枚</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="//bujichong.com/2014/12/01/manyGA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="不羁虫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不羁虫的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">为同一网站配置多个GA账号</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-12-01T10:27:00+08:00">
+                2014-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2014/12/01/manyGA/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2014/12/01/manyGA/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>谷歌分析生成的跟踪代码中会有一个唯一的数字ID帐户号码,例如:UA-XXXX-1,每个ID 会对应一个相应的GA配置文件，通常我们会按照官方提供的代码去部署，但是无法满足我们更多个性化应用需求，例如：我的网站有多个域，我希望不同的域的访问使用不同谷歌分析帐户；或者我希望同一网站部署多个帐户,帐户A分析所有的流量，帐户B只统计部分频道的流量；</p>
+<p>下面我们先来看一段代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line"><span class="keyword">var</span> gaJsHost = ((<span class="string">"https:"</span>== <span class="built_in">document</span>.location.protocol) ? <span class="string">"https://ssl."</span>: <span class="string">"http://www."</span>);</div><div class="line"><span class="built_in">document</span>.write(<span class="built_in">unescape</span>(<span class="string">"%3Cscript src='"</span>+ gaJsHost + <span class="string">"google-analytics.com/ga.js'type='text/javascript'%3E%3C/script%3E"</span>));</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div><div class="line"><span class="regexp">&lt;script src="http:/</span><span class="regexp">/www.google-analytics.com/g</span>a.js<span class="string">"type="</span>text/javascript<span class="string">"&gt;&lt;/script&gt;</span></div><div class="line"><span class="string">&lt;script type="</span>text/javascript<span class="string">"&gt;</span></div><div class="line"><span class="string">varpageTracker = _gat._getTracker("</span>UA-XXXXX<span class="number">-1</span><span class="string">");</span></div><div class="line"><span class="string">pageTracker._trackPageview();</span></div><div class="line"><span class="string">varotherTracker = _gat._getTracker("</span>UA-YYYYY<span class="number">-1</span><span class="string">");</span></div><div class="line"><span class="string">otherTracker._trackPageview();</span></div><div class="line"><span class="string">&lt;/script&gt;</span></div></pre></td></tr></table></figure>
+<p>在以上的代码中，我们可以看到不同的GA配置文件ID“UA-XXXXX-1”和”UA-YYYYY-1“ 当用户访问含有这段代码的网页后，首先GA会把数据发送到UA-XXXXX-1,然后在发送到UA-YYYYY-1,两个帐户<br>同时获取到了相应的数据，而且数据是相互独立的，甚至可以针对不同帐户应用不同的过滤器，得到你所需要的分析数据。<br>下面将列出几种常见应用是需要的GA代码部署:<br><strong>一、我有多个网域,我需要使用不同的帐户分析不同域的访问数据</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line"><span class="keyword">var</span> gaJsHost = ((<span class="string">"https:"</span>== <span class="built_in">document</span>.location.protocol) ? <span class="string">"https://ssl."</span>: <span class="string">"http://www."</span>);</div><div class="line"><span class="built_in">document</span>.write(<span class="built_in">unescape</span>(<span class="string">"%3Cscript src='"</span>+ gaJsHost + <span class="string">"google-analytics.com/ga.js'type='text/javascript'%3E%3C/script%3E"</span>));&lt;/script&gt;</div><div class="line">&lt;script src=<span class="string">"http://www.google-analytics.com/ga.js"</span>type=<span class="string">"text/javascript"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line">varpageTracker = _gat._getTracker(<span class="string">"UA-xxxxx-1"</span>);</div><div class="line">pageTracker._setDomainName(<span class="string">'www.xxx.com'</span>);</div><div class="line">pageTracker._trackPageview();</div><div class="line">varotherTracker = _gat._getTracker(<span class="string">"UA-yyyyy-1"</span>);</div><div class="line">otherTracker._setDomainName(<span class="string">'www.yyy.com'</span>);</div><div class="line">otherTracker._trackPageview();</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>二、在同一网站部署不同格式的代码</strong></p>
+<p>有些谷歌分析代码，可能会根据不同格式的cookie写入数据,这样得出的数据可能对我们产生很多疑惑,请查看以下代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line"><span class="keyword">var</span> gaJsHost = ((<span class="string">"https:"</span>== <span class="built_in">document</span>.location.protocol) ? <span class="string">"https://ssl."</span>: <span class="string">"http://www."</span>);</div><div class="line"><span class="built_in">document</span>.write(<span class="built_in">unescape</span>(<span class="string">"%3Cscript src='"</span>+ gaJsHost + <span class="string">"google-analytics.com/ga.js'type='text/javascript'%3E%3C/script%3E"</span>));</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div><div class="line"><span class="regexp">&lt;script src="http:/</span><span class="regexp">/www.google-analytics.com/g</span>a.js<span class="string">"type="</span>text/javascript<span class="string">"&gt;&lt;/script&gt;</span></div><div class="line"><span class="string">&lt;script type="</span>text/javascript<span class="string">"&gt;</span></div><div class="line"><span class="string">varpageTracker = _gat._getTracker("</span>UA-xxxxx<span class="number">-1</span><span class="string">");</span></div><div class="line"><span class="string">pageTracker._setAllowHash(false);</span></div><div class="line"><span class="string">pageTracker._setAllowLinker(true);</span></div><div class="line"><span class="string">pageTracker._trackPageview();</span></div><div class="line"><span class="string">varotherTracker = _gat._getTracker("</span>UA-yyyyy<span class="number">-1</span><span class="string">");</span></div><div class="line"><span class="string">otherTracker._trackPageview();</span></div><div class="line"><span class="string">&lt;/script&gt;</span></div></pre></td></tr></table></figure>
+<p>以上代码中，我们会发现第一组帐户ID,”UA-xxxxx-1″使用的是跨域跟踪的代码，当然也是按照跨域跟踪的cookie算法来发送数据到谷歌分析的服务器，但第二组帐户ID，“UA-yyyyy-1”使用的是<br>谷歌分析官方提供的标准跟踪代码，和第一种算法当然也截然不同。我们可以使用这种部署方法来发现代码部署存在的问题！</p>
+<p><strong>三、同一网站，我需要不同的页面得到独立的分析数据</strong></p>
+<p>我们可能会遇到这样的应用，在同一网站下我希望不同的页面得到独立分分析数据，例如我们使用UA-xxxxx-1跟踪网页A，使用UA- yyyyy-1跟踪网页B。如果用户第一次进入访问了A网页，2天后，又再次访问，但是进入了B网页，这时谷歌分析会有综合浏览量等数据还是发送到A。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line"><span class="keyword">var</span> gaJsHost = ((<span class="string">"https:"</span>== <span class="built_in">document</span>.location.protocol) ? <span class="string">"https://ssl."</span>: <span class="string">"http://www."</span>);</div><div class="line"><span class="built_in">document</span>.write(<span class="built_in">unescape</span>(<span class="string">"%3Cscript src='"</span>+ gaJsHost + <span class="string">"google-analytics.com/ga.js'type='text/javascript'%3E%3C/script%3E"</span>));</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div><div class="line"><span class="regexp">&lt;script src="http:/</span><span class="regexp">/www.google-analytics.com/g</span>a.js<span class="string">"type="</span>text/javascript<span class="string">"&gt;&lt;/script&gt;</span></div><div class="line"><span class="string">&lt;script type="</span>text/javascript<span class="string">"&gt;</span></div><div class="line"><span class="string">varpageTracker = _gat._getTracker("</span>UA-aaaaa<span class="number">-1</span><span class="string">");</span></div><div class="line"><span class="string">pageTracker._trackPageview();</span></div><div class="line"><span class="string">varotherTracker = _gat._getTracker("</span>UA-bbbbb<span class="number">-1</span><span class="string">");</span></div><div class="line"><span class="string">otherTracker._trackPageview();</span></div><div class="line"><span class="string">&lt;/script&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>四、同一网站，不同用户类型访问（使用GA自定义段)，得到独立的分析数据</strong></p>
+<p>假设我们是一个交友类型的网站，我们可以根据pageTracker._setVar获得用户的类型数据，不同类型的用户的访问，发送到不同的GA帐户.谷歌分析用户自定义区段值是存储在了cookie (__utmv)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line"><span class="keyword">var</span> gaJsHost = ((<span class="string">"https:"</span>== <span class="built_in">document</span>.location.protocol) ? <span class="string">"https://ssl."</span>: <span class="string">"http://www."</span>);</div><div class="line"><span class="built_in">document</span>.write(<span class="built_in">unescape</span>(<span class="string">"%3Cscript src='"</span>+ gaJsHost + <span class="string">"google-analytics.com/ga.js'type='text/javascript'%3E%3C/script%3E"</span>));</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div><div class="line"><span class="regexp">&lt;script src="http:/</span><span class="regexp">/www.google-analytics.com/g</span>a.js<span class="string">"type="</span>text/javascript<span class="string">"&gt;&lt;/script&gt;</span></div><div class="line"><span class="string">&lt;script type="</span>text/javascript<span class="string">"&gt;</span></div><div class="line"><span class="string">varpageTracker = _gat._getTracker("</span>UA-xxxxx<span class="number">-1</span><span class="string">");</span></div><div class="line"><span class="string">pageTracker._setVar('Member');</span></div><div class="line"><span class="string">pageTracker._trackPageview();</span></div><div class="line"><span class="string">varotherTracker = _gat._getTracker("</span>UA-yyyyy<span class="number">-1</span><span class="string">");</span></div><div class="line"><span class="string">otherTracker._setVar('Male');</span></div><div class="line"><span class="string">otherTracker._trackPageview();</span></div><div class="line"><span class="string">&lt;/script&gt;</span></div></pre></td></tr></table></figure>
+<p>以上代码中，我们会发现，使用的是两端相同的代码.这段代码应用必须要注意，您不能使用第一段代码跟踪会员/非会员，第二段、第三段代码来跟踪定义的会员类型，例如是男性会员还是女性会员，因为我们使用的是_setVar，用户在此访问时会覆盖_setVar的处理。</p>
+<p><strong>五、同一网站，使用不同的GA帐户，及不同cookie跟踪网站</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line"><span class="keyword">var</span> gaJsHost = ((<span class="string">"https:"</span>== <span class="built_in">document</span>.location.protocol) ? <span class="string">"https://ssl."</span>: <span class="string">"http://www."</span>);</div><div class="line"><span class="built_in">document</span>.write(<span class="built_in">unescape</span>(<span class="string">"%3Cscript src='"</span>+ gaJsHost + <span class="string">"google-analytics.com/ga.js'type='text/javascript'%3E%3C/script%3E"</span>));</div><div class="line">&lt;<span class="regexp">/script&gt;&lt;script src="http:/</span><span class="regexp">/www.google-analytics.com/g</span>a.js<span class="string">"type="</span>text/javascript<span class="string">"&gt;&lt;/script&gt;</span></div><div class="line"><span class="string">&lt;script type="</span>text/javascript<span class="string">"&gt;</span></div><div class="line"><span class="string">varpageTracker = _gat._getTracker("</span>UA-xxxxx<span class="number">-1</span><span class="string">");</span></div><div class="line"><span class="string">pageTracker._setDomainName('xxx.com');</span></div><div class="line"><span class="string">pageTracker._setCookiePath('/directory/');</span></div><div class="line"><span class="string">pageTracker._trackPageview();</span></div><div class="line"><span class="string">varotherTracker = _gat._getTracker("</span>UA-yyyyy<span class="number">-1</span><span class="string">");</span></div><div class="line"><span class="string">otherTracker._setDomainName('xxx.com');</span></div><div class="line"><span class="string">otherTracker._trackPageview();</span></div><div class="line"><span class="string">&lt;/script&gt;</span></div></pre></td></tr></table></figure>
+<p>如果你想在同一网站跟踪所有的页面访问，并且希望单独跟踪特定目录的流量，则可以使用以上代码。这里需要注意的是。代码段1一定要部署到特定子目录下的网页，代码段2部署到所有的网页，这样<br>我们不仅可以得到所有的网站访问数据，还可以在UA-xxxxx-1的独立的目录下网页访问数据。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据监测/" rel="tag"># 数据监测</a>
+          
+            <a href="/tags/google-GA/" rel="tag"># google GA</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/11/28/js/manyjsEx/" rel="next" title="常用js正则">
+                <i class="fa fa-chevron-left"></i> 常用js正则
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/12/02/sobox/" rel="prev" title="soJs系列：1，jQuery弹窗控件sobox2.0">
+                soJs系列：1，jQuery弹窗控件sobox2.0 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">不羁虫</p>
+              <p class="site-description motion-element" itemprop="description">疏行懒言，年轻无为，卖马为生</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/bujichong" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:bujichong@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2014 &mdash; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">不羁虫</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cyth2lWfv';
+      var conf = '1e44d8c789d6fc0966c03496d5a82ea2';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

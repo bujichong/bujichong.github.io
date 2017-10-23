@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next gemini" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-bujichong.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-bujichong.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-bujichong.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="jquery,jquery plugin," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="想必苹果产品页的效果大家都很熟悉了，单页面上下切换，每切换一次都有飞入和飞出效果，这种效果已经在很多网站上被大肆模仿，加上现在比较炫丽的css3效果，让页面效果更漂亮，但要实现这样的效果工作量也是很大的，对js，css的水平要求也比较高soScrollPage是我在工作中根据页面展示需要做的一个插件，封装了单页进入和飞出事件，对单页里的元素只要用类似animate设置css的方式就可以实现我们想">
+<meta name="keywords" content="jquery,jquery plugin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="soJs系列：2,jQuery插件soScrollPage，让我们轻松愉快地做一个苹果产品页面">
+<meta property="og:url" content="//bujichong.com/2014/12/04/soscrollpage/index.html">
+<meta property="og:site_name" content="不羁虫的博客">
+<meta property="og:description" content="想必苹果产品页的效果大家都很熟悉了，单页面上下切换，每切换一次都有飞入和飞出效果，这种效果已经在很多网站上被大肆模仿，加上现在比较炫丽的css3效果，让页面效果更漂亮，但要实现这样的效果工作量也是很大的，对js，css的水平要求也比较高soScrollPage是我在工作中根据页面展示需要做的一个插件，封装了单页进入和飞出事件，对单页里的元素只要用类似animate设置css的方式就可以实现我们想">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="//bujichong.com/images/soscrollpage-1.png">
+<meta property="og:image" content="//bujichong.com/images/soscrollpage-2.png">
+<meta property="og:updated_time" content="2017-10-23T09:21:05.003Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="soJs系列：2,jQuery插件soScrollPage，让我们轻松愉快地做一个苹果产品页面">
+<meta name="twitter:description" content="想必苹果产品页的效果大家都很熟悉了，单页面上下切换，每切换一次都有飞入和飞出效果，这种效果已经在很多网站上被大肆模仿，加上现在比较炫丽的css3效果，让页面效果更漂亮，但要实现这样的效果工作量也是很大的，对js，css的水平要求也比较高soScrollPage是我在工作中根据页面展示需要做的一个插件，封装了单页进入和飞出事件，对单页里的元素只要用类似animate设置css的方式就可以实现我们想">
+<meta name="twitter:image" content="//bujichong.com/images/soscrollpage-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="//bujichong.com/2014/12/04/soscrollpage/"/>
+
+
+
+
+
+  <title>soJs系列：2,jQuery插件soScrollPage，让我们轻松愉快地做一个苹果产品页面 | 不羁虫的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不羁虫的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">前端兼伪文青一枚</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="//bujichong.com/2014/12/04/soscrollpage/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="不羁虫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不羁虫的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">soJs系列：2,jQuery插件soScrollPage，让我们轻松愉快地做一个苹果产品页面</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-12-04T11:59:00+08:00">
+                2014-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2014/12/04/soscrollpage/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2014/12/04/soscrollpage/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>想必苹果产品页的效果大家都很熟悉了，单页面上下切换，每切换一次都有飞入和飞出效果，<br>这种效果已经在很多网站上被大肆模仿，<br>加上现在比较炫丽的css3效果，让页面效果更漂亮，<br>但要实现这样的效果工作量也是很大的，<br>对js，css的水平要求也比较高<br>soScrollPage是我在工作中根据页面展示需要做的一个插件，<br>封装了单页进入和飞出事件，对单页里的元素只要用类似animate设置css的方式就可以实现我们想实现的效果了，<br>插件是完全用jQuery的animate动画和一些的基本操作来实现的，<br>这样如果我们不使用css3完全可以做成兼容ie6的很多炫丽页面。</p>
+</blockquote>
+<p><strong>ok,首先是soScrollPage的api接口：</strong></p>
+<p>例如我们把页面都放在一个id叫 gpsIntroBox 的盒子里</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'#gpsIntroBox'</span>).soScrollPage(&#123;</div><div class="line">	scrollbox : <span class="string">'#pageScrollbox'</span>,<span class="comment">//滚动包裹对象</span></div><div class="line">	page : <span class="string">'.page'</span>,<span class="comment">//页class</span></div><div class="line">	pageClsH : <span class="string">'soScrollPage-'</span>,<span class="comment">//为每页单独定义的cls头，会生成 soScrollPage-0 , soScrollPage-1 这样的class，方便每页dom查找，如无冲突，一般不用修改</span></div><div class="line">	thumbCls : <span class="string">'s-pageThumb'</span>,<span class="comment">//thumb class,</span></div><div class="line">	btnPrev : <span class="literal">null</span>,<span class="comment">//切换到上一页的按钮对象</span></div><div class="line">	btnNext : <span class="literal">null</span>,<span class="comment">//切换到下一页的按钮对象</span></div><div class="line">	minDuring : <span class="number">300</span>,<span class="comment">//每页离开时最少停留时间</span></div><div class="line">	animateOpt : <span class="literal">null</span><span class="comment">//动画参数对象</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>这里是所有的参数，实际应用中我们如果和默认参数相同就不用修改了</p>
+<p>我们的html结构大体如下：<br><img src="/images/soscrollpage-1.png" alt=""></p>
+<p>单页页面里有我们需要展示的元素，展开page1这个div，里面的元素大概如下：<br><img src="/images/soscrollpage-2.png" alt=""></p>
+<p>这里style里都是js运行后生成的，<br>下面来看看我们的js调用：<br>在页面的最底下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">	$(<span class="string">'#gpsIntroBox'</span>).soScrollPage(&#123;</div><div class="line">		animateOpt : an</div><div class="line">	&#125;);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>这里我们只设置了animateOpt为an，<br>an是我们的动画参数对象数组，</p>
+<p><strong>举例如下：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> an = [</div><div class="line">	<span class="comment">//0 第一页动画对象</span></div><div class="line">	&#123;<span class="string">"in"</span>:[<span class="comment">//进入时操作动画数组</span></div><div class="line">			&#123;<span class="attr">o</span>:<span class="string">'.h3-title'</span>,<span class="comment">//动画对象</span></div><div class="line">				fn : &#123;<span class="attr">css</span>:&#123;<span class="attr">top</span>:<span class="string">'-150px'</span>&#125;,<span class="attr">addClass</span>:<span class="string">'h3-now'</span>&#125;,<span class="comment">//函数事件，可以执行css、addClass、removeClass、removeAttr等jQuery默认支持的属性操作事件,</span></div><div class="line">				fx:[&#123;<span class="attr">animate</span>:&#123;<span class="attr">top</span>:<span class="string">'120px'</span>&#125;,<span class="attr">during</span>:<span class="number">600</span>&#125;]<span class="comment">//动画事件，可以执行animate，另外可以设置delay时间</span></div><div class="line">			&#125;,</div><div class="line">			&#123;<span class="attr">o</span>:<span class="string">'.p-intro'</span>,</div><div class="line">				fn : &#123;<span class="attr">css</span>:&#123;<span class="attr">top</span>:<span class="string">'-250px'</span>&#125;,<span class="attr">addClass</span>:<span class="string">'p-now'</span>&#125;,</div><div class="line">				fx:[&#123;<span class="attr">animate</span>:&#123;<span class="attr">top</span>:<span class="string">'250px'</span>&#125;,<span class="attr">during</span>:<span class="number">800</span>&#125;]<span class="comment">//在进入800ms后执行</span></div><div class="line">			&#125;,</div><div class="line">			&#123;<span class="attr">o</span>:<span class="string">'.s-i-1'</span>,<span class="attr">fn</span>:&#123;<span class="attr">css</span>:&#123;<span class="attr">marginLeft</span>:<span class="string">'1200px'</span>&#125;&#125;,<span class="attr">fx</span>:[&#123;<span class="attr">animate</span>:&#123;<span class="attr">marginLeft</span>:<span class="string">'-216px'</span>&#125;,<span class="attr">during</span>:<span class="number">400</span>,<span class="attr">delay</span>:<span class="number">400</span>&#125;]&#125;,<span class="comment">//在进入400ms后执行</span></div><div class="line">			&#123;<span class="attr">o</span>:<span class="string">'.s-i-2'</span>,<span class="attr">fn</span>:&#123;<span class="attr">css</span>:&#123;<span class="attr">marginLeft</span>:<span class="string">'1200px'</span>&#125;&#125;,<span class="attr">fx</span>:[&#123;<span class="attr">animate</span>:&#123;<span class="attr">marginLeft</span>:<span class="string">'-96px'</span>&#125;,<span class="attr">during</span>:<span class="number">600</span>,<span class="attr">delay</span>:<span class="number">400</span>&#125;]&#125;,</div><div class="line">			&#123;<span class="attr">o</span>:<span class="string">'.s-i-3'</span>,<span class="attr">fn</span>:&#123;<span class="attr">css</span>:&#123;<span class="attr">marginLeft</span>:<span class="string">'1200px'</span>&#125;&#125;,<span class="attr">fx</span>:[&#123;<span class="attr">animate</span>:&#123;<span class="attr">marginLeft</span>:<span class="string">'24px'</span>&#125;,<span class="attr">during</span>:<span class="number">800</span>,<span class="attr">delay</span>:<span class="number">400</span>&#125;]&#125;,</div><div class="line">			&#123;<span class="attr">o</span>:<span class="string">'.s-i-4'</span>,<span class="attr">fn</span>:&#123;<span class="attr">css</span>:&#123;<span class="attr">marginLeft</span>:<span class="string">'1200px'</span>&#125;&#125;,<span class="attr">fx</span>:[&#123;<span class="attr">animate</span>:&#123;<span class="attr">marginLeft</span>:<span class="string">'144px'</span>&#125;,<span class="attr">during</span>:<span class="number">1000</span>,<span class="attr">delay</span>:<span class="number">400</span>&#125;]&#125;</div><div class="line">		],</div><div class="line">		<span class="string">"out"</span>:[<span class="comment">//飞出时操作动画数组</span></div><div class="line">			&#123;<span class="attr">o</span>:<span class="string">'.h3-title'</span>,</div><div class="line">				fn : &#123;<span class="attr">removeClass</span>:<span class="string">'h3-now'</span>,<span class="attr">removeAttr</span>:<span class="string">'title'</span>&#125;,</div><div class="line">				fx:[&#123;<span class="attr">animate</span>:&#123;<span class="attr">top</span>:<span class="string">'60px'</span>&#125;,<span class="attr">during</span>:<span class="number">200</span>,<span class="attr">delay</span>:<span class="number">400</span>&#125;,&#123;<span class="attr">animate</span>:&#123;<span class="attr">top</span>:<span class="string">'1220px'</span>&#125;,<span class="attr">during</span>:<span class="number">700</span>&#125;]</div><div class="line">			&#125;,</div><div class="line">			&#123;<span class="attr">o</span>:<span class="string">'.p-intro'</span>,</div><div class="line">				fn : &#123;<span class="attr">removeClass</span>:<span class="string">'p-now'</span>,<span class="attr">removeAttr</span>:<span class="string">'title'</span>&#125;,</div><div class="line">				fx:[&#123;<span class="attr">animate</span>:&#123;<span class="attr">top</span>:<span class="string">'1250px'</span>&#125;,<span class="attr">during</span>:<span class="number">600</span>,<span class="attr">delay</span>:<span class="number">600</span>&#125;]</div><div class="line">			&#125;,</div><div class="line">			&#123;<span class="attr">o</span>:<span class="string">'.s-i-1'</span>,<span class="attr">fx</span>:[&#123;<span class="attr">animate</span>:&#123;<span class="attr">marginLeft</span>:<span class="string">'-1200px'</span>&#125;,<span class="attr">during</span>:<span class="number">400</span>&#125;]&#125;,</div><div class="line">			&#123;<span class="attr">o</span>:<span class="string">'.s-i-2'</span>,<span class="attr">fx</span>:[&#123;<span class="attr">animate</span>:&#123;<span class="attr">marginLeft</span>:<span class="string">'-1200px'</span>&#125;,<span class="attr">during</span>:<span class="number">600</span>&#125;]&#125;,</div><div class="line">			&#123;<span class="attr">o</span>:<span class="string">'.s-i-3'</span>,<span class="attr">fx</span>:[&#123;<span class="attr">animate</span>:&#123;<span class="attr">marginLeft</span>:<span class="string">'-1200px'</span>&#125;,<span class="attr">during</span>:<span class="number">800</span>&#125;]&#125;,</div><div class="line">			&#123;<span class="attr">o</span>:<span class="string">'.s-i-4'</span>,<span class="attr">fx</span>:[&#123;<span class="attr">animate</span>:&#123;<span class="attr">marginLeft</span>:<span class="string">'-1200px'</span>&#125;,<span class="attr">during</span>:<span class="number">1000</span>&#125;]&#125;</div><div class="line">		]</div><div class="line">	&#125;,</div><div class="line">  ...<span class="comment">//省略</span></div><div class="line">  ...</div><div class="line">	<span class="comment">//5 第6页</span></div><div class="line">	&#123;<span class="string">"in"</span> : [</div><div class="line">			&#123;<span class="attr">o</span>:<span class="string">'.a-test'</span>,<span class="attr">fx</span>:[&#123;<span class="attr">animate</span>:&#123;<span class="attr">marginTop</span>:<span class="string">'-70px'</span>,<span class="attr">opacity</span>:<span class="number">1</span>&#125;,<span class="attr">during</span>:<span class="number">600</span>&#125;]&#125;,</div><div class="line">			&#123;<span class="attr">o</span>:<span class="string">'.s-sys'</span>,<span class="attr">fx</span>:[&#123;<span class="attr">animate</span>:&#123;<span class="attr">marginTop</span>:<span class="string">'-5px'</span>,<span class="attr">opacity</span>:<span class="number">1</span>&#125;,<span class="attr">during</span>:<span class="number">1000</span>&#125;]&#125;</div><div class="line">		],</div><div class="line">	<span class="string">"out"</span> : [</div><div class="line">			&#123;<span class="attr">o</span>:<span class="string">'.a-test'</span>,<span class="attr">fx</span>:[&#123;<span class="attr">animate</span>:&#123;<span class="attr">marginTop</span>:<span class="string">'-40px'</span>,<span class="attr">opacity</span>:<span class="number">0</span>&#125;,<span class="attr">during</span>:<span class="number">900</span>&#125;]&#125;,</div><div class="line">			&#123;<span class="attr">o</span>:<span class="string">'.s-sys'</span>,<span class="attr">fx</span>:[&#123;<span class="attr">animate</span>:&#123;<span class="attr">marginTop</span>:<span class="string">'-55px'</span>,<span class="attr">opacity</span>:<span class="number">0</span>&#125;,<span class="attr">during</span>:<span class="number">600</span>&#125;]&#125;</div><div class="line">		]</div><div class="line">	&#125;</div><div class="line"></div><div class="line">]</div></pre></td></tr></table></figure>
+<p>ok，这个动画对象是不是看起来比较直观而且比较灵活呢？</p>
+<p>最后是实现效果，大家可以<a href="/my/soScrollPage/index.html"><strong> 猛击这里</strong></a></p>
+<p>样式部分就看个人了，基本来说都是绝对定位，推荐最好对page进行百分比定位，</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/jquery/" rel="tag"># jquery</a>
+          
+            <a href="/tags/jquery-plugin/" rel="tag"># jquery plugin</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/12/02/css/selection/" rel="next" title="自定义被选中文字的背景色：css之selection">
+                <i class="fa fa-chevron-left"></i> 自定义被选中文字的背景色：css之selection
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/09/12/mCustomScrollbar/" rel="prev" title="jQuery自定义滚动条插件mCustomScrollbar">
+                jQuery自定义滚动条插件mCustomScrollbar <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">不羁虫</p>
+              <p class="site-description motion-element" itemprop="description">疏行懒言，年轻无为，卖马为生</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/bujichong" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:bujichong@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2014 &mdash; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">不羁虫</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cyth2lWfv';
+      var conf = '1e44d8c789d6fc0966c03496d5a82ea2';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
