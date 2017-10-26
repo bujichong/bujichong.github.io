@@ -313,37 +313,19 @@
       
         
           
-            <p>经常看到一片文字被选中后，文字背景色不是默认的深蓝色，而是其他色，如：</p>
-<p><img src="/images/selection-1.gif" alt=""></p>
-<p>经常见，但是总忽视这个问题，既然想起来，<br>马上到群里问了问，<br>原来是使用了对象的selection属性</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.detailsBox</span> <span class="selector-tag">p</span><span class="selector-pseudo">::selection</span>&#123;</div><div class="line"><span class="attribute">background</span>:<span class="number">#68DFFB</span>; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>自己写了写，呵呵，这css属性还是有些小细节要注意，大致如下：</p>
-<p><strong>1，目前的ie都不支持（ie9未测试），所以这种自定义的被选中背景色，应该都是在非ie浏览器里才能看到的</strong></p>
-<p><strong>2，firefox和其他webkit浏览器实现代码不同：</strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.detailsBox</span> <span class="selector-tag">p</span><span class="selector-pseudo">::selection</span>&#123;</div><div class="line"><span class="attribute">background</span>:<span class="number">#68DFFB</span>;<span class="comment">/*webkit*/</span></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="selector-class">.detailsBox</span> <span class="selector-tag">p</span><span class="selector-pseudo">::-moz-selection</span>&#123;</div><div class="line"><span class="attribute">background</span>:red;<span class="comment">/*moz*/</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>注意这里是双冒号，而非伪类的一个冒号…..忽见此属性还是感觉有点奇怪</p>
-<p><strong>3，实现上容易出现的错误：</strong><br><strong>1/用逗号隔开的样式写法</strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.detailsBox</span> <span class="selector-tag">p</span><span class="selector-pseudo">::selection</span>,</div><div class="line"><span class="selector-class">.detailsBox</span> <span class="selector-tag">p</span><span class="selector-pseudo">::-moz-selection</span>&#123;</div><div class="line"><span class="attribute">background</span>:red; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这样写貌似没有问题，但是方法失效</p>
-<p><strong>2/此属性只可应用在文字标签的最内层上，不支持继承</strong>，何意？如：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.detailsBox</span> <span class="selector-tag">div</span><span class="selector-pseudo">::selection</span>&#123;</div><div class="line"><span class="attribute">background</span>:<span class="number">#68DFFB</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.detailsBox</span> <span class="selector-tag">div</span><span class="selector-pseudo">::-moz-selection</span>&#123;<span class="attribute">background</span>:<span class="number">#68DFFB</span>;&#125;</div></pre></td></tr></table></figure>
-<p>如上代码，我们好像把这个属性给了div，div内的对象可以继承，至少我们写字体的行高，字体大小属性是这样的，但事实这样写是无效的，显示结果如：</p>
-<p><img src="/images/selection-2.gif" alt=""></p>
-<p>我的html代码如：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"detailsBox"</span>&gt;</span></div><div class="line">    安全审计主要面对企业内部信息资产的访问过程，进行全程记录分析。</div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.hunnu.edu.cn"</span> <span class="attr">target</span>=<span class="string">"_blank"</span>&gt;</span>http://www.hunnu.edu.cn<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>　　内网安全审计主要面对企业内部信息资产的访问过程，进行全程记录分析。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>从结果上显示可以看出只有div直接包住的文字背景色变色了，而p及p中的a都没有受到影响。</p>
-<p>这是这个属性有点奇怪的地方，<br>当然我们可以用通配符的写法让div中的所有对象都匹配上selection属性，如：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.detailsBox</span> *<span class="selector-pseudo">::selection</span>&#123;</div><div class="line"><span class="attribute">background</span>:<span class="number">#68DFFB</span>;&#125;</div><div class="line"><span class="selector-class">.detailsBox</span> *<span class="selector-pseudo">::-moz-selection</span>&#123;<span class="attribute">background</span>:<span class="number">#68DFFB</span>;&#125;</div></pre></td></tr></table></figure>
-<p>这样杀伤力是否太大？</p>
-<p><strong>4，实现出来的效果稍有不同：</strong><br>firefox中 背景是有间距的，<br>ie中文字被选中背景色的效果也如ff中一样有间距，只是还不支持这种自定义背景色</p>
-<p><img src="/images/selection-3.gif" alt=""></p>
-<p>而在chorme中有全选的感觉，背景是铺满整个被选中的文字：</p>
-<p><img src="/images/selection-4.gif" alt=""></p>
-<p>另外如果我们想禁用用户选择文字：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">moz-user-select</span>: <span class="selector-tag">-moz-none</span>;</div><div class="line"><span class="selector-tag">-moz-user-select</span>: <span class="selector-tag">none</span>;</div><div class="line"><span class="selector-tag">-o-user-select</span><span class="selector-pseudo">:none</span>;</div><div class="line"><span class="selector-tag">-khtml-user-select</span><span class="selector-pseudo">:none</span>;</div><div class="line"><span class="selector-tag">-webkit-user-select</span><span class="selector-pseudo">:none</span>;</div><div class="line"><span class="selector-tag">-ms-user-select</span><span class="selector-pseudo">:none</span>;</div><div class="line"><span class="selector-tag">user-select</span><span class="selector-pseudo">:none</span>;</div></pre></td></tr></table></figure>
-<p>以上是 selection 属性的一些小总结，简单体验感觉，不正确的地方望知者指出</p>
+          经常看到一片文字被选中后，文字背景色不是默认的深蓝色，而是其他色，如：
 
-          
+经常见，但是总忽视这个问题，既然想起来，马上到群里问了问，原来是使用了对象的selection属性
+123.detailsBox p::selection&#123;background:#68DFFB; &#125;
+自己写
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/12/02/css/selection/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -472,27 +454,15 @@
       
         
           
-            <p>谷歌分析生成的跟踪代码中会有一个唯一的数字ID帐户号码,例如:UA-XXXX-1,每个ID 会对应一个相应的GA配置文件，通常我们会按照官方提供的代码去部署，但是无法满足我们更多个性化应用需求，例如：我的网站有多个域，我希望不同的域的访问使用不同谷歌分析帐户；或者我希望同一网站部署多个帐户,帐户A分析所有的流量，帐户B只统计部分频道的流量；</p>
-<p>下面我们先来看一段代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line"><span class="keyword">var</span> gaJsHost = ((<span class="string">"https:"</span>== <span class="built_in">document</span>.location.protocol) ? <span class="string">"https://ssl."</span>: <span class="string">"http://www."</span>);</div><div class="line"><span class="built_in">document</span>.write(<span class="built_in">unescape</span>(<span class="string">"%3Cscript src='"</span>+ gaJsHost + <span class="string">"google-analytics.com/ga.js'type='text/javascript'%3E%3C/script%3E"</span>));</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div><div class="line"><span class="regexp">&lt;script src="http:/</span><span class="regexp">/www.google-analytics.com/g</span>a.js<span class="string">"type="</span>text/javascript<span class="string">"&gt;&lt;/script&gt;</span></div><div class="line"><span class="string">&lt;script type="</span>text/javascript<span class="string">"&gt;</span></div><div class="line"><span class="string">varpageTracker = _gat._getTracker("</span>UA-XXXXX<span class="number">-1</span><span class="string">");</span></div><div class="line"><span class="string">pageTracker._trackPageview();</span></div><div class="line"><span class="string">varotherTracker = _gat._getTracker("</span>UA-YYYYY<span class="number">-1</span><span class="string">");</span></div><div class="line"><span class="string">otherTracker._trackPageview();</span></div><div class="line"><span class="string">&lt;/script&gt;</span></div></pre></td></tr></table></figure>
-<p>在以上的代码中，我们可以看到不同的GA配置文件ID“UA-XXXXX-1”和”UA-YYYYY-1“ 当用户访问含有这段代码的网页后，首先GA会把数据发送到UA-XXXXX-1,然后在发送到UA-YYYYY-1,两个帐户<br>同时获取到了相应的数据，而且数据是相互独立的，甚至可以针对不同帐户应用不同的过滤器，得到你所需要的分析数据。<br>下面将列出几种常见应用是需要的GA代码部署:<br><strong>一、我有多个网域,我需要使用不同的帐户分析不同域的访问数据</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line"><span class="keyword">var</span> gaJsHost = ((<span class="string">"https:"</span>== <span class="built_in">document</span>.location.protocol) ? <span class="string">"https://ssl."</span>: <span class="string">"http://www."</span>);</div><div class="line"><span class="built_in">document</span>.write(<span class="built_in">unescape</span>(<span class="string">"%3Cscript src='"</span>+ gaJsHost + <span class="string">"google-analytics.com/ga.js'type='text/javascript'%3E%3C/script%3E"</span>));&lt;/script&gt;</div><div class="line">&lt;script src=<span class="string">"http://www.google-analytics.com/ga.js"</span>type=<span class="string">"text/javascript"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line">varpageTracker = _gat._getTracker(<span class="string">"UA-xxxxx-1"</span>);</div><div class="line">pageTracker._setDomainName(<span class="string">'www.xxx.com'</span>);</div><div class="line">pageTracker._trackPageview();</div><div class="line">varotherTracker = _gat._getTracker(<span class="string">"UA-yyyyy-1"</span>);</div><div class="line">otherTracker._setDomainName(<span class="string">'www.yyy.com'</span>);</div><div class="line">otherTracker._trackPageview();</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
-<p><strong>二、在同一网站部署不同格式的代码</strong></p>
-<p>有些谷歌分析代码，可能会根据不同格式的cookie写入数据,这样得出的数据可能对我们产生很多疑惑,请查看以下代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line"><span class="keyword">var</span> gaJsHost = ((<span class="string">"https:"</span>== <span class="built_in">document</span>.location.protocol) ? <span class="string">"https://ssl."</span>: <span class="string">"http://www."</span>);</div><div class="line"><span class="built_in">document</span>.write(<span class="built_in">unescape</span>(<span class="string">"%3Cscript src='"</span>+ gaJsHost + <span class="string">"google-analytics.com/ga.js'type='text/javascript'%3E%3C/script%3E"</span>));</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div><div class="line"><span class="regexp">&lt;script src="http:/</span><span class="regexp">/www.google-analytics.com/g</span>a.js<span class="string">"type="</span>text/javascript<span class="string">"&gt;&lt;/script&gt;</span></div><div class="line"><span class="string">&lt;script type="</span>text/javascript<span class="string">"&gt;</span></div><div class="line"><span class="string">varpageTracker = _gat._getTracker("</span>UA-xxxxx<span class="number">-1</span><span class="string">");</span></div><div class="line"><span class="string">pageTracker._setAllowHash(false);</span></div><div class="line"><span class="string">pageTracker._setAllowLinker(true);</span></div><div class="line"><span class="string">pageTracker._trackPageview();</span></div><div class="line"><span class="string">varotherTracker = _gat._getTracker("</span>UA-yyyyy<span class="number">-1</span><span class="string">");</span></div><div class="line"><span class="string">otherTracker._trackPageview();</span></div><div class="line"><span class="string">&lt;/script&gt;</span></div></pre></td></tr></table></figure>
-<p>以上代码中，我们会发现第一组帐户ID,”UA-xxxxx-1″使用的是跨域跟踪的代码，当然也是按照跨域跟踪的cookie算法来发送数据到谷歌分析的服务器，但第二组帐户ID，“UA-yyyyy-1”使用的是<br>谷歌分析官方提供的标准跟踪代码，和第一种算法当然也截然不同。我们可以使用这种部署方法来发现代码部署存在的问题！</p>
-<p><strong>三、同一网站，我需要不同的页面得到独立的分析数据</strong></p>
-<p>我们可能会遇到这样的应用，在同一网站下我希望不同的页面得到独立分分析数据，例如我们使用UA-xxxxx-1跟踪网页A，使用UA- yyyyy-1跟踪网页B。如果用户第一次进入访问了A网页，2天后，又再次访问，但是进入了B网页，这时谷歌分析会有综合浏览量等数据还是发送到A。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line"><span class="keyword">var</span> gaJsHost = ((<span class="string">"https:"</span>== <span class="built_in">document</span>.location.protocol) ? <span class="string">"https://ssl."</span>: <span class="string">"http://www."</span>);</div><div class="line"><span class="built_in">document</span>.write(<span class="built_in">unescape</span>(<span class="string">"%3Cscript src='"</span>+ gaJsHost + <span class="string">"google-analytics.com/ga.js'type='text/javascript'%3E%3C/script%3E"</span>));</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div><div class="line"><span class="regexp">&lt;script src="http:/</span><span class="regexp">/www.google-analytics.com/g</span>a.js<span class="string">"type="</span>text/javascript<span class="string">"&gt;&lt;/script&gt;</span></div><div class="line"><span class="string">&lt;script type="</span>text/javascript<span class="string">"&gt;</span></div><div class="line"><span class="string">varpageTracker = _gat._getTracker("</span>UA-aaaaa<span class="number">-1</span><span class="string">");</span></div><div class="line"><span class="string">pageTracker._trackPageview();</span></div><div class="line"><span class="string">varotherTracker = _gat._getTracker("</span>UA-bbbbb<span class="number">-1</span><span class="string">");</span></div><div class="line"><span class="string">otherTracker._trackPageview();</span></div><div class="line"><span class="string">&lt;/script&gt;</span></div></pre></td></tr></table></figure>
-<p><strong>四、同一网站，不同用户类型访问（使用GA自定义段)，得到独立的分析数据</strong></p>
-<p>假设我们是一个交友类型的网站，我们可以根据pageTracker._setVar获得用户的类型数据，不同类型的用户的访问，发送到不同的GA帐户.谷歌分析用户自定义区段值是存储在了cookie (__utmv)</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line"><span class="keyword">var</span> gaJsHost = ((<span class="string">"https:"</span>== <span class="built_in">document</span>.location.protocol) ? <span class="string">"https://ssl."</span>: <span class="string">"http://www."</span>);</div><div class="line"><span class="built_in">document</span>.write(<span class="built_in">unescape</span>(<span class="string">"%3Cscript src='"</span>+ gaJsHost + <span class="string">"google-analytics.com/ga.js'type='text/javascript'%3E%3C/script%3E"</span>));</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div><div class="line"><span class="regexp">&lt;script src="http:/</span><span class="regexp">/www.google-analytics.com/g</span>a.js<span class="string">"type="</span>text/javascript<span class="string">"&gt;&lt;/script&gt;</span></div><div class="line"><span class="string">&lt;script type="</span>text/javascript<span class="string">"&gt;</span></div><div class="line"><span class="string">varpageTracker = _gat._getTracker("</span>UA-xxxxx<span class="number">-1</span><span class="string">");</span></div><div class="line"><span class="string">pageTracker._setVar('Member');</span></div><div class="line"><span class="string">pageTracker._trackPageview();</span></div><div class="line"><span class="string">varotherTracker = _gat._getTracker("</span>UA-yyyyy<span class="number">-1</span><span class="string">");</span></div><div class="line"><span class="string">otherTracker._setVar('Male');</span></div><div class="line"><span class="string">otherTracker._trackPageview();</span></div><div class="line"><span class="string">&lt;/script&gt;</span></div></pre></td></tr></table></figure>
-<p>以上代码中，我们会发现，使用的是两端相同的代码.这段代码应用必须要注意，您不能使用第一段代码跟踪会员/非会员，第二段、第三段代码来跟踪定义的会员类型，例如是男性会员还是女性会员，因为我们使用的是_setVar，用户在此访问时会覆盖_setVar的处理。</p>
-<p><strong>五、同一网站，使用不同的GA帐户，及不同cookie跟踪网站</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line"><span class="keyword">var</span> gaJsHost = ((<span class="string">"https:"</span>== <span class="built_in">document</span>.location.protocol) ? <span class="string">"https://ssl."</span>: <span class="string">"http://www."</span>);</div><div class="line"><span class="built_in">document</span>.write(<span class="built_in">unescape</span>(<span class="string">"%3Cscript src='"</span>+ gaJsHost + <span class="string">"google-analytics.com/ga.js'type='text/javascript'%3E%3C/script%3E"</span>));</div><div class="line">&lt;<span class="regexp">/script&gt;&lt;script src="http:/</span><span class="regexp">/www.google-analytics.com/g</span>a.js<span class="string">"type="</span>text/javascript<span class="string">"&gt;&lt;/script&gt;</span></div><div class="line"><span class="string">&lt;script type="</span>text/javascript<span class="string">"&gt;</span></div><div class="line"><span class="string">varpageTracker = _gat._getTracker("</span>UA-xxxxx<span class="number">-1</span><span class="string">");</span></div><div class="line"><span class="string">pageTracker._setDomainName('xxx.com');</span></div><div class="line"><span class="string">pageTracker._setCookiePath('/directory/');</span></div><div class="line"><span class="string">pageTracker._trackPageview();</span></div><div class="line"><span class="string">varotherTracker = _gat._getTracker("</span>UA-yyyyy<span class="number">-1</span><span class="string">");</span></div><div class="line"><span class="string">otherTracker._setDomainName('xxx.com');</span></div><div class="line"><span class="string">otherTracker._trackPageview();</span></div><div class="line"><span class="string">&lt;/script&gt;</span></div></pre></td></tr></table></figure>
-<p>如果你想在同一网站跟踪所有的页面访问，并且希望单独跟踪特定目录的流量，则可以使用以上代码。这里需要注意的是。代码段1一定要部署到特定子目录下的网页，代码段2部署到所有的网页，这样<br>我们不仅可以得到所有的网站访问数据，还可以在UA-xxxxx-1的独立的目录下网页访问数据。</p>
-
-          
+          谷歌分析生成的跟踪代码中会有一个唯一的数字ID帐户号码,例如:UA-XXXX-1,每个ID 会对应一个相应的GA配置文件，通常我们会按照官方提供的代码去部署，但是无法满足我们更多个性化应用需求，例如：我的网站有多个域，我希望不同的域的访问使用不同谷歌分析帐户；或者我希望同一网站部署多个帐户,帐户A分
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/12/01/manyGA/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -621,34 +591,19 @@
       
         
           
-            <p><img src="/asset/blogImg/pnggif-1.png" alt=""></p>
-<p><img src="/asset/blogImg/pnggif-1.png" alt=""></p>
-<p>PNG这种文件格式值得科普下,对比GIF来说</p>
-<p><strong>PNG和GIF都支持动画</strong><br>PNG的动画也叫APNG,只是firefox支持,详见 <a href="http://ooxx.me/apng.orz" target="_blank" rel="external">http://ooxx.me/apng.orz</a> ,如Firefox看这里的favicon,是会动滴<br>所以动画图片来说,还是GIF支持最好</p>
-<p><strong>第一种PNG叫PNG8(索引色透明)</strong>,简单说可以理解为静态的GIF<br>他们都只有256色,也支持索引透明,就是指定一个像素点是不是透明<br>但是PNG由于算法的优势,体积比较少<br>所以,静态GIF完全可用PNG8取代</p>
-<p><strong>第二种PNG也叫PNG8(Alpha透明)</strong>,牛逼在可指定像素点的透明度,例如50%透明度<br>这种优点在于比PNG24/32体积小,但效果一样<br>缺点在于IE6支持不好,~~~~会把半透明的像素点显示成全透明</p>
-<p><strong>第三种PNG叫PNG24</strong><br>和PNG8的区别仅在于体积更大</p>
-<p><strong>更正</strong>: PNG24不透明,但是颜色数很多,不止256色<br>而Photoshop里导出的png24其实是png32</p>
-<p><strong>第四种PNG叫PNG32</strong><br>和photoshop的PSD一样,是Fireworks的默认源文件格式,包含图层和通道信息<br>和PNG24的区别在于有图层<br>缺点在于IE6支持不好,会把透明区域显示成蓝灰底色</p>
-<p><strong>更正</strong>: PNG32和PNG24的区别就是多了透明信息</p>
-<p><strong>(新增)第五种PNG叫Fireworks源文件</strong><br>类似于Phosothop的PSD,有图层通道信息神马的<br>是PNG的一种扩展<br>这种丢到浏览器里表现和PNG32一样</p>
-<p>简单的归纳就是</p>
-<p><strong>动画</strong>:<br>支持: GIF, APNG只在firefox支持<br>不支持: 非Firefox的PNG</p>
-<p><strong>索引色透明</strong>(某像素是全透明还是全不透明):<br>支持: GIF/PNG都支持<br>不支持: <strong>IE6下</strong>的PNG8(Alpha透明)和PNG24/32</p>
-<p><strong>Alpha透明</strong>(可指定透明度)<strong>: </strong><br>支持:PNG8(Aplha透明)/PNG32<br>不支持: GIF/PNG8(索引色透明)/PNG24</p>
-<p><strong>图层</strong><br>支持: PNG(FW源文件)<br>不支持: PNG8/PNG24/PNG32/GIF</p>
-<p><strong>颜色</strong><br>256色：GIF PNG8(2种)<br>其他的格式颜色数不过来,好多</p>
-<p><strong>附加说明:</strong></p>
-<p>Photoshop 只能创建GIF、 PNG8(索引透明)和PNG24(其实是PNG32)</p>
-<p><img src="/asset/blogImg/pnggif-3.png" alt=""></p>
-<p>Fireworks 能创建任意格式的GIF和PNG</p>
-<p><img src="/asset/blogImg/pnggif-4.png" alt=""></p>
-<p>PNG8(索引透明)在创建的时候有个参数叫(PS杂边|FW色板),这个作用就是用杂边色加上像素点的透明度例如50%,生成伪透明的不透明像素点<br>适用于固定底色的伪半透明,例子里用的杂边是黑色,在白背景下就很明显</p>
-<p>PNG8(Alpha透明)在IE6下会有过度裁剪的问题,可能是把半透明的像素都去掉了,所以某些图片会如最上面第一张图所示,被狗咬的感觉<br>规避方案:</p>
-<p>1.用2张图,IE6用PNG8(索引透明),非IE6用PNG8(Alpha透明),在CSS里用_这个IE6hack来区别<br>2.半透明在作图的时候就要考虑到被去掉后的样子,对设计师有要求,不大现实<br>3.说服自己接受这坨大便,然后咽下去就这样了你想咋样</p>
-<p>静态GIF、PNG 24、PNG32不大推荐在网页上用</p>
-
           
+
+PNG这种文件格式值得科普下,对比GIF来说
+PNG和GIF都支持动画PNG的动画也叫APNG,只是firefox支持,详见 http://ooxx.me/apng.orz ,如Firefox看这里的favicon,是会动滴所以动画图片来说,还是GIF支持最好
+第一种PNG叫PNG8(索引色透明
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/11/28/css/pngAlpha/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -777,25 +732,21 @@
       
         
           
-            <p>常要用到，不够的慢慢补全~</p>
-<p>基础字符（英文字母、数字和下划线’）：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^\w+$/.test(val)</div></pre></td></tr></table></figure>
-<p>中文、英文字母、数字和下划线：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^[\u0391-\uFFE5\w]+$/.test(val)</div></pre></td></tr></table></figure>
-<p>数字：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^[\d]+([\.][\d]+)&#123;<span class="number">0</span>,<span class="number">1</span>&#125;$/.test(val)</div></pre></td></tr></table></figure>
-<p>邮箱验证：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ismail = <span class="regexp">/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/</span>;</div><div class="line">ismail.test(<span class="string">"aaa@aa.com"</span>);</div></pre></td></tr></table></figure>
-<p>手机号码验证：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> isMobile=<span class="regexp">/^(?:13\d|15\d|18\d)\d&#123;5&#125;(\d&#123;3&#125;|\*&#123;3&#125;)$/</span>;</div><div class="line">isMobile.test(<span class="string">"18721323517"</span>);</div></pre></td></tr></table></figure>
-<p>座机号码验证：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> isPhone=<span class="regexp">/^((0\d&#123;2,3&#125;)-)?(\d&#123;7,8&#125;)(-(\d&#123;3,&#125;))?$/</span>;</div><div class="line">isPhone.test(<span class="string">"021-666666"</span>);</div></pre></td></tr></table></figure>
-<p>邮政编码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^[<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">6</span>&#125;$/.test(val)</div></pre></td></tr></table></figure>
-<p>车牌号：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^[A-Za-z0<span class="number">-9</span>]&#123;<span class="number">6</span>&#125;$/.test(val)</div></pre></td></tr></table></figure>
-
-          
+          常要用到，不够的慢慢补全~
+基础字符（英文字母、数字和下划线’）：
+1/^\w+$/.test(val)
+中文、英文字母、数字和下划线：
+1/^[\u0391-\uFFE5\w]+$/.test(val)
+数字：
+1/^[\d]+([\.][\d]+)&#123;0,1&#125;$/.test(v
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/11/28/js/manyjsEx/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -924,14 +875,16 @@
       
         
           
-            <p>在 sublime text 2中想直接<code>ctrl+B</code>就编译写的sass代码吗？<br>可以的，<br>安装Sass 和 SASS Build 两个插件就可以。<br>（当然你得先安装ruly+sass，也行还顺便还安装compass），<br>安装ruly就不说，顺着往下：</p>
-<p><strong>1，安装SASS：</strong> 在开始菜单中打开 <strong>“Start Command Prompt with Ruby” </strong><br>输入：<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gem <span class="keyword">install</span> sass</div></pre></td></tr></table></figure></p>
-<p>等待cmd提示安装成功就ok啦~</p>
-<p><strong>2，在 sublime text 2中安装 Sass 和 SASS Build </strong><br>怎么安装就不用讲了， Ctrl + Shift + P调出控制台安装，或者在google或百度里搜一下地址吧，下载安装包下来放到 sublime text 2下的“<strong>\Data\Packages</strong>”目录中。<br>安装完成后，scss的文件就有了高亮了，另外编译系统下多了2个sass项（”tools–编译系统”下找到sass命令，<strong>注意：</strong>默认只有 ” SASS”和”SASS – Compressed”）<br><img src="/images/firebugsass-1.png" alt="firebugsass-1"></p>
-<p><strong>3，安装firefox插件：“FireCompass for Firebug”</strong><br>这个插件装好已经为我们能在firebug的html面版里看到sass内容做好准备了。<br>这时候你<code>ctrl+B</code>能直接把sass文件编译成css文件了。<br>我们打开fireubg，看html右侧的css面版，显示的还是编译后的css，<br>为什么呢？因为如果要fireCompass插件显示sass源码，必须在编译后的css文件里显示对应sass的行号，像下面这样：<br><img src="/images/firebugsass-2.png" alt=""><br>只有这样firebug的插件才知道哪一行css对应scss文件里的哪一行代码。<br>那这就需要我们在sublime text 2插件编译的时候开启添加行号功能。<br>ok，那我们就开始干吧~<br>我们找到sublime text 2 下 “Data\Packages\SASS-Build”文件夹，这里面有2个文件 “.sublime-build”文件，这2个文件对应着“编译系统”菜单里的2个项，<br>打开一看就明白了，原来就是自动执行cmd编译命令，<br><img src="/images/firebugsass-3.png" alt=""><br>那想开启添加行号，我们需要在执行时添加一个 “<strong>–line-numbers</strong>”命令就可以，具体sass编译参数都神马 意思，大家可以去查sass手册，我这儿就不挨个扯淡了。<br>ok，接下来<br><strong>4</strong>，复制 “<strong>SASS.sublime-build</strong>”文件，改名为“<strong>SASS – Compact.sublime-build</strong>”，<br>把cmd对应的那行改为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;cmd&quot;: [&quot;sass&quot;, &quot;--update&quot;, &quot;$file:$&#123;file_path&#125;/$&#123;file_base_name&#125;.css&quot;, &quot;--stop-on-error&quot;, &quot;--no-cache&quot;, &quot;--line-numbers&quot;,&quot;--style&quot;, &quot;compact&quot;],</div></pre></td></tr></table></figure></p>
-<p>添加了 “<strong>–line-numbers</strong>”和“<strong>compact</strong>”两个参数，<br>compact的意思是精简排版css，就是单行回车显示每条样式。效果如第二个图那样,<br>最后，我们回到sublime text中，这时候“编译系统”就有三个SASS命令了，点击把编译选项勾选到“<strong>SASS – Compact</strong>”上，如图一，<br>Ctrl+B,回到页面，看firebug面版：<br><img src="/images/firebugsass-4.png" alt=""><br>是不是这里已经显示scss了呢~<br>ok，搞定~</p>
-
-          
+          在 sublime text 2中想直接ctrl+B就编译写的sass代码吗？可以的，安装Sass 和 SASS Build 两个插件就可以。（当然你得先安装ruly+sass，也行还顺便还安装compass），安装ruly就不说，顺着往下：
+1，安装SASS： 在开始菜单中打开 “Start Co
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/11/20/sublime/firebugsass/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1060,21 +1013,19 @@
       
         
           
-            <p>最近在用sass，记下一例：</p>
-<p>在css里写这样的代码是比较容易的，</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.w10</span>&#123;<span class="attribute">width</span>:<span class="number">10%</span>&#125;</div></pre></td></tr></table></figure>
-<p>但是在sass里,如果我要用循环</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">for</span> <span class="variable">$i</span> from 1 to 10 &#123;</div><div class="line"><span class="selector-class">.wp</span>#&#123;<span class="variable">$i</span>&#125;0 &#123;</div><div class="line">   <span class="attribute">width</span>: #&#123;<span class="variable">$i</span>&#125;%;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这样就报错了，<br>变量后不能用%，<br>想了很多办法，用引号引住%,或者加/\，但是不管用，<br>说来说去，这里毕竟还是css，并不识别这些符号为注释符号。</p>
-<p>看到函数这节，豁然开朗，写了如下</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@function per(<span class="variable">$a</span>)&#123;@return <span class="variable">$a</span>+<span class="string">'%'</span>;&#125;</div><div class="line">@<span class="keyword">for</span> <span class="variable">$i</span> from 1 to 5 &#123;</div><div class="line"><span class="selector-class">.wp</span>#&#123;<span class="variable">$i</span>&#125; &#123;</div><div class="line">   <span class="attribute">width</span>: per(#&#123;<span class="variable">$i</span>&#125;);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>运行生成：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.wp1</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">1%</span>;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="selector-class">.wp2</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">2%</span>;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="selector-class">.wp3</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">3%</span>;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="selector-class">.wp4</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">4%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Ok了</p>
-<p>真正正确的写法应该是如此：</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">for</span> <span class="variable">$i</span> from 1 through 20 &#123;</div><div class="line"><span class="selector-class">.wp</span>#&#123;<span class="variable">$i</span>*5&#125; &#123;<span class="attribute">width</span>: <span class="number">5%</span>*<span class="variable">$i</span>;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
+          最近在用sass，记下一例：
+在css里写这样的代码是比较容易的，
+1.w10&#123;width:10%&#125;
+但是在sass里,如果我要用循环
+12345@for $i from 1 to 10 &#123;.wp#&#123;$i&#125;0 &#123;   width: #&#1
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/11/14/css/sasspre/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1203,9 +1154,16 @@
       
         
           
-            <p>又回来了~~~</p>
+          又回来了~~~
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/11/13/first/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
