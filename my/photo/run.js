@@ -16,23 +16,32 @@ fs.readdir(sourcePath, function (err, files) {
     // console.log(files);
     let arr = [];
 
-    function resizeImg (name,path,maxsize,quality) {
+    /*图片处理等比宽高，并存储
+    type : 'auto'||'w'||'h' (宽高自动 || 限宽 || 限高)
+    name : 图片名称
+    path : 图片存放路径
+    maxsize : 限制的最大尺寸
+    quality : 图片质量 0-100
+     */
+    function resizeImg (type,name,path,maxsize,quality) {
         const img = images(sourcePath + "/" + name)//加载图像文件
         const size = img.size();
         const wh = size.width/size.height;
         let newsize = size;
 
-        if(wh>=1){//图片宽>高
+        if(wh>=1&&type=='auto'||type=='w'){//'auto'&&图片宽>高 || 只限制宽
             if (maxsize<size.width) {
                 img.resize(maxsize)//等比缩放图像到maxsize像素宽
                 newsize = {width:maxsize,height:Math.floor(maxsize/wh)};
             };
-        }else{//图片宽<高
+        }
+        if(wh<1&&type=='auto'||type=='h'){//'auto'&&图片宽<高 || 只限制高
             if(maxsize<size.height){
                 img.resize(null,maxsize)//等比缩放图像到maxsize像素高
                 newsize = {width:Math.floor(maxsize*wh),height:maxsize};
             }
         }
+
         img.save(path + "/" + name, {
             quality : quality  //保存图片到文件,图片质量为60
         });
@@ -54,8 +63,8 @@ fs.readdir(sourcePath, function (err, files) {
                 return;
             }
 
-            let tb = resizeImg(files[index],thumbPath,320,90);
-            let sz = resizeImg(files[index],galleryPath,1500,80);
+            let tb = resizeImg('w',files[index],thumbPath,320,90);
+            let sz = resizeImg('auto',files[index],galleryPath,1500,80);
 
             if (stats.isFile()) {
                 arr.push({
