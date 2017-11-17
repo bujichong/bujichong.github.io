@@ -2,11 +2,12 @@
 
 const fs = require("fs");
 const images = require("images");
-const path = "../../../photos/";
+const filePath = "../../../photos/";
+const outPath = "../../../public/photos/";
 const outfile = "gallery.json";
-const sourcePath = path + "source";
-const galleryPath = path + "gallery";
-const thumbPath = path + "thumb";
+const sourcePath = filePath + "source";
+const galleryPath = outPath + "gallery";
+const thumbPath = outPath + "thumb";
 
 fs.readdir(sourcePath, function (err, files) {
     if (err) {

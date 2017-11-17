@@ -337,7 +337,7 @@ $.getJSON('gallery.json',function(data){
                     }
                   };
                 }
-          str += '<a class="box" style="opacity:0;filter:alpha(opacity=0);" href="'+t.src+'" data-size="'+t.w+'x'+t.h+'" data-med="'+t.gallery+'" data-med-size="'+g.w+'x'+g.h+'" data-author="bujichong">'+
+          str += '<a class="box" style="opacity:0;filter:alpha(opacity=0);" href="'+t.gallery+'" data-size="'+t.w+'x'+t.h+'" data-med="'+t.gallery+'" data-med-size="'+g.w+'x'+g.h+'" data-author="bujichong">'+
                     '<img src="'+t.thumb+'" alt="" />'+
                     //'<figure>This is dummy caption.</figure>'+
                   '</a>';
