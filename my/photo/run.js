@@ -36,7 +36,7 @@ fs.readdir(sourcePath, function (err, files) {
         img.save(path + "/" + name, {
             quality : quality  //保存图片到文件,图片质量为60
         });
-        return {newsize};
+        return newsize;
     }
 
     (function iterator(index) {
@@ -54,7 +54,7 @@ fs.readdir(sourcePath, function (err, files) {
                 return;
             }
 
-            resizeImg(files[index],thumbPath,300,90);
+            let tb = resizeImg(files[index],thumbPath,320,90);
             let sz = resizeImg(files[index],galleryPath,1500,80);
 
             if (stats.isFile()) {
@@ -62,8 +62,8 @@ fs.readdir(sourcePath, function (err, files) {
                     name:files[index],
                     // ow:sz.size.width,
                     // oh:sz.size.height,
-                    w:sz.newsize.width,
-                    h:sz.newsize.height,
+                    tw : tb.width , th : tb.height,
+                    w : sz.width , h : sz.height,
                     time:stats.mtime,
                     timeString:stats.mtimeMs
                 });
