@@ -3,7 +3,7 @@
 const fs = require("fs");
 const images = require("images");
 const filePath = "../../../photos/";
-const outPath = "../../../public/photos/";
+const outPath = "../../../photos/out/";
 const outfile = "gallery.json";
 const sourcePath = filePath + "source";
 const galleryPath = outPath + "gallery";
