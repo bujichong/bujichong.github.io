@@ -364,10 +364,10 @@
 
       
         <p>在 sublime text 2中想直接<code>ctrl+B</code>就编译写的sass代码吗？<br>可以的，<br>安装Sass 和 SASS Build 两个插件就可以。<br>（当然你得先安装ruly+sass，也行还顺便还安装compass），<br>安装ruly就不说，顺着往下：</p>
-<p><strong>1，安装SASS：</strong> 在开始菜单中打开 <strong>“Start Command Prompt with Ruby” </strong><br>输入：<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gem <span class="keyword">install</span> sass</div></pre></td></tr></table></figure></p>
+<p><strong>1，安装SASS：</strong> 在开始菜单中打开 <strong>“Start Command Prompt with Ruby” </strong><br>输入：<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem <span class="keyword">install</span> sass</span><br></pre></td></tr></table></figure></p>
 <p>等待cmd提示安装成功就ok啦~</p>
 <p><strong>2，在 sublime text 2中安装 Sass 和 SASS Build </strong><br>怎么安装就不用讲了， Ctrl + Shift + P调出控制台安装，或者在google或百度里搜一下地址吧，下载安装包下来放到 sublime text 2下的“<strong>\Data\Packages</strong>”目录中。<br>安装完成后，scss的文件就有了高亮了，另外编译系统下多了2个sass项（”tools–编译系统”下找到sass命令，<strong>注意：</strong>默认只有 ” SASS”和”SASS – Compressed”）<br><img src="/images/firebugsass-1.png" alt="firebugsass-1"></p>
-<p><strong>3，安装firefox插件：“FireCompass for Firebug”</strong><br>这个插件装好已经为我们能在firebug的html面版里看到sass内容做好准备了。<br>这时候你<code>ctrl+B</code>能直接把sass文件编译成css文件了。<br>我们打开fireubg，看html右侧的css面版，显示的还是编译后的css，<br>为什么呢？因为如果要fireCompass插件显示sass源码，必须在编译后的css文件里显示对应sass的行号，像下面这样：<br><img src="/images/firebugsass-2.png" alt=""><br>只有这样firebug的插件才知道哪一行css对应scss文件里的哪一行代码。<br>那这就需要我们在sublime text 2插件编译的时候开启添加行号功能。<br>ok，那我们就开始干吧~<br>我们找到sublime text 2 下 “Data\Packages\SASS-Build”文件夹，这里面有2个文件 “.sublime-build”文件，这2个文件对应着“编译系统”菜单里的2个项，<br>打开一看就明白了，原来就是自动执行cmd编译命令，<br><img src="/images/firebugsass-3.png" alt=""><br>那想开启添加行号，我们需要在执行时添加一个 “<strong>–line-numbers</strong>”命令就可以，具体sass编译参数都神马 意思，大家可以去查sass手册，我这儿就不挨个扯淡了。<br>ok，接下来<br><strong>4</strong>，复制 “<strong>SASS.sublime-build</strong>”文件，改名为“<strong>SASS – Compact.sublime-build</strong>”，<br>把cmd对应的那行改为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;cmd&quot;: [&quot;sass&quot;, &quot;--update&quot;, &quot;$file:$&#123;file_path&#125;/$&#123;file_base_name&#125;.css&quot;, &quot;--stop-on-error&quot;, &quot;--no-cache&quot;, &quot;--line-numbers&quot;,&quot;--style&quot;, &quot;compact&quot;],</div></pre></td></tr></table></figure></p>
+<p><strong>3，安装firefox插件：“FireCompass for Firebug”</strong><br>这个插件装好已经为我们能在firebug的html面版里看到sass内容做好准备了。<br>这时候你<code>ctrl+B</code>能直接把sass文件编译成css文件了。<br>我们打开fireubg，看html右侧的css面版，显示的还是编译后的css，<br>为什么呢？因为如果要fireCompass插件显示sass源码，必须在编译后的css文件里显示对应sass的行号，像下面这样：<br><img src="/images/firebugsass-2.png" alt=""><br>只有这样firebug的插件才知道哪一行css对应scss文件里的哪一行代码。<br>那这就需要我们在sublime text 2插件编译的时候开启添加行号功能。<br>ok，那我们就开始干吧~<br>我们找到sublime text 2 下 “Data\Packages\SASS-Build”文件夹，这里面有2个文件 “.sublime-build”文件，这2个文件对应着“编译系统”菜单里的2个项，<br>打开一看就明白了，原来就是自动执行cmd编译命令，<br><img src="/images/firebugsass-3.png" alt=""><br>那想开启添加行号，我们需要在执行时添加一个 “<strong>–line-numbers</strong>”命令就可以，具体sass编译参数都神马 意思，大家可以去查sass手册，我这儿就不挨个扯淡了。<br>ok，接下来<br><strong>4</strong>，复制 “<strong>SASS.sublime-build</strong>”文件，改名为“<strong>SASS – Compact.sublime-build</strong>”，<br>把cmd对应的那行改为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;cmd&quot;: [&quot;sass&quot;, &quot;--update&quot;, &quot;$file:$&#123;file_path&#125;/$&#123;file_base_name&#125;.css&quot;, &quot;--stop-on-error&quot;, &quot;--no-cache&quot;, &quot;--line-numbers&quot;,&quot;--style&quot;, &quot;compact&quot;],</span><br></pre></td></tr></table></figure></p>
 <p>添加了 “<strong>–line-numbers</strong>”和“<strong>compact</strong>”两个参数，<br>compact的意思是精简排版css，就是单行回车显示每条样式。效果如第二个图那样,<br>最后，我们回到sublime text中，这时候“编译系统”就有三个SASS命令了，点击把编译选项勾选到“<strong>SASS – Compact</strong>”上，如图一，<br>Ctrl+B,回到页面，看firebug面版：<br><img src="/images/firebugsass-4.png" alt=""><br>是不是这里已经显示scss了呢~<br>ok，搞定~</p>
 
       
@@ -510,7 +510,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -584,7 +584,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">11.3k</span>
+    <span title="Site words total count">11.6k</span>
   
 </div>
 

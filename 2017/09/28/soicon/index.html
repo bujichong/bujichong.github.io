@@ -358,12 +358,12 @@
       
 
       
-        <p>用 <a href="https://icomoon.io/app/#/select" target="_blank" rel="external">icomoon</a><br>把 icomoon free 和 fontawesome整合了一下，去掉了一些国外社交网站的logo图标，<br>另外把之前一套在iconfont上整理的图标整理了进去，<br>打包下来以后，重写给他的demo写了一下样式，<br>另外做了一个搜索的脚本，可以直接通过搜索框过滤图标，<br>这些都不复杂，却很方便，<br>一共1000多个图标，这下图标基本整理到位了，查阅起来很方便。<br>上地址 ：  <a href="/my/soicon/demo.html">猛击这里</a><br>下载文件： <a href="/my/soicon/soicon.zip">猛击这里</a></p>
+        <p>用 <a href="https://icomoon.io/app/#/select" target="_blank" rel="noopener">icomoon</a><br>把 icomoon free 和 fontawesome整合了一下，去掉了一些国外社交网站的logo图标，<br>另外把之前一套在iconfont上整理的图标整理了进去，<br>打包下来以后，重写给他的demo写了一下样式，<br>另外做了一个搜索的脚本，可以直接通过搜索框过滤图标，<br>这些都不复杂，却很方便，<br>一共1000多个图标，这下图标基本整理到位了，查阅起来很方便。<br>上地址 ：  <a href="/my/soicon/demo.html">猛击这里</a><br>下载文件： <a href="/my/soicon/soicon.zip">猛击这里</a></p>
 <h3 id="具体整合步骤："><a href="#具体整合步骤：" class="headerlink" title="具体整合步骤："></a>具体整合步骤：</h3><ul>
 <li>在 icomoon.io上将图标合并，合并教程：  如何合并两个图标库</li>
 <li>下载图标后覆盖所有soicon文件夹</li>
 <li><p>复制以下 代码内容 到 demo.html 的head标签中，位置如下所示：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">!–[if</span> <span class="attr">lt</span> <span class="attr">IE</span> <span class="attr">8</span>]&gt;</span><span class="tag">&lt;<span class="name">!–</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">”stylesheet”</span> <span class="attr">href</span>=<span class="string">”ie7/ie7.css”</span>&gt;</span></div><div class="line">&lt;!–&lt;![endif]–&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">!–从这里开始–</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"plus/plus.css"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"plus/jquery-1.11.3.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"plus/plus.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">!–到这里结束–</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">!–[if</span> <span class="attr">lt</span> <span class="attr">IE</span> <span class="attr">8</span>]&gt;</span><span class="tag">&lt;<span class="name">!–</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">”stylesheet”</span> <span class="attr">href</span>=<span class="string">”ie7/ie7.css”</span>&gt;</span></span><br><span class="line">&lt;!–&lt;![endif]–&gt;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">!–从这里开始–</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"plus/plus.css"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"plus/jquery-1.11.3.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"plus/plus.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">!–到这里结束–</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>单独使用，可以增加调用style-plus.css，实现图标多尺寸、动画旋转、角度旋转等变化</p>
 </li>
@@ -517,7 +517,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -607,7 +607,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">11.3k</span>
+    <span title="Site words total count">11.6k</span>
   
 </div>
 

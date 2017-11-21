@@ -360,21 +360,21 @@
       
         <p>常要用到，不够的慢慢补全~</p>
 <p>基础字符（英文字母、数字和下划线’）：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^\w+$/.test(val)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^\w+$/.test(val)</span><br></pre></td></tr></table></figure>
 <p>中文、英文字母、数字和下划线：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^[\u0391-\uFFE5\w]+$/.test(val)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[\u0391-\uFFE5\w]+$/.test(val)</span><br></pre></td></tr></table></figure>
 <p>数字：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^[\d]+([\.][\d]+)&#123;<span class="number">0</span>,<span class="number">1</span>&#125;$/.test(val)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[\d]+([\.][\d]+)&#123;<span class="number">0</span>,<span class="number">1</span>&#125;$/.test(val)</span><br></pre></td></tr></table></figure>
 <p>邮箱验证：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ismail = <span class="regexp">/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/</span>;</div><div class="line">ismail.test(<span class="string">"aaa@aa.com"</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ismail = <span class="regexp">/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/</span>;</span><br><span class="line">ismail.test(<span class="string">"aaa@aa.com"</span>);</span><br></pre></td></tr></table></figure>
 <p>手机号码验证：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> isMobile=<span class="regexp">/^(?:13\d|15\d|18\d)\d&#123;5&#125;(\d&#123;3&#125;|\*&#123;3&#125;)$/</span>;</div><div class="line">isMobile.test(<span class="string">"18721323517"</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isMobile=<span class="regexp">/^(?:13\d|15\d|18\d)\d&#123;5&#125;(\d&#123;3&#125;|\*&#123;3&#125;)$/</span>;</span><br><span class="line">isMobile.test(<span class="string">"18721323517"</span>);</span><br></pre></td></tr></table></figure>
 <p>座机号码验证：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> isPhone=<span class="regexp">/^((0\d&#123;2,3&#125;)-)?(\d&#123;7,8&#125;)(-(\d&#123;3,&#125;))?$/</span>;</div><div class="line">isPhone.test(<span class="string">"021-666666"</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isPhone=<span class="regexp">/^((0\d&#123;2,3&#125;)-)?(\d&#123;7,8&#125;)(-(\d&#123;3,&#125;))?$/</span>;</span><br><span class="line">isPhone.test(<span class="string">"021-666666"</span>);</span><br></pre></td></tr></table></figure>
 <p>邮政编码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^[<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">6</span>&#125;$/.test(val)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">6</span>&#125;$/.test(val)</span><br></pre></td></tr></table></figure>
 <p>车牌号：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^[A-Za-z0<span class="number">-9</span>]&#123;<span class="number">6</span>&#125;$/.test(val)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[A-Za-z0<span class="number">-9</span>]&#123;<span class="number">6</span>&#125;$/.test(val)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -514,7 +514,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -588,7 +588,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">11.3k</span>
+    <span title="Site words total count">11.6k</span>
   
 </div>
 

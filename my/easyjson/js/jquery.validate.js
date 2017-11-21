@@ -58,7 +58,7 @@ $.extend($.fn, {
 					if ( validator.settings.submitHandler ) {
 						if (validator.submitButton) {
 							// insert a hidden input as a replacement for the missing submit button
-							var hidden = $("<input type="hidden">").attr("name", validator.submitButton.name).val(validator.submitButton.value).appendTo(validator.currentForm);
+							var hidden = $("<input type='hidden'/>").attr("name", validator.submitButton.name).val(validator.submitButton.value).appendTo(validator.currentForm);
 						}
 						validator.settings.submitHandler.call( validator, validator.currentForm );
 						if (validator.submitButton) {
@@ -643,14 +643,14 @@ $.extend($.validator, {
 				label.attr("generated") && label.html(message);
 			} else {
 				// create label
-				label = $("<" +="" this.settings.errorelement="" "="">")
+				label = $("<" + this.settings.errorElement + "/>")
 					.attr({"for":  this.idOrName(element), generated: true})
 					.addClass(this.settings.errorClass)
 					.html(message || "");
 				if ( this.settings.wrapper ) {
 					// make sure the element is visible, even in IE
 					// actually showing the wrapped element is handled elsewhere
-					label = label.hide().show().wrap("<" +="" this.settings.wrapper="" "="">").parent();
+					label = label.hide().show().wrap("<" + this.settings.wrapper + "/>").parent();
 				}
 				if ( !this.labelContainer.append(label).length )
 					this.settings.errorPlacement
@@ -985,12 +985,77 @@ $.extend($.validator, {
 
 		// http://docs.jquery.com/Plugins/Validation/Methods/maxlength
 		maxlength: function(value, element, param) {
-			return this.optional(element) || this.getLength($.trim(value), element) <= param;="" },="" http:="" docs.jquery.com="" plugins="" validation="" methods="" rangelength="" rangelength:="" function(value,="" element,="" param)="" {="" var="" length="this.getLength($.trim(value)," element);="" return="" this.optional(element)="" ||="" (="">= param[0] && length <= param[1]="" );="" },="" http:="" docs.jquery.com="" plugins="" validation="" methods="" min="" min:="" function(="" value,="" element,="" param="" )="" {="" return="" this.optional(element)="" ||="" value="">= param;
+			return this.optional(element) || this.getLength($.trim(value), element) <= param;
+		},
+
+		// http://docs.jquery.com/Plugins/Validation/Methods/rangelength
+		rangelength: function(value, element, param) {
+			var length = this.getLength($.trim(value), element);
+			return this.optional(element) || ( length >= param[0] && length <= param[1] );
+		},
+
+		// http://docs.jquery.com/Plugins/Validation/Methods/min
+		min: function( value, element, param ) {
+			return this.optional(element) || value >= param;
 		},
 
 		// http://docs.jquery.com/Plugins/Validation/Methods/max
 		max: function( value, element, param ) {
-			return this.optional(element) || value <= param;="" },="" http:="" docs.jquery.com="" plugins="" validation="" methods="" range="" range:="" function(="" value,="" element,="" param="" )="" {="" return="" this.optional(element)="" ||="" (="" value="">= param[0] && value <= param[1]="" );="" },="" http:="" docs.jquery.com="" plugins="" validation="" methods="" email="" email:="" function(value,="" element)="" {="" contributed="" by="" scott="" gonzalez:="" projects.scottsplayground.com="" email_address_validation="" return="" this.optional(element)="" ||="" ^((([a-z]|\d|[!#\$%&'\*\+\-\="" =\?\^_`{\|}~]|[\u00a0-\ud7ff\uf900-\ufdcf\ufdf0-\uffef])+(\.([a-z]|\d|[!#\$%&'\*\+\-\="" =\?\^_`{\|}~]|[\u00a0-\ud7ff\uf900-\ufdcf\ufdf0-\uffef])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00a0-\ud7ff\uf900-\ufdcf\ufdf0-\uffef])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00a0-\ud7ff\uf900-\ufdcf\ufdf0-\uffef]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00a0-\ud7ff\uf900-\ufdcf\ufdf0-\uffef])|(([a-z]|\d|[\u00a0-\ud7ff\uf900-\ufdcf\ufdf0-\uffef])([a-z]|\d|-|\.|_|~|[\u00a0-\ud7ff\uf900-\ufdcf\ufdf0-\uffef])*([a-z]|\d|[\u00a0-\ud7ff\uf900-\ufdcf\ufdf0-\uffef])))\.)+(([a-z]|[\u00a0-\ud7ff\uf900-\ufdcf\ufdf0-\uffef])|(([a-z]|[\u00a0-\ud7ff\uf900-\ufdcf\ufdf0-\uffef])([a-z]|\d|-|\.|_|~|[\u00a0-\ud7ff\uf900-\ufdcf\ufdf0-\uffef])*([a-z]|[\u00a0-\ud7ff\uf900-\ufdcf\ufdf0-\uffef])))\.?$="" i.test(value);="" url="" url:="" iri="" ^(https?|ftp):\="" \="" (((([a-z]|\d|-|\.|_|~|[\u00a0-\ud7ff\uf900-\ufdcf\ufdf0-\uffef])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;="]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(value);" date="" date:="" !="" invalid|nan="" .test(new="" date(value));="" dateiso="" dateiso:="" ^\d{4}[\="" -]\d{1,2}[\="" -]\d{1,2}$="" .test(value);="" number="" number:="" ^-?(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?$="" digits="" digits:="" ^\d+$="" creditcard="" based="" on="" en.wikipedia.org="" wiki="" luhn="" creditcard:="" if="" (="" )="" "dependency-mismatch";="" accept="" only="" and="" dashes="" [^0-9-]+="" .test(value))="" false;="" var="" ncheck="0," ndigit="0," beven="false;" value="value.replace(/\D/g," "");="" for="" (var="" n="value.length" -="" 1;="">= 0; n--) {
+			return this.optional(element) || value <= param;
+		},
+
+		// http://docs.jquery.com/Plugins/Validation/Methods/range
+		range: function( value, element, param ) {
+			return this.optional(element) || ( value >= param[0] && value <= param[1] );
+		},
+
+		// http://docs.jquery.com/Plugins/Validation/Methods/email
+		email: function(value, element) {
+			// contributed by Scott Gonzalez: http://projects.scottsplayground.com/email_address_validation/
+			return this.optional(element) || /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i.test(value);
+		},
+
+		// http://docs.jquery.com/Plugins/Validation/Methods/url
+		url: function(value, element) {
+			// contributed by Scott Gonzalez: http://projects.scottsplayground.com/iri/
+			return this.optional(element) || /^(https?|ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(value);
+		},
+
+		// http://docs.jquery.com/Plugins/Validation/Methods/date
+		date: function(value, element) {
+			return this.optional(element) || !/Invalid|NaN/.test(new Date(value));
+		},
+
+		// http://docs.jquery.com/Plugins/Validation/Methods/dateISO
+		dateISO: function(value, element) {
+			return this.optional(element) || /^\d{4}[\/-]\d{1,2}[\/-]\d{1,2}$/.test(value);
+		},
+
+		// http://docs.jquery.com/Plugins/Validation/Methods/number
+		number: function(value, element) {
+			return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?$/.test(value);
+		},
+
+		// http://docs.jquery.com/Plugins/Validation/Methods/digits
+		digits: function(value, element) {
+			return this.optional(element) || /^\d+$/.test(value);
+		},
+
+		// http://docs.jquery.com/Plugins/Validation/Methods/creditcard
+		// based on http://en.wikipedia.org/wiki/Luhn
+		creditcard: function(value, element) {
+			if ( this.optional(element) )
+				return "dependency-mismatch";
+			// accept only digits and dashes
+			if (/[^0-9-]+/.test(value))
+				return false;
+			var nCheck = 0,
+				nDigit = 0,
+				bEven = false;
+
+			value = value.replace(/\D/g, "");
+
+			for (var n = value.length - 1; n >= 0; n--) {
 				var cDigit = value.charAt(n);
 				var nDigit = parseInt(cDigit, 10);
 				if (bEven) {
@@ -1101,7 +1166,100 @@ $.format = $.validator.format;
 
 
 /**--jQuery.metadata.js--**/
-(function($){$.extend({metadata:{defaults:{type:"class",name:"metadata",cre:/({.*})/,single:"metadata"},setType:function(type,name){this.defaults.type=type;this.defaults.name=name},get:function(elem,opts){var settings=$.extend({},this.defaults,opts);if(!settings.single.length)settings.single="metadata";var data=$.data(elem,settings.single);if(data)return data;data="{}";if(settings.type=="class"){var m=settings.cre.exec(elem.className);if(m)data=m[1]}else if(settings.type=="elem"){if(!elem.getElementsByTagName)return undefined;var e=elem.getElementsByTagName(settings.name);if(e.length)data=$.trim(e[0].innerHTML)}else if(elem.getAttribute!=undefined){var attr=elem.getAttribute(settings.name);if(attr)data=attr}if(data.indexOf("{")<0)data="{"+data+"}";data=eval("("+data+")");$.data(elem,settings.single,data);return data}}});$.fn.metadata="function(opts){return" $.metadata.get(this[0],opts)}})(jquery);="" **--messages_cn.js--**="" jquery.extend(jquery.validator.messages,="" {="" required:="" "必填字段",="" remote:="" "请修正该字段",="" email:="" "请输入正确格式的电子邮件",="" url:="" "请输入合法的网址",="" date:="" "请输入合法的日期",="" dateiso:="" "请输入合法的日期="" (iso).",="" number:="" "请输入合法的数字",="" digits:="" "只能输入整数",="" creditcard:="" "请输入合法的信用卡号",="" equalto:="" "请再次输入相同的值",="" accept:="" "请输入拥有合法后缀名的字符串",="" maxlength:="" jquery.validator.format("输入内容最长="" {0}"),="" minlength:="" jquery.validator.format("输入内容最短="" rangelength:="" jquery.validator.format("输入内容长度必须介于="" {0}="" 和="" {1}="" 之间"),="" range:="" jquery.validator.format("请输入一个介于="" 之间的值"),="" max:="" jquery.validator.format("请输入一个最大为="" 的值"),="" min:="" jquery.validator.format("请输入一个最小为="" 的值")="" });="" $.fn.serializeobject="function()" var="" o="{};" a="this.serializeArray();" $.each(a,="" function()="" if="" (o[this.name])="" (!o[this.name].push)="" o[this.name]="[" ];="" }="" o[this.name].push(this.value="" ||="" '');="" else="" '';="" $.each(o,function="" (k,v)="" (v.push)="" o[k]="v.join(',');" return="" o;="" $.validator.addmethod("username",="" function="" (value,="" element)="" value.match(="" ^[0-9a-za-z_]{1,}$="" );="" },="" "只能输入字母、数字、下划线");="" $.validator.addmethod("cn",="" ^[\u0391-\uffe5]+$="" "请输入中文");="" $.validator.addmethod("nm",="" ^[\u0391-\uffe5a-za-z0-9]+$="" "请输入合法的值");="" $.validator.addmethod("ip",="" ^[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]$="" "请输入合法的ip");="" $.validator.addmethod("pnumber",="" (value)="" ^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$="" };="" true;="" "请输入一个正数");="" $.validator.addmethod("pint",="" 非负整数="" ^(0|[1-9]\d*)$="" "请输入一个正整数");="" $.validator.addmethod("int",="" ^-?\d+$="" "请输入一个整数");="" $.validator.addmethod("diymonth",="" ^[0-9]+(\.[0-9]{1})?$="" "月数为正整数或一位小数");="" 判断整数value是否等于0="" jquery.validator.addmethod("isinteqzero",="" function(value,="" value="parseInt(value);" this.optional(element)="" "整数必须为0");="" 判断整数value是否大于0="" jquery.validator.addmethod("isintgtzero",="">0;
+(function($){$.extend({metadata:{defaults:{type:"class",name:"metadata",cre:/({.*})/,single:"metadata"},setType:function(type,name){this.defaults.type=type;this.defaults.name=name},get:function(elem,opts){var settings=$.extend({},this.defaults,opts);if(!settings.single.length)settings.single="metadata";var data=$.data(elem,settings.single);if(data)return data;data="{}";if(settings.type=="class"){var m=settings.cre.exec(elem.className);if(m)data=m[1]}else if(settings.type=="elem"){if(!elem.getElementsByTagName)return undefined;var e=elem.getElementsByTagName(settings.name);if(e.length)data=$.trim(e[0].innerHTML)}else if(elem.getAttribute!=undefined){var attr=elem.getAttribute(settings.name);if(attr)data=attr}if(data.indexOf("{")<0)data="{"+data+"}";data=eval("("+data+")");$.data(elem,settings.single,data);return data}}});$.fn.metadata=function(opts){return $.metadata.get(this[0],opts)}})(jQuery);
+
+/**--messages_cn.js--**/
+jQuery.extend(jQuery.validator.messages, {
+        required: "必填字段",
+        remote: "请修正该字段",
+        email: "请输入正确格式的电子邮件",
+        url: "请输入合法的网址",
+        date: "请输入合法的日期",
+        dateISO: "请输入合法的日期 (ISO).",
+        number: "请输入合法的数字",
+        digits: "只能输入整数",
+        creditcard: "请输入合法的信用卡号",
+        equalTo: "请再次输入相同的值",
+        accept: "请输入拥有合法后缀名的字符串",
+        maxlength: jQuery.validator.format("输入内容最长 {0}"),
+        minlength: jQuery.validator.format("输入内容最短 {0}"),
+        rangelength: jQuery.validator.format("输入内容长度必须介于 {0} 和 {1} 之间"),
+        range: jQuery.validator.format("请输入一个介于 {0} 和 {1} 之间的值"),
+        max: jQuery.validator.format("请输入一个最大为 {0} 的值"),
+        min: jQuery.validator.format("请输入一个最小为 {0} 的值")
+});
+
+
+$.fn.serializeObject = function() {
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+        if (o[this.name]) {
+            if (!o[this.name].push) {
+                o[this.name] = [ o[this.name] ];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    $.each(o,function (k,v) {
+        if (v.push) {
+            o[k] = v.join(',');
+        }
+    });
+    return o;
+}
+
+
+$.validator.addMethod("username", function (value, element) {
+    return value.match(/^[0-9a-zA-Z_]{1,}$/);
+}, "只能输入字母、数字、下划线");
+$.validator.addMethod("cn", function (value, element) {
+    return value.match(/^[\u0391-\uFFE5]+$/);
+}, "请输入中文");
+$.validator.addMethod("nm", function (value, element) {
+    return value.match(/^[\u0391-\uFFE5A-Za-z0-9]+$/);
+}, "请输入合法的值");
+$.validator.addMethod("ip", function (value, element) {
+    return value.match(/^[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]$/);
+}, "请输入合法的IP");
+$.validator.addMethod("pNumber", function (value, element) {
+    if (value) {
+    return value.match(/^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/);
+    };
+    return true;
+}, "请输入一个正数");
+$.validator.addMethod("pInt", function (value, element) {//非负整数
+    if (value) {
+        return value.match(/^(0|[1-9]\d*)$/);
+    };
+    return true;
+}, "请输入一个正整数");
+$.validator.addMethod("int", function (value, element) {
+    if (value) {
+        return value.match(/^-?\d+$/);
+    };
+    return true;
+}, "请输入一个整数");
+$.validator.addMethod("diymonth", function (value, element) {
+    if (value) {
+        return value.match(/^[0-9]+(\.[0-9]{1})?$/);
+    };
+    return true;
+}, "月数为正整数或一位小数");
+
+
+// 判断整数value是否等于0
+jQuery.validator.addMethod("isIntEqZero", function(value, element) {
+     value=parseInt(value);
+     return this.optional(element) || value==0;
+}, "整数必须为0");
+
+// 判断整数value是否大于0
+jQuery.validator.addMethod("isIntGtZero", function(value, element) {
+     value=parseInt(value);
+     return this.optional(element) || value>0;
 }, "整数必须大于0");
 
 // 判断整数value是否大于或等于0
@@ -1119,7 +1277,25 @@ jQuery.validator.addMethod("isIntNEqZero", function(value, element) {
 // 判断整数value是否小于0
 jQuery.validator.addMethod("isIntLtZero", function(value, element) {
      value=parseInt(value);
-     return this.optional(element) || value<0; },="" "整数必须小于0");="" 判断整数value是否小于或等于0="" jquery.validator.addmethod("isintltezero",="" function(value,="" element)="" {="" value="parseInt(value);" return="" this.optional(element)="" ||="" value<="0;" "整数必须小于或等于0");="" 判断浮点数value是否等于0="" jquery.validator.addmethod("isfloateqzero",="" "浮点数必须为0");="" 判断浮点数value是否大于0="" jquery.validator.addmethod("isfloatgtzero",="">0;
+     return this.optional(element) || value<0;
+}, "整数必须小于0");
+
+// 判断整数value是否小于或等于0
+jQuery.validator.addMethod("isIntLteZero", function(value, element) {
+     value=parseInt(value);
+     return this.optional(element) || value<=0;
+}, "整数必须小于或等于0");
+
+// 判断浮点数value是否等于0
+jQuery.validator.addMethod("isFloatEqZero", function(value, element) {
+     value=parseFloat(value);
+     return this.optional(element) || value==0;
+}, "浮点数必须为0");
+
+// 判断浮点数value是否大于0
+jQuery.validator.addMethod("isFloatGtZero", function(value, element) {
+     value=parseFloat(value);
+     return this.optional(element) || value>0;
 }, "浮点数必须大于0");
 
 // 判断浮点数value是否大于或等于0
@@ -1137,7 +1313,23 @@ jQuery.validator.addMethod("isFloatNEqZero", function(value, element) {
 // 判断浮点数value是否小于0
 jQuery.validator.addMethod("isFloatLtZero", function(value, element) {
      value=parseFloat(value);
-     return this.optional(element) || value<0; },="" "浮点数必须小于0");="" 判断浮点数value是否小于或等于0="" jquery.validator.addmethod("isfloatltezero",="" function(value,="" element)="" {="" value="parseFloat(value);" return="" this.optional(element)="" ||="" value<="0;" "浮点数必须小于或等于0");="" 判断浮点型="" jquery.validator.addmethod("isfloat",="" ^[-\+]?\d+(\.\d+)?$="" .test(value);="" "只能包含数字、小数点等字符");="" 匹配integer="" jquery.validator.addmethod("isinteger",="" (="" ^[-\+]?\d+$="" .test(value)="" &&="" parseint(value)="">=0);
+     return this.optional(element) || value<0;
+}, "浮点数必须小于0");
+
+// 判断浮点数value是否小于或等于0
+jQuery.validator.addMethod("isFloatLteZero", function(value, element) {
+     value=parseFloat(value);
+     return this.optional(element) || value<=0;
+}, "浮点数必须小于或等于0");
+
+// 判断浮点型
+jQuery.validator.addMethod("isFloat", function(value, element) {
+     return this.optional(element) || /^[-\+]?\d+(\.\d+)?$/.test(value);
+}, "只能包含数字、小数点等字符");
+
+// 匹配integer
+jQuery.validator.addMethod("isInteger", function(value, element) {
+     return this.optional(element) || (/^[-\+]?\d+$/.test(value) && parseInt(value)>=0);
 }, "匹配integer");
 
 // 判断数值类型，包括整数和浮点数
@@ -1350,4 +1542,4 @@ function Getsex(psidno){
     var tempid=sexno%2;
     sex = (tempid==0)?'female':'male';
     return sex;
-}</)(\></0;></0;></0)data="{"+data+"}";data=eval("("+data+")");$.data(elem,settings.single,data);return></=></=></=></=></"></">
+}
