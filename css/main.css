@@ -1456,6 +1456,9 @@ pre .javascript .function {
 .posts-expand .post-title {
   text-align: center;
   word-break: break-word;
+  color: #111;
+  padding-bottom: 15px;
+  margin-bottom: 10px;
   font-weight: 400;
 }
 .posts-expand .post-title-link {
@@ -1496,7 +1499,7 @@ pre .javascript .function {
   font-size: 16px;
 }
 .posts-expand .post-meta {
-  margin: 3px 0 60px 0;
+  margin: 3px 0 30px 0;
   color: #999;
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 12px;
@@ -1513,6 +1516,10 @@ pre .javascript .function {
 .posts-expand .post-meta .post-description {
   font-size: 14px;
   margin-top: 2px;
+}
+.post-wordcount {
+  display: inline-block;
+  margin-left: 10px;
 }
 .post-meta-divider {
   margin: 0 0.5em;
@@ -1735,13 +1742,31 @@ pre .javascript .function {
 .sidebar-toggle-line:first-child {
   margin-top: 0;
 }
+.site-author-wrap {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 5px;
+  overflow: hidden;
+  zoom: 1;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border-radius: 100px;
+  box-shadow: 1px 1px 2px inset #ccc;
+  border: 1px solid #eee;
+}
 .site-author-image {
+  width: 100%;
+  height: auto;
+  shadow: 1px 1px 2px inset #999;
+  -webkit-box-shadow: 1px 1px 2px inset #999;
+  -moz-box-shadow: 1px 1px 2px inset #999;
+/*  
   display: block;
   margin: 0 auto;
-  padding: 2px;
-  max-width: 120px;
-  height: auto;
-  border: 1px solid #eee;
+  padding: $site-author-image-padding;
+  max-width: $site-author-image-width;
+  height: $site-author-image-height;
+ border: $site-author-image-border-width solid $site-author-image-border-color;*/
 }
 .site-author-name {
   margin: 0;
@@ -1823,7 +1848,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #42ff42;
+  background: #32ffb5;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3172,10 +3197,6 @@ a {
   -moz-transition: all 0.4s ease-in-out 0s;
   -o-transition: all 0.4s ease-in-out 0s;
   transition: all 0.4s ease-in-out 0s;
-}
-a :hover {
-  color: #3d69e8;
-  border-bottom: 1px solid #3d69e8;
 }
 .site-meta {
   background-color: #414980;
