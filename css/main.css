@@ -441,6 +441,7 @@ body {
 .container {
   position: relative;
   min-height: 100%;
+  max-width: 1600px;
 }
 .header-inner {
   margin: 0 auto;
@@ -1848,7 +1849,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #32ffb5;
+  background: #2ecb3c;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3144,6 +3145,14 @@ pre .javascript .function {
   .pagination {
     margin: 8px 0 0;
   }
+}
+.site-author-wrap {
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border-radius: 100px;
+}
+a :hover {
+  text-decoration: none;
 }
 h1,
 h2,
