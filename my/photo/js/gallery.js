@@ -290,9 +290,10 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
 
 
 
-$.getJSON('gallery.json',function(data){
+$.getJSON('json/all.json',function(rst){
+  var data = rst.data;
   var pageNow = 0;
-  var itemL = 40;
+  var itemL = 60;
   var page = Math.ceil(data.length/itemL);//几页
   var my7niuUrl = 'http://ozdubs5p9.bkt.clouddn.com/';
   $.each(data,function(i,v){
