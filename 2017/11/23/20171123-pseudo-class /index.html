@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="sql," />
+  <meta name="keywords" content="jquery,webuploader," />
 
 
 
@@ -77,18 +77,21 @@
 
 
 
-<meta name="description" content="不知道为什么网上充斥着那么多错误答案。   批量更新(示例)：1update hd_category set del = case cid when 1 then 0 when 2 then 0 end where cid in (1,2)  换行分解为：123456update hd_category set del">
-<meta name="keywords" content="sql">
+<meta name="description" content="抛弃旧版本浏览器的兼容性，写起样式来真是爽多了，这篇记录一些伪类的使用及相关的一些css3属性  其实不光是伪类，随便写写最近常用的一些关于样式上的应用 。 绝对尺寸单位 rem全部rem绝对是对旧版本浏览器宣布再见，但想要高度自适应还有什么比rem绝对单位更好的选择。 在 base.css 的 reset 部分就这样">
+<meta name="keywords" content="jquery,webuploader">
 <meta property="og:type" content="article">
-<meta property="og:title" content="sql批量事件处理写法">
-<meta property="og:url" content="//bujichong.com/2016/03/04/sqlnote/index.html">
+<meta property="og:title" content="css3下的伪类:before和:after">
+<meta property="og:url" content="//bujichong.com/2017/11/23/20171123-pseudo-class /index.html">
 <meta property="og:site_name" content="不羁虫的博客">
-<meta property="og:description" content="不知道为什么网上充斥着那么多错误答案。   批量更新(示例)：1update hd_category set del = case cid when 1 then 0 when 2 then 0 end where cid in (1,2)  换行分解为：123456update hd_category set del =case cid  when 1 then 0  when 2 then">
+<meta property="og:description" content="抛弃旧版本浏览器的兼容性，写起样式来真是爽多了，这篇记录一些伪类的使用及相关的一些css3属性  其实不光是伪类，随便写写最近常用的一些关于样式上的应用 。 绝对尺寸单位 rem全部rem绝对是对旧版本浏览器宣布再见，但想要高度自适应还有什么比rem绝对单位更好的选择。 在 base.css 的 reset 部分就这样写啦 123456789@media screen and (max-widt">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-23T09:06:08.378Z">
+<meta property="og:image" content="//bujichong.com/images/after.png">
+<meta property="og:image" content="//bujichong.com/images/css-counter.png">
+<meta property="og:updated_time" content="2017-11-23T05:12:10.278Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sql批量事件处理写法">
-<meta name="twitter:description" content="不知道为什么网上充斥着那么多错误答案。   批量更新(示例)：1update hd_category set del = case cid when 1 then 0 when 2 then 0 end where cid in (1,2)  换行分解为：123456update hd_category set del =case cid  when 1 then 0  when 2 then">
+<meta name="twitter:title" content="css3下的伪类:before和:after">
+<meta name="twitter:description" content="抛弃旧版本浏览器的兼容性，写起样式来真是爽多了，这篇记录一些伪类的使用及相关的一些css3属性  其实不光是伪类，随便写写最近常用的一些关于样式上的应用 。 绝对尺寸单位 rem全部rem绝对是对旧版本浏览器宣布再见，但想要高度自适应还有什么比rem绝对单位更好的选择。 在 base.css 的 reset 部分就这样写啦 123456789@media screen and (max-widt">
+<meta name="twitter:image" content="//bujichong.com/images/after.png">
 
 
 
@@ -118,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="//bujichong.com/2016/03/04/sqlnote/"/>
+  <link rel="canonical" href="//bujichong.com/2017/11/23/20171123-pseudo-class /"/>
 
 
 
 
 
-  <title>sql批量事件处理写法 | 不羁虫的博客</title>
+  <title>css3下的伪类:before和:after | 不羁虫的博客</title>
   
 
 
@@ -251,7 +254,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="//bujichong.com/2016/03/04/sqlnote/">
+    <link itemprop="mainEntityOfPage" href="//bujichong.com/2017/11/23/20171123-pseudo-class /">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="不羁虫">
@@ -268,7 +271,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">sql批量事件处理写法</h1>
+          <h1 class="post-title" itemprop="name headline">css3下的伪类:before和:after</h1>
         
 
         <div class="post-meta">
@@ -280,8 +283,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-04T16:48:00+08:00">
-                2016-03-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-23T11:45:00+08:00">
+                2017-11-23
               </time>
             
 
@@ -300,8 +303,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2016/03/04/sqlnote/#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2016/03/04/sqlnote/" itemprop="commentsCount"></span>
+                <a href="/2017/11/23/20171123-pseudo-class /#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/11/23/20171123-pseudo-class /" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -309,7 +312,7 @@
 
           
           
-             <span id="/2016/03/04/sqlnote/" class="leancloud_visitors" data-flag-title="sql批量事件处理写法">
+             <span id="/2017/11/23/20171123-pseudo-class /" class="leancloud_visitors" data-flag-title="css3下的伪类:before和:after">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -337,7 +340,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  4
                 </span>
               
             </div>
@@ -359,12 +362,32 @@
 
       
         <blockquote>
-<p>不知道为什么网上充斥着那么多错误答案。</p>
+<p>抛弃旧版本浏览器的兼容性，写起样式来真是爽多了，这篇记录一些伪类的使用及相关的一些css3属性</p>
 </blockquote>
-<p><strong> 批量更新(示例)：</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> hd_category <span class="keyword">set</span> del = <span class="keyword">case</span> cid <span class="keyword">when</span> <span class="number">1</span> <span class="keyword">then</span> <span class="number">0</span> <span class="keyword">when</span> <span class="number">2</span> <span class="keyword">then</span> <span class="number">0</span> <span class="keyword">end</span> <span class="keyword">where</span> cid <span class="keyword">in</span> (<span class="number">1</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure></p>
-<p><strong> 换行分解为：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">update hd_category set del =</span><br><span class="line">case cid</span><br><span class="line">  when 1 then 0</span><br><span class="line">  when 2 then 0</span><br><span class="line">end</span><br><span class="line">where cid in (1,2)</span><br></pre></td></tr></table></figure></p>
-<p><strong> 批量插入（示例）：</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> hd_category(cname , del) <span class="keyword">values</span>(<span class="string">'val1'</span>, <span class="number">0</span>), (<span class="string">'val2'</span>, <span class="number">0</span>), (<span class="string">'val3'</span>, <span class="number">0</span>);</span><br></pre></td></tr></table></figure></p>
-<p><strong> 批量删除（示例）：</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> hd_category <span class="keyword">where</span> cid <span class="keyword">in</span> (<span class="number">28</span>,<span class="number">29</span>,<span class="number">30</span>)</span><br></pre></td></tr></table></figure></p>
+<p>其实不光是伪类，随便写写最近常用的一些关于样式上的应用 。</p>
+<h2 id="绝对尺寸单位-rem"><a href="#绝对尺寸单位-rem" class="headerlink" title="绝对尺寸单位 rem"></a>绝对尺寸单位 rem</h2><p>全部rem绝对是对旧版本浏览器宣布再见，但想要高度自适应还有什么比rem绝对单位更好的选择。</p>
+<p>在 base.css 的 reset 部分就这样写啦</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">media</span> screen and (max-width: <span class="number">1200px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span>&#123;<span class="attribute">font-size</span>: <span class="number">75%</span>;&#125;</span><br><span class="line">&#125;</span><br><span class="line">@<span class="keyword">media</span> (min-width: <span class="number">1200px</span>) and (max-width: <span class="number">1400px</span>)&#123;</span><br><span class="line">  <span class="selector-tag">html</span>&#123;<span class="attribute">font-size</span>: <span class="number">87.5%</span>;&#125;</span><br><span class="line">&#125;</span><br><span class="line">@media(min-width: 1400px)&#123;</span><br><span class="line">  <span class="selector-tag">html</span>&#123;<span class="attribute">font-size</span>: <span class="number">100%</span>;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>还可以针对更小宽度的界面进行设置， 比如 width 小于480,320，基本可以当手机浏览处理。还有用js来处理基础字号来实现弹性布局，原理相同，不过那个可以操控的更准确。</p>
+<p>然后我们就可以对所有元素采用 rem来定义各种宽高了。</p>
+<p>例如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.txt-search</span>&#123;</span><br><span class="line">  <span class="attribute">float</span>: left;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">5rem</span>;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">14.5rem</span>;</span><br><span class="line">  <span class="attribute">padding</span>:<span class="number">0</span> <span class="number">0.5rem</span>;</span><br><span class="line">  <span class="attribute">font-size</span>:<span class="number">1.5rem</span>;</span><br><span class="line">  <span class="attribute">border</span>:<span class="number">0.2rem</span> solid <span class="number">#ddd</span>;</span><br><span class="line">  <span class="attribute">background</span>:<span class="built_in">url</span>(../images/icon/i-shopsearch.png) no-repeat <span class="number">100%</span> center;<span class="attribute">-webkit-background-size</span>:cover;<span class="attribute">background-size</span>:cover;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所有尺寸单位都用rem，这样随着屏幕宽度的变化，字号、宽高、间距等等都随着字高一起变化。</p>
+<h2 id="nth-child-选择器"><a href="#nth-child-选择器" class="headerlink" title=":nth-child() 选择器"></a>:nth-child() 选择器</h2><p>这个不是什么新鲜或者生僻的东西，但是之前确实很少用，总是通过两个容器，外层 <strong>overflow:hidden</strong> 内层超过宽度来处理，或者奇偶变色通过js来处理…赶紧淘汰掉这些古董浏览器吧。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span><span class="selector-pseudo">:nth-child(odd)</span>&#123;</span><br><span class="line">	<span class="attribute">background</span>:<span class="number">#ff0000</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">p</span><span class="selector-pseudo">:nth-child(even)</span>&#123;</span><br><span class="line">	<span class="attribute">background</span>:<span class="number">#0000ff</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">p</span><span class="selector-pseudo">:nth-child(3n+0)</span>&#123;</span><br><span class="line">	<span class="attribute">background</span>:<span class="number">#ff0000</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="before-与-after"><a href="#before-与-after" class="headerlink" title=":before 与 :after"></a>:before 与 :after</h2><p>举个典型例子：</p>
+<p><img src="\images\after.png" alt="after"></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.ul-group-pros</span> <span class="selector-class">.li-pro</span><span class="selector-pseudo">:after</span>&#123;</span><br><span class="line"><span class="attribute">content</span>:<span class="string">'+'</span>;</span><br><span class="line"><span class="attribute">position</span>: absolute;</span><br><span class="line"><span class="attribute">left</span>:<span class="number">15rem</span>;<span class="attribute">top</span>:<span class="number">22%</span>;</span><br><span class="line"><span class="attribute">font-size</span>:<span class="number">2rem</span>;<span class="attribute">color</span>:<span class="number">#444</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.ul-group-pros</span> <span class="selector-class">.li-pro</span><span class="selector-pseudo">:last-child</span><span class="selector-pseudo">::after</span>&#123;<span class="attribute">content</span>:<span class="string">'='</span>;&#125;</span><br></pre></td></tr></table></figure>
+<p>这里 用了双重的伪类，这里如果用背景图片，或者在页面里写一些和内容相关的代码是不是会麻烦很多呢？</p>
+<h2 id="伪类结合-css的counter-reset和-counter-increment属性"><a href="#伪类结合-css的counter-reset和-counter-increment属性" class="headerlink" title="伪类结合 css的counter-reset和 counter-increment属性"></a>伪类结合 css的counter-reset和 counter-increment属性</h2><p>用css来进行计算，这比较有趣</p>
+<p>css代码如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.article</span> &#123;</span><br><span class="line">	<span class="attribute">counter-reset</span>: figures;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.figure</span> &#123;</span><br><span class="line">	<span class="attribute">counter-increment</span>: figures;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.figure</span> <span class="selector-tag">figcaption</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">	<span class="attribute">content</span>: <span class="string">'Fig. '</span> <span class="built_in">counter</span>(figures) <span class="string">' - '</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样可以用来命名一个批量的格式，自动生成序列</p>
+<p>效果：</p>
+<p><img src="\images\css-counter.png" alt="css-counter"></p>
+<p>具体示例在这里：<a href="https://tympanus.net/Tutorials/AutomaticFigureNumbering/" target="_blank" rel="noopener">https://tympanus.net/Tutorials/AutomaticFigureNumbering/</a></p>
+<h2 id="设置-webkit浏览器滚动条"><a href="#设置-webkit浏览器滚动条" class="headerlink" title="设置 webkit浏览器滚动条"></a>设置 webkit浏览器滚动条</h2><p>我说的主要是 chrome浏览器，修改默认的浏览器样式，主要是设置 <strong>::-webkit-scrollbar</strong> 相关属性。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">::-webkit-scrollbar</span> &#123;<span class="attribute">width</span>: <span class="number">8px</span>;<span class="attribute">height</span>: <span class="number">8px</span>;<span class="attribute">background-color</span>:<span class="number">#fff</span>;&#125;</span><br><span class="line"><span class="selector-pseudo">::-webkit-scrollbar-track</span> &#123;<span class="attribute">background-color</span>:<span class="number">#ccc</span>;<span class="attribute">-webkit-box-shadow</span>: inset <span class="number">0</span> <span class="number">0</span> <span class="number">6px</span> <span class="built_in">rgba</span>(0,0,0,0);&#125;</span><br><span class="line"><span class="selector-pseudo">::-webkit-scrollbar-track</span><span class="selector-pseudo">:hover</span> &#123;<span class="attribute">-webkit-box-shadow</span>: inset <span class="number">0</span> <span class="number">0</span> <span class="number">6px</span> <span class="built_in">rgba</span>(0,0,0,0.4);<span class="attribute">background-color</span>:<span class="number">#fefefe</span>;&#125;</span><br><span class="line"><span class="selector-pseudo">::-webkit-scrollbar-track</span><span class="selector-pseudo">:active</span> &#123;<span class="attribute">-webkit-box-shadow</span>: inset <span class="number">0</span> <span class="number">0</span> <span class="number">6px</span> <span class="built_in">rgba</span>(0,0,0,0.4);<span class="attribute">background-color</span>:<span class="number">#f0f0f0</span>;&#125;</span><br><span class="line"><span class="selector-pseudo">::-webkit-scrollbar-thumb</span> &#123;<span class="attribute">background-color</span>: <span class="built_in">rgba</span>(0,0,0,0.2);<span class="attribute">-webkit-box-shadow</span>: inset <span class="number">1px</span> <span class="number">1px</span> <span class="number">0</span> <span class="built_in">rgba</span>(0,0,0,.2);&#125;</span><br><span class="line"><span class="selector-pseudo">::-webkit-scrollbar-thumb</span><span class="selector-pseudo">:hover</span> &#123;<span class="attribute">background-color</span>: <span class="built_in">rgba</span>(0,0,0,0.4);<span class="attribute">-webkit-box-shadow</span>: inset <span class="number">1px</span> <span class="number">1px</span> <span class="number">0</span> <span class="built_in">rgba</span>(0,0,0,.1);&#125;</span><br><span class="line"><span class="selector-pseudo">::-webkit-scrollbar-thumb</span><span class="selector-pseudo">:active</span> &#123;<span class="attribute">background</span>: <span class="built_in">rgba</span>(0,0,0,0.6);&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -382,7 +405,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/sql/" rel="tag"># sql</a>
+            <a href="/tags/jquery/" rel="tag"># jquery</a>
+          
+            <a href="/tags/webuploader/" rel="tag"># webuploader</a>
           
         </div>
       
@@ -395,8 +420,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/25/windowspassword/" rel="next" title="如何在windows下修改mysql的root密码">
-                <i class="fa fa-chevron-left"></i> 如何在windows下修改mysql的root密码
+              <a href="/2017/11/23/20171123-webuploader/" rel="next" title="简单的webuploader图片上传">
+                <i class="fa fa-chevron-left"></i> 简单的webuploader图片上传
               </a>
             
           </div>
@@ -404,10 +429,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/10/easygridJson/" rel="prev" title="easyUI grid列表数据及测试JSON自动生成器">
-                easyUI grid列表数据及测试JSON自动生成器 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -464,8 +485,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
 	  <div class="site-author-wrap">
@@ -543,6 +573,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#绝对尺寸单位-rem"><span class="nav-number">1.</span> <span class="nav-text">绝对尺寸单位 rem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nth-child-选择器"><span class="nav-number">2.</span> <span class="nav-text">:nth-child() 选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#before-与-after"><span class="nav-number">3.</span> <span class="nav-text">:before 与 :after</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#伪类结合-css的counter-reset和-counter-increment属性"><span class="nav-number">4.</span> <span class="nav-text">伪类结合 css的counter-reset和 counter-increment属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置-webkit浏览器滚动条"><span class="nav-number">5.</span> <span class="nav-text">设置 webkit浏览器滚动条</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
