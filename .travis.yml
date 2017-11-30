@@ -10,13 +10,14 @@ cache:
     - node_modules
 # S: Build Lifecycle
 before_install:
-  - openssl aes-256-cbc -K $encrypted_a0b7f0848317_key -iv $encrypted_a0b7f0848317_iv -in ./.travis/id_rsa.enc -out ~/.ssh/id_rsa -d
+  #- openssl aes-256-cbc -K $encrypted_ee235b86884a_key -iv $encrypted_ee235b86884a_iv -in id_rsa.enc -out id_rsa -d
+  - openssl aes-256-cbc -K $encrypted_ee235b86884a_key -iv $encrypted_ee235b86884a_iv -in ./.travis/id_rsa.enc -out ~/.ssh/id_rsa -d #解密
   - chmod 600 ~/.ssh/id_rsa
   - eval $(ssh-agent)
-  - ssh-add ~/.ssh/id_rsa
-  - cp .travis/ssh_config ~/.ssh/config
+  - ssh-add ~/.ssh/id_rsa #加入密钥
+  - cp .travis/ssh_config ~/.ssh/config #将创建的ssh_config复制到Travis的虚拟机中去
   - npm install -g hexo-cli # 安装 hexo
-  - git clone -b mod https://github.com/bujichong/hexo-next-bujichong.git themes/next
+  - git clone -b mod https://github.com/bujichong/hexo-next-bujichong.git themes/next #安装themes文件
 install:
   - npm install # 安装 package.json 中的插件
 script:
