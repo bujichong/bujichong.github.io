@@ -81,6 +81,6 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/bujichong/bujichong.github.io.git
-  branch:
+  repo: https://github.com/bujichong/bujichong.github.io.git,master
+  branch: hexo
   message: {{ now('YYYY-MM-DD HH:mm:ss') }}
