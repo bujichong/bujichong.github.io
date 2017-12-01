@@ -295,11 +295,11 @@ $.getJSON('json/all.json',function(rst){
   var pageNow = 0;
   var itemL = 60;
   var page = Math.ceil(data.length/itemL);//几页
-  var my7niuUrl = 'http://ozdubs5p9.bkt.clouddn.com/';
+  var photoBase = 'http://photo.bujichong.com/';
   $.each(data,function(i,v){
-    v.src = '/photos/source/'+v.name;
-    v.gallery = my7niuUrl+'gallery/'+v.name;
-    v.thumb = my7niuUrl+'/thumb/'+v.name;
+    // v.src = '/photos/source/'+v.name;
+    v.gallery = photoBase+v.name;
+    v.thumb = photoBase+v.name+'?imageView2/2/w/255/interlace/1/q/90';
   });
   // window.console && console.log(data.length,page);
   var wW = Math.floor($(window).width()*0.99),wH = Math.floor($(window).height()*0.99),wWH = wW/wH;
