@@ -46,6 +46,7 @@
         {% include '_partials/footer.swig' %}
         {% include '_third-party/analytics/analytics-with-widget.swig' %}
         {% block footer %}{% endblock %}
+	<a href="http://www.miitbeian.gov.cn/" target="_blank">湘ICP备17016616号</a>
       </div>
     </footer>
 
