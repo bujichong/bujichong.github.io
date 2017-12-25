@@ -365,7 +365,7 @@ disqus:
 
 # changyan
 changyan:
-  enable: true
+  enable: false
   appid: cyth2lWfv
   appkey: 1e44d8c789d6fc0966c03496d5a82ea2
 
