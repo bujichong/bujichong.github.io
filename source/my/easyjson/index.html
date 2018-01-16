@@ -233,8 +233,8 @@ var easyAuto  = {
   },
   submitFn : function () {
     var me = this;
-    var demoLenth = $('.txt-number').val()*1||2;
-    var demoStrLen = $('.txt-strLen').val()*1||2;
+    var demoLenth = $('.txt-number').val()*1||6;
+    var demoStrLen = $('.txt-strLen').val()*1||6;
     var demoSTotal = $('.txt-total').val()*1||18;
     var $area = $('.inputbox');
     var areaVals = $.trim($('.inputbox').val());
@@ -265,8 +265,8 @@ var easyAuto  = {
 
       for (var i = 0 ; i <len; i++) {
         var fmt = '';
-        if (vals.type[i]==4) {fmt = ",format:'yyyy-MM-dd'";};
-        if (vals.type[i]==5) {fmt = ",format:'yyyy-MM-dd HH:mm:ss'";};
+        if (vals.type[i]==9) {fmt = ",format:'yyyy-MM-dd'";};
+        if (vals.type[i]==10) {fmt = ",format:'yyyy-MM-dd HH:mm:ss'";};
         var width = vals.width[i] || 80;
         var fn = vals.fn[i]==1?",formatter: function(val,row,index){}":"";
         valsHtmlArr.push("{title:'"+vals.title[i]+"',field:'"+vals.field[i]+"',width:"+width+fmt+fn+"}");
