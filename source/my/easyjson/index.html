@@ -292,11 +292,12 @@ var easyAuto  = {
           });
         })(j);
       };
-      // window.console && console.log(demoJsonArr);
+      window.console && console.log(demoJsonArr);
 
       var result = valsHtmlArr.join(',\n');
       var resultJson = JSON.stringify(demoJsonArr);
-      resultJson ='{"rows":'+resultJson+',"total":'+demoSTotal+'}';
+      resultJson ='{"rows":\n'+resultJson+',\n"total":'+demoSTotal+'}';
+      resultJson = resultJson.replace(/},{/g,'},\n{');
       $('#resultList').val(result);
       $('#resultJson').val(resultJson);
   },
