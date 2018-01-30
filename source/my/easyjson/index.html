@@ -9,11 +9,11 @@
 .wrapper{margin:10px;}
 .resultbox{position: relative;width:50%;;float: left;}
 
-.result,.inputbox{background-color: #f9f9f9;border:1px solid #ccc;margin-top:10px;height:300px;width:96%;padding:10px;display: block;font-family:Verdana;line-height:1.5em;margin:0 auto 5px;}
+.result,.inputbox,.beifbox{background-color: #f9f9f9;border:1px solid #ccc;margin-top:10px;height:300px;width:96%;padding:10px;display: block;font-family:Verdana;line-height:1.5em;margin:0 auto 5px;}
 .result:hover{background-color:#f4f9ff;border-color:#8ec0ec;}
 .inputbox:focus{background-color:#fffcf6;border-color:orange;}
 
-.easyInput{position: relative;width:880px;margin:0 auto;}
+.easyInput{position: relative;width:880px;margin:0 auto;clear:both;}
 .setLine{margin-bottom: 10px;padding-bottom:10px;border-bottom: 1px dotted #ddd;}
 .txt{background-color: #fff;}
 .one{padding-top:4px;padding-bottom: 4px;}
@@ -49,9 +49,16 @@
     <textarea  id="resultJson"class="result resultJson" readonly="readonly"></textarea>
 </div>
 
+<div class="resultbox">
+    <textarea class="inputbox" placeholder="输入框只输入title和field，空格隔开，一行一条记录，示例demo数据默认宽度80，普通字符，无事件"></textarea>
+</div>
+<div class="resultbox">
+      <textarea class="beifbox" placeholder="生成后的字段备用"></textarea>
+</div>
+
 <div class="easyInput">
     <form class="soForm hk_form pad-t10" method="post" data-opt="{'callback':'afterSubmitTurn','beforeCallback':'submitVPlus'}" id="vform" >
-        <textarea class="inputbox" placeholder="输入框只输入title和field，空格隔开，一行一条记录，示例demo数据默认宽度80，普通字符，无事件"></textarea>
+
         <div class="row-fluid setLine">
           <div class="p3"><p class="p-item">
               <label class="lab-item ">记录数：</label><input type="number" class="txt txt-number required" name="txt" value="6" />
@@ -259,7 +266,7 @@ var easyAuto  = {
         vals.type.push('1');
         vals.width.push('80');
         vals.fn.push('0');
-        tempHtml += '<div class="one row-fluid"><div class="p3"><p class="p-item"><label class="lab-item ">标题：</label><input type="text" class="txt required" name="title" value="'+tm[0]+'" /></p></div><div class="p3"><p class="p-item"><label class="lab-item ">字段名：</label><input type="text" class="txt required" name="field" value="'+tm[1]+'" /></p></div><div class="p3"><p class="p-item"><label class="lab-item ">宽度：</label><input type="number" class="txt" name="width" value="80" /></p></div><div class="p3"><select class="drop" name="type" ><option value="1" selected="selected">普通字符</option><option value="2">中文</option><option value="3">数字</option><option value="4">姓名</option><option value="5">部门</option><option value="6">职位</option><option value="7">药品</option><option value="8">公司</option><option value="9">短日期</option><option value="10">长日期</option></select><select class="drop" name="fn"><option value="0" selected="selected">无事件</option><option value="1">有事件</option></select></div><input type="button" class="btn btn-del" name="btnAdd" value="删除" /></div>';
+        tempHtml += '<div class="one row-fluid"><div class="p3"><p class="p-item"><label class="lab-item ">标题：</label><input type="text" class="txt required" name="title" value="'+tm[0]+'" /></p></div><div class="p3"><p class="p-item"><label class="lab-item ">字段名：</label><input type="text" class="txt required" name="field" value="'+tm[1]+'" /></p></div><div class="p3"><p class="p-item"><label class="lab-item ">宽度：</label><input type="number" class="txt" name="width" value="80" /></p></div><div class="p3"><select class="drop" name="type" ><option value="1" selected="selected">普通字符</option><option value="2">中文</option><option value="3">数字</option><option value="4">布尔值</option><option value="5">姓名</option><option value="6">部门</option><option value="7">职位</option><option value="8">药品</option><option value="9">公司</option><option value="10">单号</option><option value="11">药品单位</option><option value="12">数量</option><option value="13">规格</option><option value="14">短日期</option><option value="15">长日期</option></select><select class="drop" name="fn"><option value="0" selected="selected">无事件</option><option value="1">有事件</option></select></div><input type="button" class="btn btn-del" name="btnAdd" value="删除" /></div>';
         });
         $('.fieldArea').html(tempHtml);
         $('.fieldArea').find('.btn-del').click(function () {
@@ -267,7 +274,12 @@ var easyAuto  = {
         });
       };
       vals = $('.soForm').serializeObject();
-      $area.val('');
+      var areaV = $area.val();
+      if (areaV) {
+        $('.beifbox').val(areaV);
+        $area.val('');
+      };
+
       // var vals = $.trim($area.val())||$('.soForm').serializeObject();
       window.console && console.log(vals);
       var len = vals.field.length;
@@ -275,8 +287,8 @@ var easyAuto  = {
 
       for (var i = 0 ; i <len; i++) {
         var fmt = '';
-        if (vals.type[i]==9) {fmt = ",format:'yyyy-MM-dd'";};
-        if (vals.type[i]==10) {fmt = ",format:'yyyy-MM-dd HH:mm:ss'";};
+        // if (vals.type[i]==14) {fmt = ",format:'yyyy-MM-dd'";};
+        // if (vals.type[i]==15) {fmt = ",format:'yyyy-MM-dd HH:mm:ss'";};
         var width = vals.width[i] || 80;
         var fn = vals.fn[i]==1?",formatter: function(val,row,index){}":"";
         valsHtmlArr.push("{title:'"+vals.title[i]+"',field:'"+vals.field[i]+"',width:"+width+fmt+fn+"}");
@@ -331,7 +343,9 @@ var easyAuto  = {
           ['2018010514D','2018010534A','2018012213X','2018011701S','2018010527C','2018010934G','2018010561V','2018012501E','2018020104A','2018012636W','2018020214A','2018012711V'],//10 单号
           ['支','盒','粒','袋','次','ml'],//11 药品单位
           [50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,210,220,230,240,250,255,260,270,280,290,300,310,320,330,350,450,440,650,700,800,815,860,900,750,410,835,945,600,1200,1400,1520,1640,2145,1475,1532,1654,952,582,684,955,2145,2100,3140,3200,4510,2100,3210,2950,2840,1650,1820,2608,1244,2536],//12 数量
-          ['5g:0.015g','150ml','2ml:0.1g','0.5g*12粒*2板','0.15g*20片']//13 规格
+          ['5g:0.015g','150ml','2ml:0.1g','0.5g*12粒*2板','0.15g*20片'],//13 规格
+          ['2018-01-15','2018-01-17','2018-01-19','2018-01-21','2018-01-22','2018-01-23','2018-01-24','2018-01-25','2018-01-26','2018-01-27','2018-01-28'],//14 短日期
+          ['2018-01-15 14:22','2018-01-17 16:31','2018-01-19 16:57','2018-01-21 08:46','2018-01-22 15:06','2018-01-23 22:47','2018-01-24 10:22','2018-01-25 21:14','2018-01-26 12:03','2018-01-27 13:19','2018-01-28 16:28']//15 长日期
     ];
     //// <option value="10">单号</option>
 // <option value="11">药品单位</option>
@@ -347,13 +361,16 @@ var easyAuto  = {
       for(var  i=0;i< strLen;i++)  {
         txt += dic.charAt(Math.floor(Math.random()*len));
         }
-      }else if(type>3&&type<14){
+      }else if(type>3){
+        window.console && console.log(type);
+      // }else if(type>3&&type<14){
         var tArr = valsDic[type];
         var tLen = tArr.length;
         txt = tArr[Math.floor(Math.random()*tLen)];
-      }else{
-        txt = new Date().getTime();
       }
+      // else{
+      //   txt = new Date().getTime();
+      // }
       return txt;
   },
   clickDel : function ($o) {
