@@ -98,6 +98,8 @@
                 <option value="13">规格</option>
                 <option value="14">短日期</option>
                 <option value="15">长日期</option>
+                <option value="16">电话</option>
+                <option value="17">价格</option>
               </select>
             <select class="drop" name="fn">
                 <option value="0" selected="selected">无事件</option>
@@ -133,6 +135,8 @@
                 <option value="13">规格</option>
                 <option value="14">短日期</option>
                 <option value="15">长日期</option>
+				<option value="16">电话</option>
+				<option value="17">价格</option>
               </select>
             <select class="drop" name="fn">
                 <option value="0" selected="selected">无事件</option>
@@ -240,7 +244,7 @@ var easyAuto  = {
         };
     });
   },
-  addHtml : '<div class="one row-fluid"><div class="p3"><p class="p-item"><label class="lab-item ">标题：</label><input type="text" class="txt required" name="title" /></p></div><div class="p3"><p class="p-item"><label class="lab-item ">字段名：</label><input type="text" class="txt required" name="field" /></p></div><div class="p3"><p class="p-item"><label class="lab-item ">宽度：</label><input type="number" class="txt" name="width" /></p></div><div class="p3"><select class="drop" name="type" ><option value="1" selected="selected">普通字符</option><option value="2">中文</option><option value="3">数字</option><option value="4">布尔值</option><option value="5">姓名</option><option value="6">部门</option><option value="7">职位</option><option value="8">药品</option><option value="9">公司</option><option value="10">单号</option><option value="11">药品单位</option><option value="12">数量</option><option value="13">规格</option><option value="14">短日期</option><option value="15">长日期</option></select><select class="drop" name="fn"><option value="0" selected="selected">无事件</option><option value="1">有事件</option></select></div><input type="button" class="btn btn-del" name="btnAdd" value="删除" /></div>',
+  addHtml : '<div class="one row-fluid"><div class="p3"><p class="p-item"><label class="lab-item ">标题：</label><input type="text" class="txt required" name="title" /></p></div><div class="p3"><p class="p-item"><label class="lab-item ">字段名：</label><input type="text" class="txt required" name="field" /></p></div><div class="p3"><p class="p-item"><label class="lab-item ">宽度：</label><input type="number" class="txt" name="width" /></p></div><div class="p3"><select class="drop" name="type" ><option value="1" selected="selected">普通字符</option><option value="2">中文</option><option value="3">数字</option><option value="4">布尔值</option><option value="5">姓名</option><option value="6">部门</option><option value="7">职位</option><option value="8">药品</option><option value="9">公司</option><option value="10">单号</option><option value="11">药品单位</option><option value="12">数量</option><option value="13">规格</option><option value="14">短日期</option><option value="15">长日期</option><option value="16">电话</option><option value="17">价格</option></select><select class="drop" name="fn"><option value="0" selected="selected">无事件</option><option value="1">有事件</option></select></div><input type="button" class="btn btn-del" name="btnAdd" value="删除" /></div>',
   addFn : function () {
     var me = this;
     $('.fieldArea').append(me.addHtml);
@@ -266,7 +270,7 @@ var easyAuto  = {
         vals.type.push('1');
         vals.width.push('80');
         vals.fn.push('0');
-        tempHtml += '<div class="one row-fluid"><div class="p3"><p class="p-item"><label class="lab-item ">标题：</label><input type="text" class="txt required" name="title" value="'+tm[0]+'" /></p></div><div class="p3"><p class="p-item"><label class="lab-item ">字段名：</label><input type="text" class="txt required" name="field" value="'+tm[1]+'" /></p></div><div class="p3"><p class="p-item"><label class="lab-item ">宽度：</label><input type="number" class="txt" name="width" value="80" /></p></div><div class="p3"><select class="drop" name="type" ><option value="1" selected="selected">普通字符</option><option value="2">中文</option><option value="3">数字</option><option value="4">布尔值</option><option value="5">姓名</option><option value="6">部门</option><option value="7">职位</option><option value="8">药品</option><option value="9">公司</option><option value="10">单号</option><option value="11">药品单位</option><option value="12">数量</option><option value="13">规格</option><option value="14">短日期</option><option value="15">长日期</option></select><select class="drop" name="fn"><option value="0" selected="selected">无事件</option><option value="1">有事件</option></select></div><input type="button" class="btn btn-del" name="btnAdd" value="删除" /></div>';
+        tempHtml += '<div class="one row-fluid"><div class="p3"><p class="p-item"><label class="lab-item ">标题：</label><input type="text" class="txt required" name="title" value="'+tm[0]+'" /></p></div><div class="p3"><p class="p-item"><label class="lab-item ">字段名：</label><input type="text" class="txt required" name="field" value="'+tm[1]+'" /></p></div><div class="p3"><p class="p-item"><label class="lab-item ">宽度：</label><input type="number" class="txt" name="width" value="80" /></p></div><div class="p3"><select class="drop" name="type" ><option value="1" selected="selected">普通字符</option><option value="2">中文</option><option value="3">数字</option><option value="4">布尔值</option><option value="5">姓名</option><option value="6">部门</option><option value="7">职位</option><option value="8">药品</option><option value="9">公司</option><option value="10">单号</option><option value="11">药品单位</option><option value="12">数量</option><option value="13">规格</option><option value="14">短日期</option><option value="15">长日期</option><option value="16">电话</option><option value="17">价格</option></select><select class="drop" name="fn"><option value="0" selected="selected">无事件</option><option value="1">有事件</option></select></div><input type="button" class="btn btn-del" name="btnAdd" value="删除" /></div>';
         });
         $('.fieldArea').html(tempHtml);
         $('.fieldArea').find('.btn-del').click(function () {
@@ -345,7 +349,9 @@ var easyAuto  = {
           [50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,210,220,230,240,250,255,260,270,280,290,300,310,320,330,350,450,440,650,700,800,815,860,900,750,410,835,945,600,1200,1400,1520,1640,2145,1475,1532,1654,952,582,684,955,2145,2100,3140,3200,4510,2100,3210,2950,2840,1650,1820,2608,1244,2536],//12 数量
           ['5g:0.015g','150ml','2ml:0.1g','0.5g*12粒*2板','0.15g*20片'],//13 规格
           ['2018-01-15','2018-01-17','2018-01-19','2018-01-21','2018-01-22','2018-01-23','2018-01-24','2018-01-25','2018-01-26','2018-01-27','2018-01-28'],//14 短日期
-          ['2018-01-15 14:22','2018-01-17 16:31','2018-01-19 16:57','2018-01-21 08:46','2018-01-22 15:06','2018-01-23 22:47','2018-01-24 10:22','2018-01-25 21:14','2018-01-26 12:03','2018-01-27 13:19','2018-01-28 16:28']//15 长日期
+          ['2018-01-15 14:22','2018-01-17 16:31','2018-01-19 16:57','2018-01-21 08:46','2018-01-22 15:06','2018-01-23 22:47','2018-01-24 10:22','2018-01-25 21:14','2018-01-26 12:03','2018-01-27 13:19','2018-01-28 16:28'],//15 长日期
+          ['18684781447','15547841444','17487547778','18698485221','16612457887','13012147554','13102145776','18641028888','13201258741','13201214447','18614254777','18654210221','15520120018','16670122608','13220120066','13210201447'],//16 电话
+          [25.50,32.00,18.00,36.00,88.00,89.00,122.00,147.50,160.30,320.00,18.50,50.00,49.00,48.00,60.00,66.00,13.50,14.80,16.40,36.50,32.40,18.80,26.60,30.30,45.50,90.00,88.80,76.20,56.50]//17 价格
     ];
     //// <option value="10">单号</option>
 // <option value="11">药品单位</option>
