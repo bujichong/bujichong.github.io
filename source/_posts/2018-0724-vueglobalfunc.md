@@ -11,14 +11,14 @@ tags:
 
 ## 自定义全局公共方法
 
-![](..\images\vue-g1.png)
+![](/images/vue-g1.png)
 
-![](..\images\vue-g2.png)
+![](/images/vue-g2.png)
 
-![](..\images\vue-g3.png)
+![](/images/vue-g3.png)
 
 ## 全局引入css
 
-![](..\images\vue-g4.png)
+![](/images/vue-g4.png)
 
 也可以用import  在 main.js 中引入，公用 css
