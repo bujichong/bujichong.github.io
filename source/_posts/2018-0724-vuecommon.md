@@ -20,59 +20,59 @@ i.
 
 ## 内部指令
 ```javascript
-    	v-if="msg"		v-else		v-show="msg"
-    	v-for="(item,index)  in  items";		{{item}}
-    	v-text="msg"		//text
-    	v-html="msg"		//html
-        v-on:click="jiafen";	// v-on:  可以使用 @代替（每次点击执行jiafen方法）绑定的是监听事件。
-        //i.	修饰符：
-            	实例： @click.stop="clickme";
-            	.stop		//阻止冒泡
-            	.prevent	//阻止默认事件
-            	.native		//监听组件根元素的原生事件（为组件加事件用）
-            	.once		//只触发一次回调
-            	.left		//点击鼠标左键触发
-            	.right		//点击鼠标右键触发
-            	.middle		//点击鼠标中键触发
-        v-model="msg";	//双向数据绑定（用于表单元素input textarea）
-        v-model.lazy="msg"；	//懒加载	
-        v-model.number="msg"；//只能输入数字
-        v-model.trim="msg"；	//去除空格。
-        //此处msg 为绑定元素的 value值（数据源）
-    	v-bind:src="imgurl";	//v-bind: 可以使用 : 代替）（冒号）
-       // 绑定标签上的属性
-    	v-pre;			//对此标签原样输出
-    	v-cloak；		//渲染完成后才显示
-    	v-once;			//只渲染一次
+v-if="msg"		v-else		v-show="msg"
+v-for="(item,index)  in  items";		{{item}}
+v-text="msg"		//text
+v-html="msg"		//html
+v-on:click="jiafen";	// v-on:  可以使用 @代替（每次点击执行jiafen方法）绑定的是监听事件。
+//i.	修饰符：
+实例： @click.stop="clickme";
+.stop		//阻止冒泡
+    .prevent	//阻止默认事件
+    .native		//监听组件根元素的原生事件（为组件加事件用）
+    .once		//只触发一次回调
+    .left		//点击鼠标左键触发
+    .right		//点击鼠标右键触发
+    .middle		//点击鼠标中键触发
+v-model="msg";	//双向数据绑定（用于表单元素input textarea）
+v-model.lazy="msg"；	//懒加载	
+v-model.number="msg"；//只能输入数字
+v-model.trim="msg"；	//去除空格。
+//此处msg 为绑定元素的 value值（数据源）
+v-bind:src="imgurl";	//v-bind: 可以使用 : 代替）（冒号）
+// 绑定标签上的属性
+v-pre;			//对此标签原样输出
+v-cloak；		//渲染完成后才显示
+v-once;			//只渲染一次
 ```
 
 ## 全局API
 ### 指令：
 ```javascript
-	Vue.directive();			//自定义指令
-	//生命周期：
-	bind : fun( el,binding ){}		//被绑定时调用（用于执行初始化，只调用1次）
-	inserted : fun( el,binding ){}		//绑定到节点时调用
-	update : fun( el,binding ){}		//组件更新时调用
-	compontUpdated : fun( el,binding ){}	//组件更新完成调用
-	unbind : fun( el,binding ){}		//（解绑时调用）只调用一次
-	app.$destroy();				//销毁
-	aaa.$mount("#author");			//将aaa绑定到id为author的元素上
+Vue.directive();			//自定义指令
+//生命周期：
+bind : fun( el,binding ){}		//被绑定时调用（用于执行初始化，只调用1次）
+inserted : fun( el,binding ){}		//绑定到节点时调用
+update : fun( el,binding ){}		//组件更新时调用
+compontUpdated : fun( el,binding ){}	//组件更新完成调用
+unbind : fun( el,binding ){}		//（解绑时调用）只调用一次
+app.$destroy();				//销毁
+aaa.$mount("#author");			//将aaa绑定到id为author的元素上
 ```
 ### Vue.set()
 
 ###  Vue的生命周期（钩子函数）
 ```javascript
-	beforeCreate		//初始化之后
-	created			//创建完成
-	beforeMount		//挂载之前
-	mounted			//挂载之后
-	beforeUpdate		//数据更新前
-	updated			//数据被更新后
-	activated		//组件激活时调用
-	deactivated		//组件停止时调用
-	beforeDestroy		//销毁之前
-	destroyed		//销毁之后
+beforeCreate	//初始化之后
+created			//创建完成
+beforeMount		//挂载之前
+mounted			//挂载之后
+beforeUpdate	//数据更新前
+updated			//数据被更新后
+activated		//组件激活时调用
+deactivated		//组件停止时调用
+beforeDestroy	//销毁之前
+destroyed		//销毁之后
 ```
 
 ###  template:"#id"	//制作模板（挂载模板）
@@ -81,12 +81,12 @@ i.
 
 ###  component	组件(针对组件专门讲解)
 ```javascript
-	v-bind:is = "…"；			//动态绑定组件（后面接data中定义的名字：对应的是创建出来的组件）
-	Vue.component(name,{template:`…`});	//定义全局组件(在构造器外定义)
-        //局部组件（在构造器里面定义）
-	components ： {"name":{template : `…`}，…};	//可定义多个
-	template :` ` 				//模板
-	props ：[]				//挂载属性
+v-bind:is = "…"；				//动态绑定组件（后面接data中定义的名字：对应的是创建出来的组件）
+Vue.component(name,{template:`…`});	//定义全局组件(在构造器外定义)
+//局部组件（在构造器里面定义）
+components ： {"name":{template : `…`}，…};	//可定义多个
+template :` ` 				//模板
+props ：[]				//挂载属性
 ```
 
 ###  修改插值符号
@@ -96,16 +96,16 @@ delimiters : ["<<" , ">>"]
 
 ###  构造器里的选项
 ```javascript
-    propsData{} 	 				//创建实例时传递props.主要作用是方便测试
-    //定义组件中的插值
-    computed{}						//计算
-    methods{}						//方法
-    watch{}						//监听data中数据的变化
-    watch{ msg : function(newVal,oldVal){ } }		//在构造器里面使用
-    app.$watch("msg",function(newVal,oldVal){ })	//在构造器外面使用
-    mixins : []						//混入，不想改动构造器的情况下，在构造器外部重新定义个一个对象，用混入的方式插入执行
-    extends:对象变量					//扩展（与mixins类似）
-    //i.注意：如果与构造器中的方法名一致，则扩展出来的方法不执行
+propsData{} 	 				//创建实例时传递props.主要作用是方便测试
+//定义组件中的插值
+computed{}						//计算
+methods{}						//方法
+watch{}						//监听data中数据的变化
+watch{ msg : function(newVal,oldVal){ } }		//在构造器里面使用
+app.$watch("msg",function(newVal,oldVal){ })	//在构造器外面使用
+mixins : []						//混入，不想改动构造器的情况下，在构造器外部重新定义个一个对象，用混入的方式插入执行
+extends:对象变量					//扩展（与mixins类似）
+//i.注意：如果与构造器中的方法名一致，则扩展出来的方法不执行
 ```
 
 ##  安装Vue的控制台调试工具
