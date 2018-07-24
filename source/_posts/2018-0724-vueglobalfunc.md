@@ -11,14 +11,14 @@ tags:
 
 ## 自定义全局公共方法
 
-![](F:\bujichong.io\source\images\vue-g1.png)
+![](..\images\vue-g1.png)
 
-![](F:\bujichong.io\source\images\vue-g2.png)
+![](..\images\vue-g2.png)
 
-![](F:\bujichong.io\source\images\vue-g3.png)
+![](..\images\vue-g3.png)
 
 ## 全局引入css
 
-![](F:\bujichong.io\source\images\vue-g4.png)
+![](..\images\vue-g4.png)
 
 也可以用import  在 main.js 中引入，公用 css
