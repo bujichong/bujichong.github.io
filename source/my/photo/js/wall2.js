@@ -8,7 +8,7 @@ var jsonName = GetQueryString('name');
 
 $.getJSON('json/one/'+jsonName+'.json',function(rst){
   var data = rst.data;
-  var photoBase = 'http://photo.bujichong.com/';
+  var photoBase = 'http://photo.iflong.top/';
   // window.console && console.log(data.length,page);
   var wW = Math.floor($(window).width()*0.99),wH = Math.floor($(window).height()*0.99),wWH = wW/wH;
   $(window).resize(function () {
