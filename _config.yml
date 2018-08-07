@@ -85,8 +85,8 @@ deploy:
   - type: git
     repo: https://github.com/bujichong/bujichong.github.io.git
     branch: master
-    message: {{ now('YYYY-MM-DD HH:mm:ss') }}
+    # message: {{ now('YYYY-MM-DD HH:mm:ss') }}
   - type: git
     repo: https://git.coding.net/yinglong47/yinglong47.coding.me.git
     branch: master
-    message: {{ now('YYYY-MM-DD HH:mm:ss') }}
+    # message: {{ now('YYYY-MM-DD HH:mm:ss') }}
