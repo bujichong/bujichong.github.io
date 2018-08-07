@@ -4,8 +4,8 @@ title: "sass里写百分比宽度"
 date: 2014-11-14 12:02
 comments: true
 tags:
-	- css
-	- sass
+  - css
+  - sass
 ---
 
 
@@ -50,15 +50,15 @@ tags:
 .wp1 {
   width: 1%;
 }
- 
+
 .wp2 {
   width: 2%;
 }
- 
+
 .wp3 {
   width: 3%;
 }
- 
+
 .wp4 {
   width: 4%;
 }

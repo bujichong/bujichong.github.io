@@ -4,9 +4,8 @@ title: "soJs系列：1，jQuery弹窗控件sobox2.0"
 date: 2014-12-02 21:30
 comments: true
 tags:
-	- jquery
-	- jquery plugin
-	- sobox
+	- js
+	- sojs
 ---
 
 > 开篇扯淡几句和sobox不相干的话，
@@ -41,12 +40,12 @@ $.sobox.pop({
 	content : null, // content方式，支持html
 	iframe : null, // iframe方式，值为iframe目标页链接，如：http:// www.baidu.com/
 	ajax:{url:null,data:null,callback:function(){}}, // ajax方式
- 
+
 	 /* 位置信息 */
 	posType:'center', // 'center,win,doc,tc,bc' 位置类型：居中 | 距window顶部 | 距离doucment顶部定 | top水平居中 | bottom水平居中
 	pos:[0,0], // [x,y] 距离document左上角坐标,set模式使用
 	offset:[0,0], // [x,y] 弹窗相对本来设定位置偏移量,center模式只改变y轴
- 
+
 	 /* 自定义参数 */
 	cls : null, // 添加自定义类名
 	width:360,height:null, // 宽高属性,iframe模式下，height为iframe高度
@@ -60,7 +59,7 @@ $.sobox.pop({
 	drag :true, // 是否可拖动
 	maskClick : true, // 点击背景关闭内容
 	btn : [], // {cls:,text'确定',link:,removePop: true,callback:}
- 
+
 	 /* 返回事件 */
 	beforePop:function(){}, // 窗口打开之前返回事件
 	onPop: function(){}, // 窗口打开返回事件

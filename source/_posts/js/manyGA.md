@@ -5,7 +5,7 @@ date: 2014-12-01 10:27
 comments: true
 tags:
 	- google GA
-	- 数据监测
+	- js
 ---
 
 

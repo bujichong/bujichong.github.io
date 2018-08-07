@@ -4,8 +4,8 @@ title: "jQuery自定义滚动条插件mCustomScrollbar"
 date: 2015-09-12 21:53
 comments: true
 tags:
+	- js
 	- jquery
-	- javascript
 ---
 
 >这个不是我原创，

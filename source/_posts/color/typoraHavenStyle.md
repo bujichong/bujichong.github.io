@@ -4,8 +4,7 @@ title: "改了两套 typora themes：(haven | haven night)"
 date: 2017-10-25 11:29
 comments: true
 tags:
-	- typora
-	- themes
+	- color
 ---
 
 >自从改用hexo做博客以后，就喜欢上markdown写文档了，顺便用上了typora，用起来很顺手，typora改themes很方便，顺便就制作了两套自己喜欢的，明暗各一套。
