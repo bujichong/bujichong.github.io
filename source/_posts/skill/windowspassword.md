@@ -5,6 +5,7 @@ date: 2016-02-25 21:52
 comments: true
 tags:
 	- mysql
+	- skill
 ---
 
 >mysql连接的时候，当root用户密码为空时，php无法连接数据库，

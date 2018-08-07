@@ -4,9 +4,7 @@ title: "常用js正则"
 date: 2014-11-28 13:43
 comments: true
 tags:
-	- javascript
 	- js
-	- 正则
 ---
 
 常要用到，不够的慢慢补全~

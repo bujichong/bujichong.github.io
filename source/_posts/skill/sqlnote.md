@@ -4,7 +4,8 @@ title: "sql批量事件处理写法"
 date: 2016-03-04 16:48
 comments: true
 tags:
-	- sql
+  - sql
+  - skill
 ---
 
 >不知道为什么网上充斥着那么多错误答案。

@@ -6,8 +6,6 @@ comments: true
 tags:
 	- css
 	- sass
-	- firebug
-	- firefox
 ---
 
 在 sublime text 2中想直接`ctrl+B`就编译写的sass代码吗？

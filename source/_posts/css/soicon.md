@@ -5,8 +5,7 @@ date: 2017-09-28 16:33
 comments: true
 tags:
 	- css
-	- soJs
-	- 小技巧
+	- sojs
 ---
 
 用 [icomoon](https://icomoon.io/app/#/select)

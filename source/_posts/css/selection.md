@@ -5,7 +5,6 @@ date: 2014-12-02 21:30
 comments: true
 tags:
 	- css
-	- selection
 ---
 
 
@@ -20,7 +19,7 @@ tags:
 
 ```css
 .detailsBox p::selection{
-background:#68DFFB; 
+background:#68DFFB;
 }
 ```
 
@@ -34,7 +33,7 @@ background:#68DFFB;
 .detailsBox p::selection{
 background:#68DFFB;/*webkit*/
 }
- 
+
 .detailsBox p::-moz-selection{
 background:red;/*moz*/
 }
@@ -48,7 +47,7 @@ background:red;/*moz*/
 ```css
 .detailsBox p::selection,
 .detailsBox p::-moz-selection{
-background:red; 
+background:red;
 }
 ```
 

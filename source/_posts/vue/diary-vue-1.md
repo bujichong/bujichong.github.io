@@ -5,8 +5,6 @@ date: 2017-10-10 13:54
 comments: true
 tags:
 	- vue
-	- mvvm
-	- javascript
 ---
 
 

@@ -5,8 +5,6 @@ date: 2014-11-28 13:43
 comments: true
 tags:
 	- css
-	- png
-	- gif
 ---
 
 

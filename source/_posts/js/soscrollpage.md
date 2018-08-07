@@ -4,8 +4,8 @@ title: "soJs系列：2,jQuery插件soScrollPage，让我们轻松愉快地做一
 date: 2014-12-04 11:59
 comments: true
 tags:
-	- jquery
-	- jquery plugin
+	- js
+	- sojs
 ---
 
 > 想必苹果产品页的效果大家都很熟悉了，单页面上下切换，每切换一次都有飞入和飞出效果，

@@ -4,8 +4,7 @@ title: "css3下的伪类:before和:after"
 date: 2017-11-23 11:45
 comments: true
 tags:
-	- jquery
-	- webuploader
+	- css
 ---
 
 > 抛弃旧版本浏览器的兼容性，写起样式来真是爽多了，这篇记录一些伪类的使用及相关的一些css3属性

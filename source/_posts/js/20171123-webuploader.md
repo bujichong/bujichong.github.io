@@ -4,7 +4,7 @@ title: "简单的webuploader图片上传"
 date: 2017-11-23 11:45
 comments: true
 tags:
-	- jquery
+	- js
 	- webuploader
 ---
 
