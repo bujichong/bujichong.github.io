@@ -82,11 +82,11 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  - type: git
-    repo: https://github.com/bujichong/bujichong.github.io.git
-    branch: master
+  # - type: git
+  #   repo: git@github.com:bujichong/bujichong.github.io.git
+  #   branch: master
     # message: {{ now('YYYY-MM-DD HH:mm:ss') }}
   - type: git
-    repo: https://git.coding.net/yinglong47/yinglong47.coding.me.git
+    repo: git@git.coding.net:yinglong47/yinglong47.coding.me.git
     branch: master
     # message: {{ now('YYYY-MM-DD HH:mm:ss') }}

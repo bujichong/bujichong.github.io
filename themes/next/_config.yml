@@ -114,9 +114,10 @@ scheme: Gemini
 # Sidebar Settings
 # ---------------------------------------------------------------
 
-music163 :
-  id : "446512502"
-  autoplay : 0
+# music163 :
+#   id : "446512502"
+#   autoplay : 0
+
 # Social Links.
 # Usage: `Key: permalink || icon`
 # Key is the link label showing to end users.

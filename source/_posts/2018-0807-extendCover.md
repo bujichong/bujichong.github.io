@@ -10,7 +10,7 @@ tags:
 
 > 最近又重温了一下css3的动画，虽然以前在各种项目里用过不少次，但每次都是匆匆完成任务，做完基本就忘了，看了凹凸工作室的在h5中css3的大量应用，之前还是小看了css3的动画能力，手上如果有足够好用的调试或者编写样式工具，写花哨的css3代码应该不算问题，问题是你的想象力~
 
-这次简单做了一个展开封面的动画，鼠标经过即展开封面，用到了 `-webkit-transform`中的 `rotate`方法，旋转本身并不难，主要是对距离和空间效果缺乏概念，不好调试，我在google上搜到了 http://enjoycss.com/ ，使用了一下，还是很好上手的，尤其是下面的 ·transition·和 ·transform· 可视化调整还是很方便很有用。下面是主要的代码。
+这次简单做了一个展开封面的动画，鼠标经过即展开封面，用到了 **-webkit-transform**中的 **rotate**方法，旋转本身并不难，主要是对距离和空间效果缺乏概念，不好调试，我在google上搜到了 http://enjoycss.com/ ，使用了一下，还是很好上手的，尤其是下面的 **transition**和 **transform** 可视化调整还是很方便很有用。下面是主要的代码。
 ## html代码
 -  html比较简单，就是一个外盒，内部是底面，和四个需要展开的面
 ```html
@@ -47,6 +47,7 @@ transition: transform 200ms cubic-bezier(0.68, -0.55, 0.265, 1.55) 10ms;
 -webkit-transform-origin: 0 100% 0;transform-origin: 0 100% 0;
 }
 ```
+
 - 单个面的样式，比如上边
 ```css
 .trapezoid-t{
@@ -55,6 +56,7 @@ border-bottom-color: #ebd725;/*梯形单独定义颜色*/
 -webkit-transform: rotateZ(0deg) rotateX(180deg);transform:rotateZ(0deg) rotateX(180deg); /*定义默认旋转*/
 }
 ```
+
 - 鼠标经过盒子后的样式
 ```css
 .boxWrap:hover .trapezoid-t{
