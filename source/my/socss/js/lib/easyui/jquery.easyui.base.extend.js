@@ -1,3 +1,16 @@
+/*---------easyui和requirejs集成---------*/
+(function(){
+  if(window.proEnvZip){return false;}//只在未打包模式下执行，如果打包也执行以下事件，会引起combobox 多次请求url
+  var _9203 = setInterval(parse,10);
+  function parse(){
+    if($.parser && $.fn.slider && !window.renderedFlag){
+      clearInterval(_9203);
+      $.parser.parse();
+      window.console && console.log('dev runing');
+      window.renderedFlag = true;
+    }
+  }
+})();
 /*------------中文包-----------*/
 if ($.fn.pagination){
   $.fn.pagination.defaults.beforePageText = '第';
