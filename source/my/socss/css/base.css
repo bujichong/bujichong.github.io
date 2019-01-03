@@ -43,6 +43,7 @@ height:35px;line-height: 35px;padding:0 0 0 40px;margin:0;font-size: 14px;font-w
 .s-op-run{color:#17ab31;}
 .s-op-pause{color:#ab7317;}
 .s-op-export{color:#4095d2;}
+.s-op-unuse{color:#aaa;cursor:default;}
 .s-op-edit{color:#0f78e8;font-size:14px;cursor: hand;cursor: pointer;font-size:14px;}
 .groupThis{display: -moz-inline-stack;display:inline-block;*display:inline;*zoom:1;width: 25px;height:28px;background:url(../images/icon/groupt.png) no-repeat 0 -30px;}
 .groupThisFirst{background-position: 0 0;}
@@ -98,4 +99,41 @@ background-position:-2px 50%;
 
 .btn-searchPatient { margin-left: 10px;}
 
+/* subtabbox */
+.subtabbox{position: absolute;left:0;top:0;width:36px;bottom:0;z-index:2;}
+.subtabbox .s-subtab{display: block;width:20px;text-align: center;line-height:1.5em;padding:10px 8px;cursor:hand;cursor:pointer;}
+
+.hide-border-top { border-top:none; }
+.subTab { position: absolute; top:0px; left: 0; right: 0; bottom: 0;   overflow: auto; /*出现垂直滚动条*/
+    zoom: 1; }
+
+.subTab { border-top: #E1E5E9 solid 2px; }
+.subTab::after {
+    content:" ";
+    display:block;
+    clear:both;
+}
+.subTab .subTabToobar { padding:5px 3px 3px 3px; }
+.subTab .tab-list  { width: 37px; height: 100%;float: left;}
+.subTab .tab-list .tab { display: block;  width: 21px; padding:8px 8px; text-align: center; word-break: break-all;cursor:pointer;  }
+.subTab .tab-content {  position: absolute; top:0; left: 38px; right: 0; bottom: 0;  }
+
+/* subtab color style */
+.subtabbox,.subTab .tab-list{border-right:1px solid #D1D4D6;background-color: #EBF7FE;}
+.subtabbox .s-subtab,.subTab .tab-list .tab{border-bottom: #c7c7c7 solid 1px;color:#000;font-weight: bold;}
+.subtabbox .s-subtab-now,.subTab .tab-list .tabs-selected {background: #06b4bb;color:#fff;}
+
+.fragment-box { position: absolute; left:0;right:0;top:0;bottom:40px; overflow: hidden; zoom: 1;    }
+.fragment-box .fragment-top { height: 50%; position: absolute; top: 0; left: 0; right: 0; bottom: 50%;    }
+.fragment-box .fragment-bottom { height: 50%; position: absolute; top: 50%;; left: 0; right: 0; bottom: 0;    }
+.fragment-feet { position: absolute; bottom: 0; left: 0; right: 0; padding: 5px; }
+.grid-wapper {   overflow: hidden; zoom: 1; width: 100%; height: 100%; position: relative; }
+
+
+
+.subTab .content-top { top:36px !important; }
+.subTab .tab-content-inner { position: absolute; top: 0; left:0; right: 0; bottom: 0;  overflow: hidden; zoom: 1;  }
+.subTab .tab-content-inner iframe { overflow: hidden; border:none; border-width: 0; display: block; vertical-align: bottom; /* 解决 iframe 高度溢出 */ }
+.tabContHide {  position: absolute; left: -99999px; visibility: hidden; overflow: hidden; }
+.tab-content-body .cont-grid { position: absolute;top: 35px; left: 38px;right: 0;bottom: 0; }
 

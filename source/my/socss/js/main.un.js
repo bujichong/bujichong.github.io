@@ -17,6 +17,7 @@ require.config({
         "easyvalidate.extend": "plus/easyvalidate.extend",//easyui验证扩展，包括各种验证规则
         "easygridEdit": "plus/easygridEdit.extend",//easyui gridedit方法扩展
         "param":"plus/param", //全局公用变量
+        "addrLink" : "plus/addrLink",//省市区联动
         "pub":"plus/pub",//基于基础扩展写的公共处理脚本库
         "btnExt" : "plus/btnExt",
         "btnSearch" : "plus/btnSearch",

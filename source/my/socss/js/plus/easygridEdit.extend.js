@@ -667,7 +667,6 @@ define(['pub'],function(){
           groupIds : 'groupId',//成组的标识
           data : {},//如果有data，则直接使用data
           groupKeys : null,//成组key
-          markMerge : false,//页面有合并拆分操作，需开启markMerage
           strArr : null,//需要合并的字段，为数组
           callback : null//返回事件
       },opt||{});
@@ -730,7 +729,6 @@ define(['pub'],function(){
           strArr : [],//需要合并的字段，为数组
           data : null,
           callback : null,//返回事件
-          markMerge : true,//为false的时候，不做标记，加快执行效率，页面有合并拆分操作，需设为true开启markMerage
           needMsg :true
       },opt||{});
 
@@ -740,6 +738,7 @@ define(['pub'],function(){
       me.ifEndEdit(function () {
           var rows = o.data || $grid.datagrid("getChecked");
           // window.console && console.log(rows);
+          var rowsData = $grid.datagrid("getRows");
           if (rows&&rows.length>1) {
             // var canMerge = me.ifCanMerge(rows);
             // if(!canMerge) {return false;};
@@ -755,16 +754,16 @@ define(['pub'],function(){
             }
             $.each(rows,function (i,v) {
                 var ix = $grid.datagrid('getRowIndex',v);
-                if(o.markMerge){
-                    var rowData = $.extend(true,{
-                      rowMerge : true,
-                      mergeLength : i===0?rowLen:1
-                    },cellCommonData ||{});
-                    $grid.datagrid('updateRow',{
-                      index : ix,
-                      row : rowData
-                    });
-                }
+                var rowData = $.extend(true,{
+                  rowMerge : true,
+                  mergeLength : i===0?rowLen:1
+                },cellCommonData ||{});
+                rowsData[ix] = $.extend(rowsData[ix],rowData);//更新grid行数据为合并数据并添加rowMerge和MergeLength属性
+                //updateRow效率低，弃用
+                // $grid.datagrid('updateRow',{
+                //   index : ix,
+                //   row : rowData
+                // });
                 var $row = $gridWrap.find('.datagrid-row[datagrid-row-index="'+ix+'"]');
                 $row.find('.s-rowGroup').addClass('groupThis');
                 if(i>0){//隐藏checkbox

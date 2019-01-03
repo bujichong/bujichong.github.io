@@ -48,10 +48,10 @@ color: #000000!important;
 .txt-editable-readonly{background-color:transparent;border:0!important;}
 
 /*.datagrid-header{background:#eaf4f9;}*/
-.datagrid-header-check, .datagrid-cell-check{height:auto;}
 .datagrid-header{background:#e7f7ff;}
 .datagrid-view{border-top: 1px solid #ddd;background:url(../images/grid-line-bg2.png) 0 4px;}
 .datagrid-header td.datagrid-header-over{background-color: #e8f6fd;}
+.datagrid-header td, .datagrid-body td, .datagrid-footer td{border-color:#aaa;border-color:#777\0;}
 .panel-body{color:#000;}
 .datagrid-htable, .datagrid-btable, .datagrid-ftable{color:#000;}
 .datagrid-view {position: relative;overflow: hidden;}
@@ -85,6 +85,9 @@ color: #000000!important;
 .datagrid-btable .tree-folder-open{margin-top:4px;}
 .datagrid-btable .tree-title{margin-top:6px;}
 .datagrid-btable .tree-checkbox{margin-top:6px;}
+
+
+.datalist-lines .datagrid-row td .datagrid-cell-check{height:28px;line-height:28px;padding:2px 0;}
 
 /* datebox */
 .datebox .combo-arrow{background:url(../images/icon/inputmark.png) no-repeat -26px 0;width:23px!important;border-left: 0px;}

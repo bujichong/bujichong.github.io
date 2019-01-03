@@ -1,15 +1,3 @@
-/*---------easyui和requirejs集成---------*/
-(function(){
-    var _9203 = setInterval(parse,10);
-    function parse(){
-        if($.parser && $.fn.slider && !window.renderedFlag){
-            clearInterval(_9203);
-            $.parser.parse();
-            window.renderedFlag = true;
-        }
-    }
-})();
-
 /*------------中文包-----------*/
 if ($.fn.pagination){
   $.fn.pagination.defaults.beforePageText = '第';
@@ -544,4 +532,3 @@ $.extend($.fn.datagrid.defaults.editors, {
     }
 
 });
-
