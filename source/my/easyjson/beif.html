@@ -232,7 +232,7 @@ var easyAuto  = {
     var me = this;
     $('.fieldArea .txt').eq(0).focus();
     $(document).keydown(function(e) {
-      // window.console && console.log(e.keyCode);
+      window.console && console.log(e.keyCode);
         if (e.keyCode == 192) {//回车提交生成
           me.submitFn();
           return false;
@@ -266,17 +266,14 @@ var easyAuto  = {
     if (areaVals) {
       var tempV = areaVals.split('\n');
       var tempHtml = '';
-      var baseI = 0;
       $.each(tempV,function (i,v) {
         var tm = v.split(/ +/g);
         vals.title.push(tm[0]);
-        var tm1 = tm[1]?tm[1]:('txt'+baseI++);
-        vals.field.push(tm1);
-
+        vals.field.push(tm[1]);
         vals.type.push('1');
         vals.width.push('80');
         vals.fn.push('0');
-        tempHtml += '<div class="one row-fluid"><div class="p3"><p class="p-item"><label class="lab-item ">标题：</label><input type="text" class="txt required" name="title" value="'+tm[0]+'" /></p></div><div class="p3"><p class="p-item"><label class="lab-item ">字段名：</label><input type="text" class="txt required" name="field" value="'+tm1+'" /></p></div><div class="p3"><p class="p-item"><label class="lab-item ">宽度：</label><input type="number" class="txt" name="width" value="80" /></p></div><div class="p3"><select class="drop" name="type" ><option value="1" selected="selected">普通字符</option><option value="2">中文</option><option value="3">数字</option><option value="4">布尔值</option><option value="5">姓名</option><option value="6">部门</option><option value="7">职位</option><option value="8">药品</option><option value="9">公司</option><option value="10">单号</option><option value="11">药品单位</option><option value="12">数量</option><option value="13">规格</option><option value="14">短日期</option><option value="15">长日期</option><option value="16">电话</option><option value="17">价格</option></select><select class="drop" name="fn"><option value="0" selected="selected">无事件</option><option value="1">有事件</option></select></div><input type="button" class="btn btn-del" name="btnAdd" value="删除" /></div>';
+        tempHtml += '<div class="one row-fluid"><div class="p3"><p class="p-item"><label class="lab-item ">标题：</label><input type="text" class="txt required" name="title" value="'+tm[0]+'" /></p></div><div class="p3"><p class="p-item"><label class="lab-item ">字段名：</label><input type="text" class="txt required" name="field" value="'+tm[1]+'" /></p></div><div class="p3"><p class="p-item"><label class="lab-item ">宽度：</label><input type="number" class="txt" name="width" value="80" /></p></div><div class="p3"><select class="drop" name="type" ><option value="1" selected="selected">普通字符</option><option value="2">中文</option><option value="3">数字</option><option value="4">布尔值</option><option value="5">姓名</option><option value="6">部门</option><option value="7">职位</option><option value="8">药品</option><option value="9">公司</option><option value="10">单号</option><option value="11">药品单位</option><option value="12">数量</option><option value="13">规格</option><option value="14">短日期</option><option value="15">长日期</option><option value="16">电话</option><option value="17">价格</option></select><select class="drop" name="fn"><option value="0" selected="selected">无事件</option><option value="1">有事件</option></select></div><input type="button" class="btn btn-del" name="btnAdd" value="删除" /></div>';
         });
         $('.fieldArea').html(tempHtml);
         $('.fieldArea').find('.btn-del').click(function () {
@@ -291,7 +288,7 @@ var easyAuto  = {
       };
 
       // var vals = $.trim($area.val())||$('.soForm').serializeObject();
-      // window.console && console.log(vals);
+      window.console && console.log(vals);
       var len = vals.field.length;
       var valsHtmlArr = [];
 
@@ -315,7 +312,7 @@ var easyAuto  = {
           });
         })(j);
       };
-      // window.console && console.log(demoJsonArr);
+      window.console && console.log(demoJsonArr);
 
       var result = valsHtmlArr.join(',\n');
       var resultJson = JSON.stringify(demoJsonArr);
