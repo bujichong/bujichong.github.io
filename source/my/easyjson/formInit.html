@@ -111,7 +111,7 @@
       <b>类型：</b><span class="s-t">text：</span><em>a</em>，<span class="s-t">date：</span><em>b1</em>，<span class="s-t">date(time)：</span><em>b2</em>，<span class="s-t">rangeDate：</span><em>c1</em>，
       <span class="s-t">rangeDate(time)：</span><em>c2</em>，<span class="s-t">numbobox：</span><em>d</em>，<span class="s-t">numberspinner：</span><em>e</em>，<span class="s-t">combobox：</span><em>f1</em>，
       <span class="s-t">combobox(data)：</span><em>f2</em>，<span class="s-t">combogrid：</span><em>g</em><br />
-      <span class="s-title">快捷键提示：</span> 任何状态下 <span class="s-cont"><em>小键盘+：</em>末尾增加一行 </span><span class="s-cont"><em>小键盘-：</em>末尾删除一行</span><span class="s-cont"><em>~键(左上角)：</em>快速生成结果</span></p>
+      <span class="s-title">快捷键提示：</span> 任何状态下 <span class="s-cont"><em>小键盘+：</em>末尾增加一行 </span><span class="s-cont"><em>小键盘-：</em>末尾删除一行</span><span class="s-cont"><em>F4键：</em>快速生成结果</span></p>
 
       <p class="pad-t15 pad-b15 center">
           <input type="button" class="btn btn-submit btn-formSubmit" name="btnSubmit" value="表单生成" />
@@ -378,7 +378,7 @@ var easyAuto  = {
     // $('.fieldArea .txt').eq(0).focus();
     $(document).keydown(function(e) {
       // window.console && console.log(e.keyCode);
-        if (e.keyCode == 192) {//回车提交生成
+        if (e.keyCode == 115) {//F4提交生成
           me.submitFn();
           return false;
         };

@@ -71,7 +71,7 @@
               <label class="lab-item ">total：</label><input type="number" class="txt txt-total required" name="txt" value="18" />
           </p></div>
         </div>
-    <p class="p-tip"><span class="s-title">快捷键提示：</span> 任何状态下 <span class="s-cont"><em>小键盘+：</em>末尾增加一行 </span><span class="s-cont"><em>小键盘-：</em>末尾删除一行</span><span class="s-cont"><em>~键(左上角)：</em>快速生成结果</span></p>
+    <p class="p-tip"><span class="s-title">快捷键提示：</span> 任何状态下 <span class="s-cont"><em>小键盘+：</em>末尾增加一行 </span><span class="s-cont"><em>小键盘-：</em>末尾删除一行</span><span class="s-cont"><em>F4键：</em>快速生成结果</span></p>
 
       <p class="pad-t15 pad-b15 center">
           <input type="button" class="btn btn-submit" name="btnSubmit" value="生成" />
@@ -233,7 +233,7 @@ var easyAuto  = {
     $('.fieldArea .txt').eq(0).focus();
     $(document).keydown(function(e) {
       // window.console && console.log(e.keyCode);
-        if (e.keyCode == 192) {//回车提交生成
+        if (e.keyCode == 115) {//F4提交生成
           me.submitFn();
           return false;
         };
