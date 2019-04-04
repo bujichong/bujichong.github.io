@@ -9,13 +9,20 @@
 .wrapper{margin:10px;}
 .resultbox{position: relative;width:50%;;float: left;}
 
-.result,.inputbox,.beifbox{background-color: #f9f9f9;border:1px solid #ccc;margin-top:10px;height:200px;width:96%;padding:10px;display: block;font-family:Verdana;line-height:1.5em;margin:0 auto 5px;}
-.inputbox,.beifbox{height:300px;}
+.h2-title{text-align: center;padding:10px 0;font-size:16px;}
+.h2-title .a-link{margin:0 10px;color:orangered}
+.h2-title .span-link-now,.h2-title .a-link:hover{color:#c00;text-decoration: underline;}
+
+.result,.inputbox{background-color: #f9f9f9;border:1px solid #ccc;margin-top:10px;height:200px;width:96%;padding:10px;display: block;font-family:Verdana;line-height:1.5em;margin:0 auto 5px;}
+.inputbox,.resultJson{height:300px;}
+.result{color:#1c75e6;}
+.beifbox{color:palevioletred;}
 .result:hover{background-color:#f4f9ff;border-color:#8ec0ec;}
 .inputbox:focus{background-color:#fffcf6;border-color:orange;}
 
 .easyInput{position: relative;width:880px;margin:0 auto;clear:both;}
 .setLine{margin-bottom: 10px;padding-bottom:10px;border-bottom: 1px dotted #ddd;}
+.soForm .setLine .drop{width:120px;}
 .txt{background-color: #fff;}
 .one{padding-top:4px;padding-bottom: 4px;}
 .one:hover{background-color: #fdf6e9;}
@@ -41,34 +48,90 @@
 </style>
 </head>
 <body>
-
+  <h2 class="h2-title"><span class="a-link span-link-now">grid数据生成器</span><a href="form.html" class="a-link">col表单生成器</a><a href="inlineform.html" class="a-link">内联表单生成器</a></h2>
 <div class="wrapper">
 <div class="resultbox">
-  <textarea id="resultList" class="result" readonly="readonly"></textarea>
-</div>
-<div class="resultbox">
-    <textarea  id="resultJson"class="result resultJson" readonly="readonly"></textarea>
+  <textarea class="inputbox" placeholder="输入框只输入title和field，空格隔开，一行一条记录，普通字符，无事件"></textarea>
+  <textarea class="result beifbox" placeholder="生成后的字段备用" readonly="readonly"></textarea>
 </div>
 
 <div class="resultbox">
-    <textarea class="inputbox" placeholder="输入框只输入title和field，空格隔开，一行一条记录，示例demo数据默认宽度80，普通字符，无事件"></textarea>
+  <textarea id="resultList" class="result" readonly="readonly" placeholder="grid列"></textarea>
+  <textarea  id="resultJson"class="result resultJson" readonly="readonly" placeholder="grid json数据"></textarea>
 </div>
-<div class="resultbox">
-      <textarea class="beifbox" placeholder="生成后的字段备用"></textarea>
-</div>
+
 
 <div class="easyInput">
     <form class="soForm hk_form pad-t10" method="post" data-opt="{'callback':'afterSubmitTurn','beforeCallback':'submitVPlus'}" id="vform" >
 
         <div class="row-fluid setLine">
           <div class="p3"><p class="p-item">
-              <label class="lab-item ">记录数：</label><input type="number" class="txt txt-number required" name="txt" value="6" />
+              <label class="lab-item ">记录数：</label>
+              <select class="drop drop-number required" name="defs">
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="6" selected="selected">6</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="12">12</option>
+                  <option value="14">14</option>
+                  <option value="16">16</option>
+                  <option value="18">18</option>
+                </select>
           </p></div>
           <div class="p3"><p class="p-item">
-              <label class="lab-item ">字符长：</label><input type="number" class="txt txt-strLen required" name="txt" value="6" />
+              <label class="lab-item ">字符长：</label>
+              <select class="drop drop-strLen required" name="defs">
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="6" selected="selected">6</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="12">12</option>
+                  <option value="14">14</option>
+                  <option value="16">16</option>
+                  <option value="18">18</option>
+                </select>
           </p></div>
           <div class="p3"><p class="p-item">
-              <label class="lab-item ">total：</label><input type="number" class="txt txt-total required" name="txt" value="18" />
+              <label class="lab-item ">total：</label>
+              <select class="drop drop-total required" name="defs">
+                  <option value="6">6</option>
+                  <option value="10">10</option>
+                  <option value="18" selected="selected">18</option>
+                  <option value="25">25</option>
+                  <option value="38">38</option>
+                  <option value="50">50</option>
+                  <option value="67">67</option>
+                  <option value="80">80</option>
+                  <option value="110">110</option>
+                  <option value="123">123</option>
+                </select>
+          </p></div>
+          <div class="p3"><p class="p-item">
+              <label class="lab-item ">默认宽：</label>
+              <select class="drop drop-width" name="defs">
+                <option value="60">60</option>
+                <option value="80" selected="selected">80</option>
+                <option value="90">90</option>
+                <option value="100">100</option>
+                <option value="110">110</option>
+                <option value="120">120</option>
+                <option value="130">130</option>
+                <option value="140">140</option>
+                <option value="150">150</option>
+                <option value="160">160</option>
+                <option value="180">180</option>
+                <option value="200">200</option>
+                <option value="220">220</option>
+                <option value="240">240</option>
+                <option value="250">250</option>
+                <option value="260">260</option>
+                <option value="280">280</option>
+                <option value="300">300</option>
+              </select>
           </p></div>
         </div>
     <p class="p-tip"><span class="s-title">快捷键提示：</span> 任何状态下 <span class="s-cont"><em>小键盘+：</em>末尾增加一行 </span><span class="s-cont"><em>小键盘-：</em>末尾删除一行</span><span class="s-cont"><em>F4键：</em>快速生成结果</span></p>
@@ -117,42 +180,6 @@
           </div>
         </div>
 
-        <div class="one row-fluid">
-          <div class="p3"><p class="p-item">
-              <label class="lab-item ">标题：</label><input type="text" class="txt required" name="title" />
-          </p></div>
-          <div class="p3"><p class="p-item">
-              <label class="lab-item ">字段名：</label><input type="text" class="txt required" name="field" />
-          </p></div>
-          <div class="p3"><p class="p-item">
-              <label class="lab-item ">宽度：</label><input type="number" class="txt" name="width" />
-          </p></div>
-          <div class="p3">
-              <select class="drop" name="type" >
-                <option value="1" selected="selected">普通字符</option>
-                <option value="2">中文</option>
-                <option value="3">数字</option>
-                <option value="4">布尔值</option>
-                <option value="5">姓名</option>
-                <option value="6">部门</option>
-                <option value="7">职位</option>
-                <option value="8">药品</option>
-                <option value="9">公司</option>
-                <option value="10">单号</option>
-                <option value="11">药品单位</option>
-                <option value="12">数量</option>
-                <option value="13">规格</option>
-                <option value="14">短日期</option>
-                <option value="15">长日期</option>
-				<option value="16">电话</option>
-				<option value="17">价格</option>
-              </select>
-            <select class="drop" name="fn">
-                <option value="0" selected="selected">无事件</option>
-                <option value="1">有事件</option>
-              </select>
-          </div>
-          <!-- <input type="button" class="btn btn-del" name="btnAdd" value="删除" /> -->
         </div>
 
       </fieldset>
@@ -191,6 +218,8 @@ $.fn.serializeObject = function() {
 }
 
 
+
+var baseI = 0;
 
 var easyAuto  = {
   init : function () {
@@ -247,26 +276,29 @@ var easyAuto  = {
         };
     });
   },
-  addHtml : '<div class="one row-fluid"><div class="p3"><p class="p-item"><label class="lab-item ">标题：</label><input type="text" class="txt required" name="title" /></p></div><div class="p3"><p class="p-item"><label class="lab-item ">字段名：</label><input type="text" class="txt required" name="field" /></p></div><div class="p3"><p class="p-item"><label class="lab-item ">宽度：</label><input type="number" class="txt" name="width" /></p></div><div class="p3"><select class="drop" name="type" ><option value="1" selected="selected">普通字符</option><option value="2">中文</option><option value="3">数字</option><option value="4">布尔值</option><option value="5">姓名</option><option value="6">部门</option><option value="7">职位</option><option value="8">药品</option><option value="9">公司</option><option value="10">单号</option><option value="11">药品单位</option><option value="12">数量</option><option value="13">规格</option><option value="14">短日期</option><option value="15">长日期</option><option value="16">电话</option><option value="17">价格</option></select><select class="drop" name="fn"><option value="0" selected="selected">无事件</option><option value="1">有事件</option></select></div><input type="button" class="btn btn-del" name="btnAdd" value="删除" /></div>',
+  addHtml : function(){
+    var demoSWidth = $('.drop-width').val()*1||80;
+    return '<div class="one row-fluid"><div class="p3"><p class="p-item"><label class="lab-item ">标题：</label><input type="text" class="txt required" name="title" /></p></div><div class="p3"><p class="p-item"><label class="lab-item ">字段名：</label><input type="text" class="txt required" name="field" value="'+('txt'+baseI++)+'" /></p></div><div class="p3"><p class="p-item"><label class="lab-item ">宽度：</label><input type="number" class="txt" name="width" value="'+demoSWidth+'" /></p></div><div class="p3"><select class="drop" name="type" ><option value="1" selected="selected">普通字符</option><option value="2">中文</option><option value="3">数字</option><option value="4">布尔值</option><option value="5">姓名</option><option value="6">部门</option><option value="7">职位</option><option value="8">药品</option><option value="9">公司</option><option value="10">单号</option><option value="11">药品单位</option><option value="12">数量</option><option value="13">规格</option><option value="14">短日期</option><option value="15">长日期</option><option value="16">电话</option><option value="17">价格</option></select><select class="drop" name="fn"><option value="0" selected="selected">无事件</option><option value="1">有事件</option></select></div><input type="button" class="btn btn-del" name="btnAdd" value="删除" /></div>';
+  },
   addFn : function () {
     var me = this;
-    $('.fieldArea').append(me.addHtml);
+    $('.fieldArea').append(me.addHtml());
     var $new = $('.fieldArea').find('.one:last');
     $new.find('.txt:first').focus();
     me.clickDel($new);
   },
   submitFn : function () {
     var me = this;
-    var demoLenth = $('.txt-number').val()*1||6;
-    var demoStrLen = $('.txt-strLen').val()*1||6;
-    var demoSTotal = $('.txt-total').val()*1||18;
+    var demoLenth = $('.drop-number').val()*1||6;
+    var demoStrLen = $('.drop-strLen').val()*1||6;
+    var demoSTotal = $('.drop-total').val()*1||18;
+    var demoSWidth = $('.drop-width').val()*1||80;
     var $area = $('.inputbox');
     var areaVals = $.trim($('.inputbox').val());
     var vals={title:[],field:[],type:[],width:[],fn:[]};
     if (areaVals) {
       var tempV = areaVals.split('\n');
       var tempHtml = '';
-      var baseI = 0;
       $.each(tempV,function (i,v) {
         var tm = v.split(/ +/g);
         vals.title.push(tm[0]);
@@ -274,9 +306,9 @@ var easyAuto  = {
         vals.field.push(tm1);
 
         vals.type.push('1');
-        vals.width.push('80');
+        vals.width.push(demoSWidth);
         vals.fn.push('0');
-        tempHtml += '<div class="one row-fluid"><div class="p3"><p class="p-item"><label class="lab-item ">标题：</label><input type="text" class="txt required" name="title" value="'+tm[0]+'" /></p></div><div class="p3"><p class="p-item"><label class="lab-item ">字段名：</label><input type="text" class="txt required" name="field" value="'+tm1+'" /></p></div><div class="p3"><p class="p-item"><label class="lab-item ">宽度：</label><input type="number" class="txt" name="width" value="80" /></p></div><div class="p3"><select class="drop" name="type" ><option value="1" selected="selected">普通字符</option><option value="2">中文</option><option value="3">数字</option><option value="4">布尔值</option><option value="5">姓名</option><option value="6">部门</option><option value="7">职位</option><option value="8">药品</option><option value="9">公司</option><option value="10">单号</option><option value="11">药品单位</option><option value="12">数量</option><option value="13">规格</option><option value="14">短日期</option><option value="15">长日期</option><option value="16">电话</option><option value="17">价格</option></select><select class="drop" name="fn"><option value="0" selected="selected">无事件</option><option value="1">有事件</option></select></div><input type="button" class="btn btn-del" name="btnAdd" value="删除" /></div>';
+        tempHtml += '<div class="one row-fluid"><div class="p3"><p class="p-item"><label class="lab-item ">标题：</label><input type="text" class="txt required" name="title" value="'+tm[0]+'" /></p></div><div class="p3"><p class="p-item"><label class="lab-item ">字段名：</label><input type="text" class="txt required" name="field" value="'+tm1+'" /></p></div><div class="p3"><p class="p-item"><label class="lab-item ">宽度：</label><input type="number" class="txt" name="width" value="'+demoSWidth+'" /></p></div><div class="p3"><select class="drop" name="type" ><option value="1" selected="selected">普通字符</option><option value="2">中文</option><option value="3">数字</option><option value="4">布尔值</option><option value="5">姓名</option><option value="6">部门</option><option value="7">职位</option><option value="8">药品</option><option value="9">公司</option><option value="10">单号</option><option value="11">药品单位</option><option value="12">数量</option><option value="13">规格</option><option value="14">短日期</option><option value="15">长日期</option><option value="16">电话</option><option value="17">价格</option></select><select class="drop" name="fn"><option value="0" selected="selected">无事件</option><option value="1">有事件</option></select></div><input type="button" class="btn btn-del" name="btnAdd" value="删除" /></div>';
         });
         $('.fieldArea').html(tempHtml);
         $('.fieldArea').find('.btn-del').click(function () {
@@ -292,9 +324,17 @@ var easyAuto  = {
 
       // var vals = $.trim($area.val())||$('.soForm').serializeObject();
       // window.console && console.log(vals);
-      var len = vals.field.length;
       var valsHtmlArr = [];
 
+      if(typeof(vals.field)=='string'){//如果只有一条记录
+        vals.field = [vals.field];
+        vals.fn = [vals.fn];
+        vals.title = [vals.title];
+        vals.type = [vals.type];
+        vals.width = [vals.width];
+      }
+
+      var len = vals.field.length;
       for (var i = 0 ; i <len; i++) {
         var fmt = '';
         // if (vals.type[i]==14) {fmt = ",format:'yyyy-MM-dd'";};

@@ -10,11 +10,15 @@
 .putbox{position: relative;width:50%;;float: left;}
 .resultbox{position: relative;width:50%;;float: right;}
 
+.h2-title{text-align: center;padding:10px 0;font-size:16px;}
+.h2-title .a-link{margin:0 10px;color:orangered}
+.h2-title .span-link-now,.h2-title .a-link:hover{color:#c00;text-decoration: underline;}
+
 .result,.inputbox,.beifbox{background-color: #f9f9f9;border:1px solid #ccc;margin-top:10px;width:96%;padding:10px;display: block;font-family:Verdana;line-height:1.5em;margin:0 auto 5px;}
 .inputbox{height:400px;}
-.beifbox{height:200px;}
-.result{height:626px;}
-.result:hover{background-color:#f4f9ff;border-color:#8ec0ec;}
+.beifbox{height:200px;color:palevioletred;}
+.result{height:626px;color:#1c75e6;}
+.beifbox:hover,.result:hover{background-color:#f4f9ff;border-color:#8ec0ec;}
 .inputbox:focus{background-color:#fffcf6;border-color:orange;}
 
 .easyInput{position: relative;width:1000px;margin:0 auto;clear:both;}
@@ -46,17 +50,17 @@
 </style>
 </head>
 <body>
-
+<h2 class="h2-title"><a href="index.html" class="a-link">grid数据生成器</a><span class="a-link span-link-now">col表单生成器</span><a href="inlineform.html" class="a-link">内联表单生成器</a></h2>
 <div class="wrapper">
   <div class="putbox">
-      <textarea class="inputbox" placeholder="一行一条记录：如果多条用英文逗号隔开，格式如：col:label:name|type:required,col:label:name|type:required">
+      <textarea class="inputbox" placeholder="一行一条记录：格式如：col:label:name|type:required"></textarea>
+<textarea class="beifbox" placeholder="生成后的字段备用">
 4:姓名
 6:地址:add
 身份|f1:1
 5:公司名称|a:0
 6:门诊诊断:dd|g:1
-      </textarea>
-      <textarea class="beifbox" placeholder="生成后的字段备用"></textarea>
+ </textarea>
   </div>
 
 
