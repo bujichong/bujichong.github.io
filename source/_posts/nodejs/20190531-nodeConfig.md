@@ -12,13 +12,13 @@ tags:
 
 如，将node安装到 **D:\Program Files\nodejs\** 目录
 
-##查看命令：
+## 查看命令：
 ```javascript
 npm config ls -l    //查看设置
 npm list --depth=0 -g     //查看已安装到全局的模块
 ```
 
-##初次修改，将文件和cache都移到安装文件夹中
+## 初次修改，将文件和cache都移到安装文件夹中
 在node安装文件夹里新建2个目录：
 - \node_global
 - \node_cache
@@ -27,13 +27,13 @@ npm list --depth=0 -g     //查看已安装到全局的模块
 将 C:\Users\$USER\.npmrc   用户配置文件拷贝到node安装目录下
 
 
-##添加node到环境变量，设置全局NODE_PATH变量
+## 添加node到环境变量，设置全局NODE_PATH变量
 “我的电脑”-右键-“属性”-“高级系统设置”-“高级”-“环境变量”，
 
-###用户环境变量：
+### 用户环境变量：
 添加 ：  C:\Users\Administrator\AppData\Roaming\npm(可选添加)
 
-###系统变量：
+### 系统变量：
 增加：
 NODE_PATH   ： D:\Program Files\nodejs\node_global\node_modules
 
@@ -43,7 +43,7 @@ D:\Program Files\nodejs\
 两项
 
 
-##将配置文件设置到当前目录下
+## 将配置文件设置到当前目录下
 .npmrc文件已在当前目录下
 在cmd下设置
 ```javascript
