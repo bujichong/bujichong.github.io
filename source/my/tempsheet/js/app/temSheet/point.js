@@ -1,7 +1,7 @@
 define({
     t : {//体温
       image : {//图标
-        image : baseUrl+'images/sheet/x.png',
+        image : 'images/sheet/x.png',
         size : [7,7],
       },
       line : {//线

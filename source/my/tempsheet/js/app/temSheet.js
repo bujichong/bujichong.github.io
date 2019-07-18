@@ -190,7 +190,7 @@ define(['raphael','lodash','template','./temSheet/point','./temSheet/trans'],fun
       var me = this;
       var url = ['sheet3.js','sheet2.js','sheet.js'];
       $ajax.post({
-        url : '/json/'+url[me.m%3],
+        url : 'json/'+url[me.m%3],
         // data : {numberOfWeek:me.nowM},
         success : function (rst) {
           me.data = rst.data;
@@ -442,7 +442,7 @@ define(['raphael','lodash','template','./temSheet/point','./temSheet/trans'],fun
           for (var j = 1; j < 4; j++) {
             var vj = v[j];
             if(vj&&vj.diastolic){
-              bpHtml += '<td class="td-disy" colspan="2"><div class="one-disy"><img class="img-disy" src="'+baseUrl+'images/sheet/disyline.png" alt="" /><span class="s-di">'+vj.diastolic+'</span><span class="s-sy">'+vj.systolic+'</span></div></td>';
+              bpHtml += '<td class="td-disy" colspan="2"><div class="one-disy"><img class="img-disy" src="images/sheet/disyline.png" alt="" /><span class="s-di">'+vj.diastolic+'</span><span class="s-sy">'+vj.systolic+'</span></div></td>';
             }else{
               bpHtml += '<td colspan="2"></td>';
             }
@@ -600,7 +600,7 @@ define(['raphael','lodash','template','./temSheet/point','./temSheet/trans'],fun
             }
             // window.console && console.log(sData);
             $ajax.post({
-              url : baseUrl + '/ui/temperature/aemrTemperature/saveOrUpdate',
+              url : 'json/true.js',
               data : sData,
               jsonData : true,
               tip: '确定提交此更改？',

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
 <meta http-equiv="X-UA-Compatible" content="IE=9" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>体温单 - 爱尔医院</title>
+<title>体温单 - 医院</title>
 <link rel="stylesheet" type="text/css" media="all" href="js/lib/easyui/themes/gray/easyui.css" />
 <link type="text/css" rel="stylesheet" href="css/easy-plus.css" />
 <link type="text/css" rel="stylesheet" href="css/socss.css" />
@@ -17,8 +17,8 @@ var baseUrl = '/';
 var inpNumberVar='ZY201904150';
 var power = 'all';
 var pageUrl ={
-    initSheet : '/json/sheet.js',
-    oneDate : '/medcord-tempeSheetEdit.html'
+    initSheet : 'json/sheet.js',
+    oneDate : 'medcord-tempeSheetEdit.html'
 };
 var sTime = {
     entry: '2019-06-01 10:10:29',
@@ -31,7 +31,7 @@ var sTime = {
 <body data-js="temSheet:init">
 <div class="temsheetWrap">
 
-    <h1 class="h1-title"><span class="s-hos">长沙爱尔眼科医院</span>体　　温　　单</h1>
+    <h1 class="h1-title"><span class="s-hos"></span>体　　温　　单</h1>
     <p class="userBaseInfo">
         <span class="s-userI"><em class="em-t">入院日期：</em><em class="em-v em-entryTime"></em></span>
         <span class="s-userI"><em class="em-t">周数：</em><select class="drop drop-month" style="width:90px;" name="drop">

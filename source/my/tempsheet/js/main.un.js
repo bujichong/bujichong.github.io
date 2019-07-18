@@ -1,4 +1,4 @@
-var base = base || '/';
+var base = base || '';
 require.config({
     baseUrl: base + 'js/',
     map: {

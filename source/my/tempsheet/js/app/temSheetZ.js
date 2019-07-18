@@ -44,6 +44,9 @@ define(['zrender','lodash','template','./temSheetZ/point','./temSheetZ/trans'],f
     drawPaper : function (){
       var me = this;
       me.paper = zrender.init(document.getElementById('main'));
+
+
+
       me.paper.on('click',function (e){
         window.console&&console.log(e);
         if(!e.target.style.canclick){//zlevel 11为 点 所在图层
@@ -306,7 +309,7 @@ define(['zrender','lodash','template','./temSheetZ/point','./temSheetZ/trans'],f
               // ['住院天数','1','2','3','4','5','6','7'],
               // ['术后天数','2','3','','','','','']
           ],
-          style : {fill:'#fff',stroke:'#000',lineWidth:1}
+          style : {fill:'transparent',stroke:'#000',lineWidth:1}
       }
 
       var tableBL = {//四、五行(时间标题)
@@ -320,7 +323,7 @@ define(['zrender','lodash','template','./temSheetZ/point','./temSheetZ/trans'],f
               ['时　　间'],
               ['脉搏　　体温']
           ],
-          style : {fill:'#fff',stroke:'#000',lineWidth:1}
+          style : {fill:'transparent',stroke:'#000',lineWidth:1}
       }
 
       var tableBR = {//四、五行(时间内容)
@@ -333,7 +336,7 @@ define(['zrender','lodash','template','./temSheetZ/point','./temSheetZ/trans'],f
               ['4','8','12','16','20','24','4','8','12','16','20','24','4','8','12','16','20','24','4','8','12','16','20','24','4','8','12','16','20','24','4','8','12','16','20','24','4','8','12','16','20','24'],
               []
           ],
-          style : {fill:'#fff',stroke:'#000',lineWidth:1}
+          style : {fill:'transparent',stroke:'#000',lineWidth:1}
       }
 
       var tableC = {//右侧描点绘制格子区
@@ -342,7 +345,7 @@ define(['zrender','lodash','template','./temSheetZ/point','./temSheetZ/trans'],f
           row : 40,
           col : 42,
           pos : {x:100,y:115},
-          style : {fill:'#fff',stroke:'#c9c9c9',lineWidth:1}
+          style : {fill:'transparent',stroke:'#c9c9c9',lineWidth:1}
       }
 
       var tableD = {//呼吸行
@@ -352,7 +355,7 @@ define(['zrender','lodash','template','./temSheetZ/point','./temSheetZ/trans'],f
           col : 42,
           pos : {x:100,y:915},
           text : [me.b.data],
-          style : {fill:'#fff',textFill:'red',stroke:'#000',lineWidth:1}
+          style : {fill:'transparent',textFill:'red',stroke:'#000',lineWidth:1}
       }
 
       var tableE = {//末尾八行标题列
@@ -363,7 +366,7 @@ define(['zrender','lodash','template','./temSheetZ/point','./temSheetZ/trans'],f
         col : 1,
         pos : {x:0,y:915},
         text : [['呼吸(次/分)'],['血压(mmHg)']],
-        style : {fill:'#fff',stroke:'#000',lineWidth:1,textAlign:'left',textOffset:[-44,0]}
+        style : {fill:'transparent',stroke:'#000',lineWidth:1,textAlign:'left',textOffset:[-44,0]}
       };
 
       var tableE2 = {//末尾八行标题列
@@ -375,7 +378,7 @@ define(['zrender','lodash','template','./temSheetZ/point','./temSheetZ/trans'],f
         pos : {x:0,y:985},
         text : me.otherTitle,
         // [['呼吸(次/分)'],['血压(mmHg)'],['大便(次)'],['体重(kg)'],['身高(cm)'],['过敏药物']]
-        style : {fill:'#fff',stroke:'#000',lineWidth:1,textAlign:'left',textOffset:[-44,0]}
+        style : {fill:'transparent',stroke:'#000',lineWidth:1,textAlign:'left',textOffset:[-44,0]}
       };
 
       var tableF = {//血压行
@@ -385,7 +388,7 @@ define(['zrender','lodash','template','./temSheetZ/point','./temSheetZ/trans'],f
           col : 21,
           pos : {x:100,y:950},
           text : [me.bp.data],
-          style : {fill:'#fff',stroke:'#000',lineWidth:1,textLineHeight:8}
+          style : {fill:'transparent',stroke:'#000',lineWidth:1,textLineHeight:8}
       }
 
 
@@ -463,18 +466,6 @@ define(['zrender','lodash','template','./temSheetZ/point','./temSheetZ/trans'],f
           repeat : 7
       };
 
-      var wrapR = new zrender.Rect({
-          style : {fill:'#fff',stroke:'#000',lineWidth:1},
-          shape: {
-              x: 0.5,
-              y: 0.5,
-              width: 940,
-              height: 1135
-          }
-      });
-
-      me.paper.add(wrapR);
-
       $zr.table(tableC);
       $zr.table(tableA);
       $zr.table(tableA2);
@@ -495,7 +486,7 @@ define(['zrender','lodash','template','./temSheetZ/point','./temSheetZ/trans'],f
 
       var drawL = new zrender.Image({
           style : {
-              image : '/images/sheet/drawL2.png',
+              image : 'images/sheet/drawL2.png',
               x : 1,
               y : 120,
               width : 99,
@@ -678,7 +669,7 @@ define(['zrender','lodash','template','./temSheetZ/point','./temSheetZ/trans'],f
       var me = this;
       var url = ['sheet3.js','sheet2.js','sheet.js'];
       $ajax.post({
-        url : '/json/'+url[me.m%3],
+        url : 'json/'+url[me.m%3],
         // data : {numberOfWeek:me.nowM},
         success : function (rst) {
           me.data = rst.data;
@@ -711,6 +702,19 @@ define(['zrender','lodash','template','./temSheetZ/point','./temSheetZ/trans'],f
       me.ohterV.allergyMedication.data = [];
       me.ohterV.dynamic1.data = [];
       me.ohterV.dynamic2.data = [];
+
+      var wrapR = new zrender.Rect({
+        style : {fill:'#fff',stroke:'#000',lineWidth:1},
+        shape: {
+            x: 0.5,
+            y: 0.5,
+            width: 940,
+            height: 1135
+        }
+    });
+
+    me.paper.add(wrapR);//重绘外框
+
     },
     getVals : function (){//组装体温数据
       var me = this;
@@ -836,17 +840,17 @@ define(['zrender','lodash','template','./temSheetZ/point','./temSheetZ/trans'],f
             x : 110+i*120,
             y : 10,
             width: 15,height:15,
-            image : '/images/sheet/head-edit.png',
+            image : 'images/sheet/head-edit.png',
             pos : {x : 100,y:0},
             onmouseover : function (e){
               // window.console&&console.log(e);
               e.target.attr('style',{
-                image : '/images/sheet/head-edit-on.png'
+                image : 'images/sheet/head-edit-on.png'
               });
             },
             onmouseout : function (e){
               e.target.attr('style',{
-                image : '/images/sheet/head-edit.png'
+                image : 'images/sheet/head-edit.png'
               });
             },
             click : function (){
@@ -978,8 +982,6 @@ define(['zrender','lodash','template','./temSheetZ/point','./temSheetZ/trans'],f
     },
     renderBloodPressure : function (bp){//渲染血压
       var me = this;
-      // window.console&&console.log(bp);
-      // var bpHtml = '<th class="th-f" colspan="2">血压(mmHg)</th>';
       var prelineArr = [];
       for (var i = 0; i <7; i++) {
         var v = bp.base[i];
@@ -1000,26 +1002,14 @@ define(['zrender','lodash','template','./temSheetZ/point','./temSheetZ/trans'],f
                 repeat : 1
               });
               bp.data.push(vj.diastolic +'　\n'+'　　'+'\n　'+vj.systolic);
-              // bpHtml += '<td class="td-disy" colspan="2"><div class="one-disy"><img class="img-disy" src="'+baseUrl+'/static/images/sheet/disyline.png" alt="" /><span class="s-di">'+vj.diastolic+'</span><span class="s-sy">'+vj.systolic+'</span></div></td>';
             }else{
               bp.data.push('');
-              // bpHtml += '<td colspan="2"></td>';
             }
           }
-        // }else{
-        //   bpHtml += '<td colspan="2"></td><td colspan="2"></td><td colspan="2"></td>';
-        // }
-
       }
-
       for (var k = 0; k <prelineArr.length; k++) {
         me.$zr.line(prelineArr[k]);
-
       }
-      // me.$zr.line(lineG);
-
-      // $('.tr-bloodPressure').html(bpHtml);
-
     },
     renderOtherVals : function (vals){
       var me = this;
@@ -1164,7 +1154,7 @@ define(['zrender','lodash','template','./temSheetZ/point','./temSheetZ/trans'],f
             }
             // window.console && console.log(sData);
             $ajax.post({
-              url : '/json/true.js',
+              url : 'json/true.js',
               data : sData,
               jsonData : true,
               tip: '确定提交此更改？',
