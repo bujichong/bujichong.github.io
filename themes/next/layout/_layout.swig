@@ -46,7 +46,7 @@
         {% include '_partials/footer.swig' %}
         {% include '_third-party/analytics/analytics-with-widget.swig' %}
         {% block footer %}{% endblock %}
-	<a href="http://www.miitbeian.gov.cn/" target="_blank">湘ICP备17016616号</a>
+	<a href="http://www.beian.gov.cn/portal/index" target="_blank">湘ICP备17016616号</a>
       <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
 
       </div>
