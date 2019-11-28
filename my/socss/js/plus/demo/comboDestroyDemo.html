@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Easyui扩展库 Combo - 落阳 整理</title>
+    <link href="http://www.easyui-extlib.com/Content/Site.css" rel="stylesheet" />
+    <script src="http://www.easyui-extlib.com/Scripts/jquery/jquery-1.11.0.min.js"></script>
+    <script src="http://www.easyui-extlib.com/Scripts/jquery-extensions/jquery.jdirk.js"></script>
+    <link href="http://www.easyui-extlib.com/Scripts/jquery-easyui/jquery-easyui-1.4.3/themes/default/easyui.css" rel="stylesheet" />
+    <link href="http://www.easyui-extlib.com/Scripts/jquery-easyui/jquery-easyui-1.4.3/themes/icon.css" rel="stylesheet" />
+    <script src="http://www.easyui-extlib.com/Scripts/jquery-easyui/jquery-easyui-1.4.3/jquery.easyui.min.js"></script>
+    <script src="http://www.easyui-extlib.com/Scripts/jquery-easyui/jquery-easyui-1.4.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <script src="http://www.easyui-extlib.com/Scripts/jquery-easyui-extensions/combo/jeasyui.extensions.combo.destroy.js"></script>
+    <script>
+        $(function () {
+
+            $("#btnSet").click(function () {
+                var value = $("[name='onBeforeDestroyValue']:checked").val();
+
+                var opts = $("#btnTarget").combo("options");
+                opts.onBeforeDestroy = function () {
+                    return value.toBoolean();
+                };
+                opts.onDestroy = function () {
+                    alert("销毁成功");
+                };
+
+                $("#btnTarget").combo("destroy");
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <div class="easyui-panel" data-options="fit:true,border:false" style="padding:20px;">
+        <input id="btnTarget" type="text" class="easyui-combo" value="" data-options="" />
+        <br /><br /><br /><br />
+        <input name="onBeforeDestroyValue" type="radio" value="true" /> 在 onBeforeDestroy 事件中 return true，表示可以销毁 textbox &nbsp;
+        <br />
+        <input name="onBeforeDestroyValue" type="radio" value="false" checked="checked" /> 在 onBeforeDestroy 事件中 return false，表示无法销毁 &nbsp;
+        <br />
+        <span style="color:red;">请自行选择要设置给上述 combo 的 onBeforeDestroy 的返回值</span>
+        <br />
+        <br /><br />
+        <a id="btnSet" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">对上述 combo 执行 destroy 方法</a>
+        <span style="color:red;">该 combo 已设定 onDestroy 事件，触发时弹出“销毁成功”文本</span>
+    </div>
+</body>
+</html>

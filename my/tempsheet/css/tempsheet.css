@@ -1,0 +1,80 @@
+.temsheetWrap{padding-top:10px;font-family:Helvetica Neue,Helvetica,Arial,"SimSun";font-size:14px;}
+.h1-title{font-size:28px;padding:15px 0;text-align: center;line-height:32px;}
+.h1-title .s-hos{display: block;}
+.sheetWrap{position: relative;width:940px;margin:0 auto;padding:0px;}
+.userBaseInfo{padding:10px 0;text-align: center;}
+.userBaseInfo .s-userI{padding:0 15px;}
+.s-userI .combo{vertical-align:middle;}
+.table-sheet{border-collapse:collapse;border-left:1px solid #333;border-bottom:1px solid #333;}
+
+.table-sheet .tr-top th{text-align: center;padding:2px 0;height:20px;line-height:20px;}
+.table-sheet .tr-top th,.table-sheet .tr-top td,
+.table-sheet .tr-bottom th,.table-sheet .tr-bottom td{border:1px solid #333;}
+.table-sheet .tr-head th,.table-sheet .tr-head td{border:1px solid #333;}
+.table-sheet  th.th-f{border-right:1px solid #333;width:50px;text-align: center;}
+.table-sheet .tr-head th.th-f{border-left:1px solid #333;border-right:1px solid #333;border-top:1px solid #d3d3d3;}
+.table-sheet td{border:1px solid #c9c9c9;width:19px;height:19px;text-align: center;}
+.tbody-sheet td{position: relative;
+    /* background-color: white; */
+    /* background:url(../images/sheet/sheetL.png) no-repeat 0 6px; */
+}
+.one-date{height:24px;line-height:24px;}
+.one-date-edit{position:relative;cursor:hand;cursor:pointer;}
+.one-date-edit:after{font-family:"soicon";content:"\e940";color:#005aff;position:absolute;top:2px;right:2px;line-height:1em;font-size:14px;}
+.one-date-edit:hover{color:#ff6a00;font-weight:bold;background-color:#fff3e1;}
+.one-date-edit:hover::after{color:#ff6a00;font-weight:normal;}
+
+.table-sheet td.td-e{border-right:1px solid red;}
+.tbody-sheet td:before{content:'';position: absolute;left:0;width:19px;border-bottom:1px dashed #d9d9d9;}
+.tbody-sheet .tr-middle td:before{border-bottom:1px solid red;}
+/* .table-sheet .tr-head td.td-e{border-right-color:#333;} */
+.table-sheet .tr-head td.td-f,
+.table-sheet .tr-head td.td-e{color:red;}
+.table-sheet tr.tr-d td{border-bottom:1px solid #555;}
+
+.table-sheet .tr-bottom th{text-align: center;padding:2px 0;height:20px;line-height:20px;}
+.table-sheet .tr-breath th{padding:2px 0;height:30px;}
+.table-sheet .tr-breath .s-odd{position: relative;top:-8px;color:red;}
+.table-sheet .tr-breath .s-even{position: relative;top:8px;color:red;}
+.tr-bloodPressure td{height:34px;width:39px;font-size:0.9em;}
+.one-disy{position: relative;height:34px;}
+.img-disy{position: absolute;left:0;top:1px;with:39px;height:32px;}
+.s-di{position: absolute;top:2px;left:2px;}
+.s-sy{position: absolute;bottom:2px;right:2px;}
+
+.table-sheet .tr-bottom th.th-f{padding-left:5px;border-top:1px solid #333;text-align: left;}
+
+#container{position: absolute;top:116px;left:100px;width:840px;height:800px;}
+/*#container text{font-size:12px!important;fill:red;width:12px;writing-mode: tb;}*/
+.s-sheetTxt{position:absolute;color:red;width:12px;text-align:center;font-size:12px;line-height:13px;}
+.tipTxtBox{position: absolute;top:96px;left:0px;width:100px;height:820px;}
+.ul-t{position: absolute;left:0;top:2px;}
+.li-t{width:50px;padding:0;float: left;text-align: center;}
+/* .li-t-1{color:green;} */
+.li-t-1{}
+/* .li-t-1 .h3-t{margin-bottom:258px;} */
+.li-t-1 .h3-t,.li-t-2 .h3-t{margin-bottom:8px;font-weight: normal;}
+.li-t .p-1{padding:0 15px;}
+.li-t span{float: left;width:21px;margin:0 0 84px;}
+.li-t span.s-1{margin:0 0 53px;}
+
+.p-t1{position: absolute;bottom:52px;left:3px;line-height:16px;}
+.p-t1 span{display: block;vertical-align: middle;}
+
+.p-t2{position: absolute;bottom:115px;left:53px;line-height:16px;}
+.p-t2 span{display: block;vertical-align: middle;}
+.p-t2 img{margin:0 0 0 1px;}
+
+.p-t3{position: absolute;left:48px;bottom:12px;text-align: center;}
+.p-t3 .s-t{display: block;width:20px;text-align: center;color:red;}
+
+.p-t4{position: absolute;bottom:8px;right:0px;}
+.p-t4 .s-t{display: block;width:20px;color:red;margin-bottom:4px;text-align: center;font-size:12px;}
+
+.p-t5{position: absolute;bottom:45px;right:14px;color:red;letter-spacing:-1px;font-size:12px;}
+
+#container circle,#container image{cursor:hand;cursor:pointer;}
+.dotPopBox{position: fixed;top:-800px;left:-800px;background:#ecfaff;padding:6px 10px;border:1px solid #6fc3ea;box-shadow:5px 5px 30px #aaa;-webkit-box-shadow:5px 5px 30px #aaa;-moz-box-shadow:5px 5px 30px #aaa;border-radius:3px;}
+.dotPopBox .ip{color:#c00;font-weight: bold;}
+.dotPopBox .p-potInfo{padding:5px 0 0;}
+.dotPopBox .p-potBtn{padding:10px 0 5px;text-align:center;}

@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Easyui扩展库 Combo - 落阳 整理</title>
+    <link href="http://www.easyui-extlib.com/Content/Site.css" rel="stylesheet" />
+    <script src="http://www.easyui-extlib.com/Scripts/jquery/jquery-1.11.0.min.js"></script>
+    <script src="http://www.easyui-extlib.com/Scripts/jquery-extensions/jquery.jdirk.js"></script>
+    <link href="http://www.easyui-extlib.com/Scripts/jquery-easyui/jquery-easyui-1.4.3/themes/default/easyui.css" rel="stylesheet" />
+    <link href="http://www.easyui-extlib.com/Scripts/jquery-easyui/jquery-easyui-1.4.3/themes/icon.css" rel="stylesheet" />
+    <script src="http://www.easyui-extlib.com/Scripts/jquery-easyui/jquery-easyui-1.4.3/jquery.easyui.min.js"></script>
+    <script src="http://www.easyui-extlib.com/Scripts/jquery-easyui/jquery-easyui-1.4.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <script src="http://www.easyui-extlib.com/Scripts/jquery-easyui-extensions/combo/jeasyui.extensions.combo.autoShowPanel.js"></script>
+    <script>
+        $(function () {
+            $('#cc').combo({
+                editable: false,
+                iconCls: 'icon-save',
+                autoShowPanel: false
+            });
+            $('#sp').appendTo($('#cc').combo('panel'));
+
+            $('#cc2').combo({
+                editable: true,
+                iconCls: 'icon-save',
+                autoShowPanel: false
+            });
+            $('#sp2').appendTo($('#cc2').combo('panel'));
+
+            $('#cc3').combo({
+                editable: true,
+                iconCls: 'icon-save',
+                autoShowPanel: true
+            });
+            $('#sp3').appendTo($('#cc3').combo('panel'));
+        });
+    </script>
+</head>
+<body>
+    <div class="easyui-panel" data-options="fit:true,border:false" style="padding:20px;">
+        <select id="cc" style="width:150px"></select>
+        <div id="sp">
+            <div style="color:#99BBE8;background:#fafafa;padding:5px;">Select a language</div>
+            <div style="padding:10px">
+                <input type="radio" name="lang" value="01"><span>Java</span><br />
+                <input type="radio" name="lang" value="02"><span>C#</span><br />
+                <input type="radio" name="lang" value="03"><span>Ruby</span><br />
+                <input type="radio" name="lang" value="04"><span>Basic</span><br />
+                <input type="radio" name="lang" value="05"><span>Fortran</span>
+            </div>
+        </div>
+        <span style="color:red;">该 combo 控件：editable 为 false，autoShowPanel 为 false，聚焦到 input 中会自动显示下拉面板（等于在无扩展情况下，当 editable 为 false 时，easyui-comobo 也会自动显示下拉面板）</span>
+        <br /><br /><br /><br /><br /><br />
+
+
+        <select id="cc2" style="width:150px"></select>
+        <div id="sp2">
+            <div style="color:#99BBE8;background:#fafafa;padding:5px;">Select a language</div>
+            <div style="padding:10px">
+                <input type="radio" name="lang" value="01"><span>Java</span><br />
+                <input type="radio" name="lang" value="02"><span>C#</span><br />
+                <input type="radio" name="lang" value="03"><span>Ruby</span><br />
+                <input type="radio" name="lang" value="04"><span>Basic</span><br />
+                <input type="radio" name="lang" value="05"><span>Fortran</span>
+            </div>
+        </div>
+        <span style="color:red;">该 combo 控件：editable 为 true，autoShowPanel 为 false，聚焦到 input 中不会自动显示下拉面板（等于在无扩展情况下，当 editable 为 true 时，easyui-comobo 不会自动显示下拉面板）</span>
+        <br /><br /><br /><br /><br /><br />
+
+
+
+        <select id="cc3" style="width:150px"></select>
+        <div id="sp3">
+            <div style="color:#99BBE8;background:#fafafa;padding:5px;">Select a language</div>
+            <div style="padding:10px">
+                <input type="radio" name="lang" value="01"><span>Java</span><br />
+                <input type="radio" name="lang" value="02"><span>C#</span><br />
+                <input type="radio" name="lang" value="03"><span>Ruby</span><br />
+                <input type="radio" name="lang" value="04"><span>Basic</span><br />
+                <input type="radio" name="lang" value="05"><span>Fortran</span>
+            </div>
+        </div>
+        <span style="color:red;">该 combo 控件：editable 为 true，autoShowPanel 为 true，聚焦到 input 中会自动显示下拉面板（有扩展情况下，即使 editable 为 true 时，easyui-comobo 也会自动显示下拉面板）</span>
+        <br /><br /><br /><br /><br /><br />
+    </div>
+</body>
+</html>

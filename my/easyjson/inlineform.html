@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>内联Form生成器</title>
+<meta charset="utf-8">
+<link rel="icon" href="/images/logo.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" media="all" href="css/base.css" />
+<style type="text/css">
+.wrapper{margin:10px;}
+.putbox{position: relative;width:50%;;float: left;}
+.resultbox{position: relative;width:50%;;float: right;}
+
+.h2-title{text-align: center;padding:10px 0;font-size:16px;}
+.h2-title .a-link{margin:0 10px;color:orangered}
+.h2-title .span-link-now,.h2-title .a-link:hover{color:#c00;text-decoration: underline;}
+
+.result,.inputbox,.beifbox{background-color: #f9f9f9;border:1px solid #ccc;margin-top:10px;width:96%;padding:10px;display: block;font-family:Verdana;line-height:1.5em;margin:0 auto 5px;}
+.inputbox{height:400px;}
+.beifbox{height:200px;color:palevioletred;}
+.result{height:626px;color:#1c75e6;}
+.beifbox:hover,.result:hover{background-color:#f4f9ff;border-color:#8ec0ec;}
+.inputbox:focus{background-color:#fffcf6;border-color:orange;}
+
+.easyInput{position: relative;width:1000px;margin:0 auto;clear:both;}
+.setLine{margin-bottom: 10px;padding-bottom:10px;border-bottom: 1px dotted #ddd;}
+.txt{background-color: #fff;}
+.one{padding-top:4px;padding-bottom: 4px;}
+.one:hover{background-color: #fdf6e9;}
+
+.p-item{padding:0;}
+.soForm .p-item{padding-left:55px;}
+.soForm .lab-item{width:50px;top:0;}
+.row-fluid label.lab-chk{width: auto;vertical-align: middle;cursor: hand;cursor:pointer;display: -moz-inline-stack;display:inline-block;*display:inline;*zoom:1;padding-top: 5px;line-height:20px;}
+.fieldArea .chk{width:20px;height:20px;margin-right:5px;}
+.drop:focus{border:1px solid #75a9e4;}
+.one{position: relative;}
+.row-fluid{overflow: visible;}
+.btn-del{position: absolute;top:6px;right:-60px;background-color: #ccc;border:0px;}
+.btn-del:hover{color: #000;}
+.hk_form .btn-submit{width:120px;background-color: #646769;height:40px;font-size: 1.4em;}
+.hk_form .btn-add{background-color: orange;}
+.p-type .wp-68{width:68%;}
+.p-type .wp-30{width:30%;}
+.p-tip{cline-height:1.5em;padding:10px 0 0;font-family:Tahoma,Verdana,Arial;}
+.p-tip .s-t{color:rgb(247, 3, 125);}
+.p-tip .s-title{font-weight: bold;color:orange;}
+.p-tip .s-cont{margin-right:10px; }
+.p-tip em{font-weight: bold;color:#0968f5;}
+
+</style>
+</head>
+<body>
+
+<h2 class="h2-title"><a href="index.html" class="a-link">grid数据生成器</a><a href="form.html" class="a-link">col表单生成器</a><span class="span-link-now a-link-now">内联表单生成器</span></h2>
+<div class="wrapper">
+  <div class="putbox">
+<textarea class="inputbox" placeholder="一行一条记录：格式如：label:name|type:required"></textarea>
+<textarea class="beifbox" placeholder="生成后的字段备用">
+姓名
+地址:add
+身份|f1:1
+公司名称|a:0
+门诊诊断:dd|g:1
+</textarea>
+  </div>
+
+
+<div class="resultbox">
+  <textarea id="resultList" class="result" readonly="readonly"></textarea>
+</div>
+<!-- <div class="resultbox">
+      <textarea class="beifbox" placeholder="生成后的字段备用"></textarea>
+</div> -->
+
+<div class="easyInput">
+    <form class="soForm hk_form pad-t10" method="post" data-opt="{'callback':'afterSubmitTurn','beforeCallback':'submitVPlus'}" id="vform" >
+
+        <div class="row-fluid setLine">
+          <div class="p3"><p class="p-item">
+              <label class="lab-item">DefWidth：</label>
+              <select class="drop drop-width" name="defWidth">
+                  <option value="60">60</option>
+                  <option value="80">80</option>
+                  <option value="90">90</option>
+                  <option value="100">100</option>
+                  <option value="110">110</option>
+                  <option value="120" selected="selected">120</option>
+                  <option value="130">130</option>
+                  <option value="140">140</option>
+                  <option value="150">150</option>
+                  <option value="160">160</option>
+                  <option value="180">180</option>
+                  <option value="200">200</option>
+                  <option value="220">220</option>
+                  <option value="240">240</option>
+                  <option value="250">250</option>
+                  <option value="260">260</option>
+                  <option value="280">280</option>
+                  <option value="300">300</option>
+                </select>
+          </p></div>
+          <div class="p4"><p class="p-item p-type">
+              <label class="lab-item">defType：</label>
+              <select class="drop drop-type wp-68" name="defType">
+                <option value="a" selected="selected">text</option>
+                <option value="b1">date</option>
+                <option value="b2">date(time)</option>
+                <option value="c1">rangeDate</option>
+                <option value="c2">rangeDate(time)</option>
+                <option value="d">numberbox</option>
+                <option value="e">numberspinner</option>
+                <option value="f1">combobox(option)</option>
+                <option value="f2">combobox(data)</option>
+                <option value="g">combogrid</option>
+              </select>
+              <select class="drop drop-required wp-30" name="defRequired" >
+                  <option value="0" selected="selected">不必填</option>
+                  <option value="1">必填</option>
+                </select>
+          </p></div>
+        </div>
+    <p class="p-tip">
+        <b>一行一条记录，格式如：label:name|type:required， col、name、type、required属性可省略 ，默认值：col：defCol,name:随机,type:text,required:false||0</b><br />
+      <b>类型：</b><span class="s-t">text：</span><em>a</em>，<span class="s-t">date：</span><em>b1</em>，<span class="s-t">date(time)：</span><em>b2</em>，<span class="s-t">rangeDate：</span><em>c1</em>，
+      <span class="s-t">rangeDate(time)：</span><em>c2</em>，<span class="s-t">numbobox：</span><em>d</em>，<span class="s-t">numberspinner：</span><em>e</em>，<span class="s-t">combobox：</span><em>f1</em>，
+      <span class="s-t">combobox(data)：</span><em>f2</em>，<span class="s-t">combogrid：</span><em>g</em><br />
+      <span class="s-title">快捷键提示：</span> 任何状态下 <span class="s-cont"><em>小键盘+：</em>末尾增加一行 </span><span class="s-cont"><em>小键盘-：</em>末尾删除一行</span><span class="s-cont"><em>F4键：</em>快速生成结果</span></p>
+
+      <p class="pad-t15 pad-b15 center">
+          <input type="button" class="btn btn-submit btn-formSubmit" name="btnSubmit" value="表单生成" />
+          <input type="button" class="btn btn-submit btn-add" name="btnCancel" value="增加" />
+      </p>
+
+
+      <fieldset class="fieldArea">
+        <!-- <div class="one row-fluid">
+          <div class="p3"><p class="p-item">
+              <label class="lab-item">label：</label><input type="text" class="txt required" name="label" placeholder="必填"  />
+          </p></div>
+          <div class="p3"><p class="p-item">
+              <label class="lab-item">name：</label><input type="text" class="txt" name="name" placeholder="不填随机生成" />
+          </p></div>
+          <div class="p2"><p class="p-item">
+              <label class="lab-item">Col：</label>
+              <select class="drop" name="col">
+                <option value="2" selected="selected">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="12">12</option>
+              </select>
+          </p></div>
+          <div class="p4 p-type"><p class="p-item">
+              <label class="lab-item">type：</label>
+              <select class="drop wp-68" name="type">
+                <option value="a" selected="selected">text</option>
+                <option value="b1">date</option>
+                <option value="b2">date(time)</option>
+                <option value="c1">rangeDate</option>
+                <option value="c2">rangeDate(time)</option>
+                <option value="d">numberbox</option>
+                <option value="e">numberspinner</option>
+                <option value="f1">combobox(option)</option>
+                <option value="f2">combobox(data)</option>
+                <option value="g">combogrid</option>
+              </select>
+              <select class="drop wp-30" name="required" >
+                <option value="0" selected="selected">不必填</option>
+                <option value="1">必填</option>
+              </select>
+          </p></div>
+        <input type="button" class="btn btn-del" name="btnAdd" value="删除" />
+        </div> -->
+      </fieldset>
+    </form>
+
+
+<!-- <div class="result">
+
+</div> -->
+
+  </div>
+</div>
+
+<div class="none"></div>
+<script type="text/javascript">
+var inputType = [
+  {sign:'a',type:'text'},
+  {sign:'b1',type:'date'},
+  {sign:'b2',type:'date(time)'},
+  {sign:'c1',type:'rangeDate'},
+  {sign:'c2',type:'rangeDate(time)'},
+  {sign:'d',type:'numberbox'},
+  {sign:'e',type:'numberspinner'},
+  {sign:'f1',type:'combobox(option)'},
+  {sign:'f2',type:'combobox(data)'},
+  {sign:'g',type:'combogrid'}
+];
+
+var widthType = [60,80,90,100,110,120,130,140,150,160,180,200,220,240,250,260,280,300];
+var reType = ['不必填','必填'];
+</script>
+<script id="oneItem" type="text/html">
+  <div class="one row-fluid">
+    <div class="p3"><p class="p-item">
+        <label class="lab-item">label：</label><input type="text" class="txt required" name="label" placeholder="必填" value="{{label}}"  />
+    </p></div>
+    <div class="p3"><p class="p-item">
+        <label class="lab-item">name：</label><input type="text" class="txt required" name="name" placeholder="必填" value="{{name}}" />
+    </p></div>
+    <div class="p2"><p class="p-item">
+        <label class="lab-item">Width：</label>
+        <select class="drop" name="width">
+          {{each widthType as v}}
+            <option value="{{v}}"{{if v==width}} selected="selected"{{/if}}>{{v}}</option>
+          {{/each}}
+        </select>
+    </p></div>
+    <div class="p4 p-type"><p class="p-item">
+        <label class="lab-item">type：</label>
+        <select class="drop wp-68" name="type">
+          {{each inputType as v}}
+            <option value="{{v.sign}}"{{if v.sign==type}} selected="selected"{{/if}}>{{v.type}}</option>
+          {{/each}}
+        </select>
+        <select class="drop wp-30" name="required" >
+          {{each reType as v i}}
+            <option value="{{i}}"{{if i==required}} selected="selected"{{/if}}>{{v}}</option>
+          {{/each}}
+        </select>
+    </p></div>
+    <input type="button" class="btn btn-del" name="btnAdd" value="删除" />
+  </div>
+</script>
+
+<!-- txt-validate -->
+<script id="type-a" type="text/html">
+<span class="fl"><label class="lab-inline">{{label}}：</label><input class="txt txt-validate w-{{width}}" type="text" name="{{name}}"{{if required}} noNull="必填"{{/if}} value="" /></span>
+</script>
+
+<!-- date -->
+<script id="type-b1" type="text/html">
+<span class="fl"><label class="lab-inline">{{label}}：</label><input class="txt txt-validate so-date w-110" type="text" name="{{name}}" data-options="{maxDate:new Date()}"{{if required}} noNull="必填"{{/if}} value="" /></span>
+</script>
+
+<!-- time -->
+<script id="type-b2" type="text/html">
+<span class="fl"><label class="lab-inline">{{label}}：</label><input type="text" class="txt txt-validate so-date w-150" type="text" name="{{name}}" data-opt="{type:'time',maxDate:new Date()}"{{if required}} noNull="时间必填"{{/if}} value="" /></span>
+</script>
+
+<!-- rangeDate -->
+<script id="type-c1" type="text/html">
+<span class="fl"><label class="lab-inline">{{label}}：</label><input type="text" class="txt txt-validate so-rangeDate w-180" name="{{name}}" data-options="{val:'week',opens:'center'}"{{if required}} noNull="时间必填"{{/if}} value="" /></span>
+</script>
+
+<!-- rangeDate time -->
+<script id="type-c2" type="text/html">
+<span class="fl"><label class="lab-inline">{{label}}：</label><input type="text" class="txt txt-validate so-rangeDate w-290" name="{{name}}" data-options="{opens:'left',timePicker : true,timePickerSeconds : true,format : 'YYYY-MM-DD HH:mm:ss'}"{{if required}} noNull="时间必填"{{/if}} value="" /></span>
+</script>
+
+<!-- easyui-numberbox -->
+<script id="type-d" type="text/html">
+<span class="fl"><label class="lab-inline">{{label}}：</label><input class="txt easyui-numberbox{{if required}} required{{/if}}" type="text" name="{{name}}" style="width:{{width}}px;" data-options="{{if required}}required:true,{{/if}}min:0,max:10000"{{if required}} missingMessage="必填"{{/if}} validType="range[0,10000,'只能为1-10000的数字']" value="" /></span>
+</script>
+
+<!-- easyui-numberspinner -->
+<script id="type-e" type="text/html">
+<span class="fl"><label class="lab-inline">{{label}}：</label><input class="txt easyui-numberspinner{{if required}} required{{/if}}" style="width:{{width}}px;" type="text" name="{{name}}" data-options="{{if required}}required:true,{{/if}}precision:0,min:1,max:36500"{{if required}} missingMessage="必填"{{/if}} validType="range[1,36500,'请输入正确的数字']" value=""/></span>
+</script>
+
+<!-- easyui-combobox -->
+<script id="type-f1" type="text/html">
+<span class="fl"><label class="lab-inline">{{label}}：</label>
+	<select class="drop easyui-combobox{{if required}} required{{/if}}" style="width:{{width}}px;" name="{{name}}" data-options="{{if required}}required:true,{{/if}}clearIcon:true,onSelect:function(record){}"{{if required}} missingMessage="请选择"{{/if}}>
+		<option value=""></option>
+		<option value="1">选项1</option>
+		<option value="2">选项2</option>
+	</select>
+</span>
+
+</script>
+
+<!-- easyui-combobox data -->
+<script id="type-f2" type="text/html">
+<span class="fl"><label class="lab-inline">{{label}}：</label>
+	<select class="drop easyui-combobox{{if required}} required{{/if}}" style="width:{{width}}px;" name="{{name}}" data-options="{{if required}}required:true,{{/if}}clearIcon:true,'valueField':'valueCode','textField':'valueDesc',filter:function(q, row){
+	  var l = row['firstSpell']&&row['firstSpell'].toLowerCase().indexOf(q.toLowerCase()) >-1;
+	  var n = row['valueDesc']&&row['valueDesc'].indexOf(q) >-1;
+	  return l || n;
+	},'data':[{'firstSpell':'sxmywhcmyxgs','valueCode':'1','valueDesc':'山西妙苑文化传媒有限公司'},{'firstSpell':'whswcq','valueCode':'2','valueDesc':'武汉市武昌区华邦礼品经营部'}]"{{if required}} missingMessage="请选择"{{/if}} >
+	</select>
+</span>
+
+</script>
+
+<!-- easyui-combogrid -->
+<script id="type-g" type="text/html">
+<span class="fl"><label class="lab-inline">{{label}}：</label>
+	<input class="drop easyui-combogrid{{if required}} required{{/if}}" style="width:{{width}}px;" name="{{name}}"{{if required}} missingMessage="请选择"{{/if}} data-options="
+		{{if required}}required:true,
+		{{/if}}url:'json/purchaseDD.js',
+		panelWidth:500,
+		mode : 'remote',
+		fitColumns:true,
+		idField:'id',
+		textField:'item_name',
+		clearIcon : true,
+		columns:[[
+		{field:'id',title:'id',width:100,hidden:true},
+		{title:'药品名称',field:'item_name',width:180},
+		{title:'规格',field:'specifs',width:80,align:'center'},
+		{title:'生产厂家',field:'manufac_name',width:180}
+		]],onSelect: function(index,record){},onChange: function(newV,oldV){}
+	" />
+</span>
+
+</script>
+
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/template.js"></script>
+<script type="text/javascript">
+$.fn.serializeObject = function() {
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+        if (o[this.name]) {
+            if (!o[this.name].push) {
+                o[this.name] = [ o[this.name] ];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    return o;
+}
+
+
+var baseI = 0;
+
+var easyAuto  = {
+  init : function () {
+    var me = this;
+    me.clickAndKeydownDo();
+  },
+  clickAndKeydownDo : function () {
+    var me = this;
+
+    $('.result,.beifbox').focus(function() {
+      $(this).select();
+    });
+
+    $('.btn-add').click(function () {
+        me.addOne();
+    });
+
+    $('.btn-formSubmit').click(function  () {
+      me.submitFn();
+    });
+    // $('.fieldArea .txt').eq(0).focus();
+    $(document).keydown(function(e) {
+      // window.console && console.log(e.keyCode);
+        if (e.keyCode == 115) {//F4提交生成
+          me.submitFn();
+          return false;
+        };
+        if (e.keyCode == 107||e.keyCode == 187) {//按加号或等号添加一行
+           me.addOne();
+          return false;
+        };
+        if (e.keyCode == 109) {//按减号删除最后一行
+          me.delLastOne();
+          return false;
+        };
+    });
+  },
+  submitFn : function(){
+    var me = this;
+    window.console&&console.log('submitFn');
+    var $area = $('.inputbox');
+    var areaVals = $.trim($('.inputbox').val());
+    var defWidth = $('.drop-width').val();
+    var defType = $('.drop-type').val();
+    var defRequired = $('.drop-required').val();
+    // window.console&&console.log(defCol,defType,defRequired);
+    var tempV = '';
+    var itemData = [];
+    var vals = {};
+
+    if (areaVals) {//area里有选项
+
+        tempV = areaVals.split(/[\n,]/);
+        // window.console&&console.log(tempV);
+
+      var formHtml = '';
+      $.each(tempV,function (i,v) {
+        // window.console&&console.log(v);
+        var t = v.split('|');
+        var t0 = t[0].split(':'),t1 = (t[1]||defType).split(':');
+        //col:label:name|type:required
+
+        if(typeof(t0[0]) !== 'string'){
+          console.log('第',i+1,'行没有组件标签，无法新建组件');
+          return;
+        }
+
+        if(/^[01]$/.test(t1[0])){
+          t1.unshift(defType);
+        }
+        let tData = {
+          width : defWidth,
+          label : t0[0],
+          name : t0[1]||('txt'+baseI++),
+          type : t1[0],
+          required : t1[1]?t1[1]*1:defRequired,
+          inputType : inputType,
+          reType : reType,
+          widthType : widthType
+        }
+        itemData.push(tData);
+        formHtml +=template('oneItem',tData);
+      });
+      // window.console&&console.log(formHtml);
+      $('.fieldArea').html(formHtml);
+      me.delFn('.fieldArea');
+      $('.beifbox').val(areaVals);
+      $area.val('');
+
+    }else{//area里没有输入
+
+      vals = $('.soForm').serializeObject();
+      // window.console&&console.log(vals);
+      var len = vals.label.length;
+      for (let i = 0; i < len; i++) {
+        itemData.push({
+          width : vals.width[i] ,
+          label : vals.label[i] ,
+          name : vals.name[i] ,
+          type : vals.type[i] ,
+          required : vals.required[i]*1
+        });
+      }
+
+    }
+
+    var tempHtml = '';
+    var itemLen = itemData.length;
+    for (let i = 0; i < itemLen; i++) {
+        let item = itemData[i];
+        console.log(item);
+        tempHtml +=template('type-'+item.type,item);
+        tempHtml+='\n';
+    }
+    $('#resultList').val(tempHtml);
+
+  },
+  delFn : function (par){
+    $(par).find('.btn-del').click(function(){
+      $(this).parent().remove();
+    });
+  },
+  addOne : function(){
+    var me = this;
+    $('.fieldArea').append(template('oneItem',{
+      width : $('.drop-width').val() ,
+      label : '',
+      name : ('txt'+baseI++),
+      type : $('.drop-type').val(),
+      required : $('.drop-required').val(),
+      inputType : inputType,
+      reType : reType,
+      widthType : widthType
+    }));
+    me.delFn($('.fieldArea').find('.one:last'));
+
+  },
+  delLastOne : function () {
+    $('.fieldArea').find('.one:last').remove();
+  }
+}
+
+
+$(function () {
+  easyAuto.init();
+});
+
+</script>
+
+
+</body>
+</html>
