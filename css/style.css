@@ -12,7 +12,7 @@ a.a-linkHeader:hover{text-decoration: underline;}
 
 .sidebar{position: fixed;width: 350px;top:71px;}
 body.close .sidebar{transform:translateX(-350px)}
-.sidebar-toggle{position: fixed;width:auto;bottom:auto;top:70px;background:#ecf3f7;cursor:hand;cursor:pointer;}
+.sidebar-toggle{position: fixed;width:auto;bottom:auto;top:120px;background:#ecf3f7;cursor:hand;cursor:pointer;}
 @media screen and (max-width: 768px){
     .sidebar-toggle{padding: 15px;left:-50px;}
     .sidebar{left:-350px;}
@@ -46,5 +46,6 @@ section.cover{position: absolute;top:0;right:0;bottom:0;left:0;z-index: 2;backgr
 .markdown-section blockquote{border-left:4px solid #0095de;}
 .sidebar-toggle span{background-color:#0095de;}
 .app-nav a.active, .app-nav a:hover,.markdown-section a,
+.search .search-keyword, .search a:hover,
 .sidebar ul li.active>a{color:#0095de;}
 .markdown-section a:hover{text-decoration: underline;}
