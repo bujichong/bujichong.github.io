@@ -49,3 +49,7 @@ section.cover{position: absolute;top:0;right:0;bottom:0;left:0;z-index: 2;backgr
 .search .search-keyword, .search a:hover,
 .sidebar ul li.active>a{color:#0095de;}
 .markdown-section a:hover{text-decoration: underline;}
+
+.pagination-item .pagination-item-title{font-size:1rem;}
+.pagination-item--next a .pagination-item-title{color:#0095de;opacity:0.7;}
+.pagination-item--next a:hover .pagination-item-title{opacity:1;}

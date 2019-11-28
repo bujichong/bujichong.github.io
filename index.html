@@ -53,11 +53,17 @@
 		homepage: 'home.md',
 		ext: '.md',
 		notFoundPage: 'my404.md',
+		disqus: 'shortname',
 //		coverpage: 'home.md',
 //		onlyCover: true,
 //		alias: {
 //			'/my/1': '/photo/indexGallery.html', // supports regexp
 //		},
+		copyCode: {
+			buttonText : '点击复制',
+			errorText  : '错误',
+			successText: '已复制'
+		},
 		search: {
 			maxAge: 86400000, // 过期时间，单位毫秒，默认一天
 			paths: 'auto', // or 'auto'
@@ -70,6 +76,12 @@
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
   <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
+  <script src="//unpkg.com/docsify/lib/plugins/zoom-image.js"></script>
+  <!-- <script src="//unpkg.com/docsify/lib/plugins/emoji.js"></script> -->
+  <script src="//unpkg.com/docsify/lib/plugins/external-script.js"></script>
+  <script src="//unpkg.com/docsify-copy-code"></script>
+  <script src="//unpkg.com/docsify/lib/plugins/disqus.min.js"></script>
+  <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
   <script>
 	if (typeof navigator.serviceWorker !== 'undefined') {
 	  navigator.serviceWorker.register('sw.js')
