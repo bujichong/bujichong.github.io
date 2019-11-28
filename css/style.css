@@ -51,17 +51,27 @@ section.cover{position: absolute;top:0;right:0;bottom:0;left:0;z-index: 2;backgr
 .indexWrap a.a-link{margin:0 15px;text-decoration: underline;}
 .indexWrap a.a-link:hover{text-decoration: none;}
 
-.markdown-section h1 .anchor span{font-size:2rem;color: #0095de;}
+
 .markdown-section h2{font-size:1.5rem;}
 .markdown-section h3{font-size:1.3rem;}
-.markdown-section h4{font-size:1.15rem;}
-.markdown-section h5,.markdown-section h6{font-size:1rem;}
+.markdown-section h4{font-size:1.1rem;}
+.markdown-section h5,
+.markdown-section h6{font-size:1rem;}
+
+.markdown-section h2 .anchor span{color:#333;}
+.markdown-section h3 .anchor span{color:#2e70b9;}
+.markdown-section h4 .anchor span{color:#6f95be;}
+.markdown-section h1 .anchor span{font-size:2rem;color: #000;}
+.markdown-section h5 .anchor span,
+.markdown-section h6 .anchor span{color:#666;}
 .markdown-section blockquote{border-left:4px solid #0095de;}
 .sidebar-toggle span{background-color:#0095de;}
 .app-nav a.active, .app-nav a:hover,.markdown-section a,
 .search .search-keyword, .search a:hover,
 .sidebar ul li.active>a{color:#0095de;}
 .markdown-section a:hover{text-decoration: underline;}
+
+.markdown-section blockquote{padding:5px 10px 5px 20px;background-color: #eef4fd;color:#5ca3bf;}
 
 .pagination-item .pagination-item-title{font-size:1rem;}
 .pagination-item--next a .pagination-item-title{color:#0095de;opacity:0.7;}
