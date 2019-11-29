@@ -44,6 +44,7 @@
 	* [github 创建密钥](docs\skill\20171130-githubkey.md)
 	* [Git TortoiseGit记住用户密码](docs\skill\20180808-gitSavePull.md)
 	* [Mongodb 安装与卸载](docs\skill\20180809-mongoInstall.md)
+	* [gitbook使用感受和几个需要注意的问题](docs\skill\20191129-gitbookSkill.md)
 	* [sql批量事件处理写法](docs\skill\sqlnote.md)
 	* [如何在windows下修改mysql的root密码](docs\skill\windowspassword.md)
 

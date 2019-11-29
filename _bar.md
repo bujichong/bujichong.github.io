@@ -1,3 +1,4 @@
+* [**[2019-11-29]** gitbook使用感受和几个需要注意的问题](docs\skill\20191129-gitbookSkill.md)
 * [**[2019-11-04]** Express安装](docs\nodejs\20191104-expressInstall.md)
 * [**[2019-10-15]** $.deferred使用常用代码](docs\js\20191015-deferred.md)
 * [**[2019-07-18]** 体温单web版-svg及canvas实现](docs\js\20190718-temsheet.md)
