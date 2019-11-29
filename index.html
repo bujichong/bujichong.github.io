@@ -45,14 +45,14 @@
 		// executeScript: true,
 		// mergeNavbar: true,
 //		externalLinkTarget: '_self',
-		noCompileLinks: ['my\.*','/my/.*'],//不处理链接
+		noCompileLinks: ['my\.*','/my/.*','my/.*'],//不处理链接
 //		routerMode: 'history',
 		maxLevel: 4,
 		auto2top: true,
 //		subMaxLevel: 2,
 		homepage: 'home.md',
-		ext: '.md',
 		notFoundPage: 'my404.md',
+		ext: '.md',
 		// disqus: 'shortname',
 //		coverpage: 'home.md',
 //		onlyCover: true,
@@ -67,8 +67,8 @@
 		search: {
 			maxAge: 86400000, // 过期时间，单位毫秒，默认一天
 			paths: 'auto', // or 'auto'
-			placeholder: '请输入要搜索的文字...',
-			noData: '找不到结果',
+			placeholder: '请输入搜索字段...',
+			noData: '啥，你搜的啥，找不到噢...',
 			// 搜索标题的最大程级, 1 - 6
 			depth: 2
 		}
