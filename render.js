@@ -1,6 +1,10 @@
 let fs = require('fs');
 let path = require('path');
-let rPath = './docs';
+
+let rPath = './docs';//文档目录
+let navMd = '_nav.md';//写入nav文档
+let barMd = '_bar.md';//写入bar文档
+
 let renderFn = {
     filesList : [],
     barArr : [],
@@ -15,7 +19,7 @@ let renderFn = {
         let me = this;
         me.toNavList(me.filesList);//得出nav目录list navTxt
         console.log(me.navTxt);
-        fs.writeFile("bar.md",me.navTxt, function(err){//写入 nav.md
+        fs.writeFile(navMd,me.navTxt, function(err){//写入 nav.md
             if(err) {
                 return console.log("写入导航失败", err);
             }
@@ -34,7 +38,7 @@ let renderFn = {
             barTxt +=v.title;
         });
         console.log(barTxt);
-        fs.writeFile("side.md",barTxt, function(err){//写入 side.md
+        fs.writeFile(barMd,barTxt, function(err){//写入 side.md
             if(err) {
                 return console.log("写入侧边栏失败", err);
             }
@@ -104,11 +108,5 @@ let renderFn = {
     }
 }
 
-
 //执行
 renderFn.init();
-
-
-
-// * [第一篇](first)
-// * [typoraHavenStyle](color/typoraHavenStyle)

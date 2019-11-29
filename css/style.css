@@ -30,6 +30,9 @@ body.close .sidebar{transform:translateX(-350px)}
     .sidebar-toggle{padding: 15px;left:-50px;}
     .sidebar{left:-350px;}
 }
+.sidebar .sidebar-nav{line-height:1.8em;}
+.sidebar li{margin:0 0;}
+.sidebar ul li:nth-child(5n+0){margin-bottom:1.8em;}
 .sidebar ul li a{color:#444;}
 .sidebar ul li.active>a{border-right-width:5px;}
 .sidebar ul li strong{color:#999;margin: 0 10px 0 0;}
@@ -61,7 +64,7 @@ section.cover{position: absolute;top:0;right:0;bottom:0;left:0;z-index: 2;backgr
 .markdown-section h6{font-size:1rem;}
 
 .markdown-section h2 .anchor span{color:#333;}
-.markdown-section h3 .anchor span{color:#2e70b9;}
+.markdown-section h3 .anchor span{color:#066c9e;}
 .markdown-section h4 .anchor span{color:#6f95be;}
 .markdown-section h1 .anchor span{font-size:2rem;color: #000;}
 .markdown-section h5 .anchor span,
