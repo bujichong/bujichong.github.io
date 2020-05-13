@@ -41,6 +41,7 @@ footer{position: fixed;right:10px;bottom:0;padding:5px;text-align: center;z-inde
 footer:hover{opacity:1.0;}
 footer a{color:#3a7bce;}
 .content{top:0px;padding-top:20px;left:350px;overflow: auto;min-height:300px;}
+.content img{width:100%;max-width:1000px;}
 /* section.cover{height:auto;} */
 
 /* index */
@@ -69,11 +70,9 @@ section.cover{position: absolute;top:0;right:0;bottom:0;left:0;z-index: 2;backgr
 .markdown-section h1 .anchor span{font-size:2rem;color: #000;}
 .markdown-section h5 .anchor span,
 .markdown-section h6 .anchor span{color:#666;}
-.markdown-section blockquote{border-left:4px solid #0095de;}
-.sidebar-toggle span{background-color:#0095de;}
-.app-nav a.active, .app-nav a:hover,.markdown-section a,
+/* .app-nav a.active, .app-nav a:hover,.markdown-section a,
 .search .search-keyword, .search a:hover,
-.sidebar ul li.active>a{color:#0095de;}
+.sidebar ul li.active>a{color:#0095de;} */
 .markdown-section a:hover{text-decoration: underline;}
 
 .markdown-section blockquote{padding:5px 10px 5px 20px;background-color: #eef4fd;color:#5ca3bf;}

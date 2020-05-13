@@ -32,37 +32,48 @@
   <!-- footer -->
 
 
-  <script>
-    window.$docsify = {
-//		name: '不羁虫',
-//		nameLink: '/',
-//		logo: '/images/logo.png',
-//		themeColor: '#3F51B5',
+<script>
+	window.$docsify = {
+		// name: '不羁虫',
+		// nameLink: '/',
+		// logo: '/images/logo.png',
+		// themeColor: '#3F51B5',
 		repo: '',
 		loadSidebar: '_bar.md',
 		loadNavbar: '_nav.md',
 		autoHeader: true,
 		// executeScript: true,
 		// mergeNavbar: true,
-//		externalLinkTarget: '_self',
-		noCompileLinks: ['my\.*','/my/.*','my/.*'],//不处理链接
-//		routerMode: 'history',
+		// externalLinkTarget: '_self',
+		noCompileLinks: ['my\.*', '/my/.*', 'my/.*'], //不处理链接
+		// routerMode: 'history',
 		maxLevel: 4,
 		auto2top: true,
-//		subMaxLevel: 2,
+		// subMaxLevel: 2,
 		homepage: 'home.md',
 		notFoundPage: 'my404.md',
 		ext: '.md',
 		// disqus: 'shortname',
-//		coverpage: 'home.md',
-//		onlyCover: true,
-//		alias: {
-//			'/my/1': '/photo/indexGallery.html', // supports regexp
-//		},
+		// coverpage: 'home.md',
+		// onlyCover: true,
+		// alias: {
+		// '/my/1': '/photo/indexGallery.html', // supports regexp
+		// },
 		copyCode: {
-			buttonText : '点击复制',
-			errorText  : '错误',
+			buttonText: '点击复制',
+			errorText: '错误',
 			successText: '已复制'
+		},
+		themeColor: '#0095de',
+		themeable: {
+			readyTransition : true, // default
+			responsiveTables: true  // default
+		},
+		// showLevel: true,
+		noEmoji: true,
+		pagination: {
+			previousText: '上一篇',
+			nextText: '下一篇',
 		},
 		search: {
 			maxAge: 86400000, // 过期时间，单位毫秒，默认一天
@@ -72,20 +83,19 @@
 			// 搜索标题的最大程级, 1 - 6
 			depth: 2
 		}
-    }
-  </script>
-  <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
-  <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
-  <script src="//unpkg.com/docsify/lib/plugins/zoom-image.js"></script>
-  <!-- <script src="//unpkg.com/docsify/lib/plugins/emoji.js"></script> -->
-  <script src="//unpkg.com/docsify/lib/plugins/external-script.js"></script>
-  <script src="//unpkg.com/docsify-copy-code"></script>
-  <!-- <script src="//unpkg.com/docsify/lib/plugins/disqus.min.js"></script> -->
-  <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
-  <script>
-	if (typeof navigator.serviceWorker !== 'undefined') {
-	  navigator.serviceWorker.register('sw.js')
 	}
-  </script>
+</script>
+<script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+<script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+<script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
+<script src="//unpkg.com/docsify/lib/plugins/zoom-image.js"></script>
+<script src="//unpkg.com/docsify/lib/plugins/external-script.js"></script>
+<script src="//unpkg.com/docsify-copy-code"></script>
+<script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
+<script>
+if (typeof navigator.serviceWorker !== 'undefined') {
+	navigator.serviceWorker.register('sw.js')
+}
+</script>
 </body>
 </html>
