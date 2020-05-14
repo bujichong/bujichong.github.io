@@ -25,14 +25,16 @@ tags:
 ```
 
 ## CSS
+
 - CSS 部分，就是整个的实现了，先给外盒和底一个固定宽高
+
 ```css
 .boxWrap{position: relative;width:200px;height:200px;margin:200px;}
 .bottom{width:200px;height:200px;background-color:rgb(45, 45, 163);}
 ```
 
-- 四个侧面的公共样式
-通过border宽度不同来实现梯形。
+- 四个侧面的公共样式 通过border宽度不同来实现梯形。
+
 ```css
 .trapezoid{
 position: absolute;
@@ -50,6 +52,7 @@ transition: transform 200ms cubic-bezier(0.68, -0.55, 0.265, 1.55) 10ms;
 ```
 
 - 单个面的样式，比如上边
+
 ```css
 .trapezoid-t{
 top:-100px;left:0;/*将边定义到bottom的上部*/
@@ -59,6 +62,7 @@ border-bottom-color: #ebd725;/*梯形单独定义颜色*/
 ```
 
 - 鼠标经过盒子后的样式
+
 ```css
 .boxWrap:hover .trapezoid-t{
 -webkit-transform: rotateZ(0deg) rotateX(0deg);transform:rotateZ(0deg) rotateX(0deg);
