@@ -101,8 +101,9 @@ section.cover{position: absolute;top:0;right:0;bottom:0;left:0;z-index: 2;backgr
 .markdown-section ol p, .markdown-section ul p{margin:0.5rem 0;}
 .markdown-section code, .markdown-section pre,
 .markdown-section pre>code{ background-color: #2d3035; color:#ccdbe2;border-radius:0.4rem; -ms-border-radius:0.4rem; -o-border-radius:0.4rem; }
-.markdown-section code{background-color: #563445;color:#fbe6ed;padding:0px 8px;display: -moz-inline-stack;display:inline-block;*display:inline;*zoom:1;}
-.markdown-section code:hover{background-color: #2b1922;}
+.markdown-section code{background-color: #524f50;color:#e7e6f1;padding:0px 8px;display: -moz-inline-stack;display:inline-block;*display:inline;*zoom:1;}
+.markdown-section pre:hover,.markdown-section code:hover{background-color: #1d1d1f;}
+.docsify-copy-code-button{color:#e96900;}
 
 .token.punctuation{color:#ddd;}
 .token.function, .token.keyword{color:#ffb970;}
