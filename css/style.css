@@ -89,7 +89,9 @@ section.cover{position: absolute;top:0;right:0;bottom:0;left:0;z-index: 2;backgr
 .sidebar ul li.active>a{color:#0095de;} */
 .markdown-section a:hover{text-decoration: none;color:#d6417f;}
 
-.markdown-section blockquote{padding:5px 10px 5px 20px;background-color: #eef8fd;color:#0a82d8;}
+.markdown-section blockquote{ padding:5px 10px 5px 20px; background-color: #e6f6ff; color:#0a82d8;
+  border-radius:0 0.4rem 0.4rem 0; -webkit-border-radius:0 0.4rem 0.4rem 0; -moz-border-radius:0 0.4rem 0.4rem 0; -ms-border-radius:0 0.4rem 0.4rem 0; -o-border-radius:0 0.4rem 0.4rem 0;
+  box-shadow:1px 1px 2px inset #c9d7df;-webkit-box-shadow:1px 1px 2px inset #c9d7df;-moz-box-shadow:1px 1px 2px inset #c9d7df;}
 .markdown-section blockquote:hover{background-color: #ebf2ff;}
 
 .pagination-item .pagination-item-title{font-size:1rem;}
@@ -101,17 +103,32 @@ section.cover{position: absolute;top:0;right:0;bottom:0;left:0;z-index: 2;backgr
   padding:1rem 1rem 1rem 2.6rem;
   background-color: #eff1f9;
   color:#333;
+  border-radius:0 0.4rem 0.4rem;
+  -webkit-border-radius:0 0.4rem 0.4rem;
+  -moz-border-radius:0 0.4rem 0.4rem;
+  -ms-border-radius:0 0.4rem 0.4rem;
+  -o-border-radius:0 0.4rem 0.4rem;
+  box-shadow:1px 1px 2px inset #c9d7df;
+  -webkit-box-shadow:1px 1px 2px inset #c9d7df;
+  -moz-box-shadow:1px 1px 2px inset #c9d7df;
+}
+.markdown-section blockquote:hover,
+.markdown-section ol:hover, .markdown-section ul:hover{
+  box-shadow:1px 1px 3px inset #a8b9c1;
+  -webkit-box-shadow:1px 1px 3px inset #a8b9c1;
+  -moz-box-shadow:1px 1px 3px inset #a8b9c1;
 }
 .markdown-section strong{color:#e65601;}
 /* .markdown-section ol:hover, .markdown-section ul:hover{background-color: #eff1f9;} */
 .markdown-section ol li, .markdown-section ul li,
 .markdown-section ol p, .markdown-section ul p{margin:0.5rem 0;}
 .markdown-section code, .markdown-section pre,
-.markdown-section pre>code{ background-color: #272a2e; color:#ccdbe2;border-radius:0.4rem; -ms-border-radius:0.4rem; -o-border-radius:0.4rem; }
+.markdown-section pre>code{ background-color: #272a2e; color:#ccdbe2; font-family: Roboto Mono,Monaco,"Microsoft YaHei","微软雅黑"; border-radius:0 0.4rem 0.4rem; -webkit-border-radius:0 0.4rem 0.4rem; -moz-border-radius:0 0.4rem 0.4rem; -ms-border-radius:0 0.4rem 0.4rem; -o-border-radius:0 0.4rem 0.4rem; }
 .markdown-section code{background-color: #524f50;color:#e7e6f1;padding:0px 8px;display: -moz-inline-stack;display:inline-block;*display:inline;*zoom:1;}
 .markdown-section pre:hover,.markdown-section pre:hover code,.markdown-section code:hover{background-color: #1d1d1f;}
 
 .docsify-copy-code-button{background:#e83d7c!important;}
+
 
 .token.punctuation{color:#ddd;}
 .token.function, .token.keyword{color:#ffb970;}
