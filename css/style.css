@@ -15,7 +15,7 @@ a{color:#444;text-decoration: none;}
 header{height:70px;border-bottom:1px solid #b4dae8;position: fixed;top:0;left:0;right:0;background:#fff;}
 .header-logo{float: left;width:50px;height:50px;-moz-border-radius:200px;-webkit-border-radius:200px;border-radius:200px;overflow: hidden;margin:9px 0 0 15px;}
 .h1-header{float: left;font-size:20px;line-height:70px;margin:0 0 0 10px;}
-a.a-linkHeader{float: left;font-size:16px;line-height:65px;margin:5px 0 0 40px;color:#e66517;font-weight: bold;}
+a.a-linkHeader{float: left;font-size:16px;line-height:65px;margin:5px 0 0 40px;color:#e83d7c;font-weight: bold;}
 a.a-linkHeader:hover{text-decoration: underline;}
 
 #pageNav{position: fixed;top:0;right:0px;right:0;margin:0;padding:18px;z-index:1;background-color: #fff;}
@@ -35,6 +35,8 @@ body.close .sidebar{transform:translateX(-350px)}
 .sidebar .search .input-wrap{position: fixed;left:0px;top:65px;padding:8px 8px 5px 5px;width:459px;bottom:0;height:55px;background-color: #fff;border-bottom:1px solid #eee;}
 .search .results-panel{background-color: #f1f6ff;padding:55px 6px 0px;}
 .search .matching-post{border-bottom:1px dotted #ccd1e2!important;}
+.search .search-keyword, .search a:hover{color:#e83d7c;}
+.search p.empty{padding-bottom:1.5em;color:#de759c;font-size:1.2em;}
 /* .sidebar .search:nth-child(2){display: none;} */
 .sidebar li{margin:0 0;}
 .sidebar ul{margin-left:0;}
@@ -92,7 +94,6 @@ section.cover{position: absolute;top:0;right:0;bottom:0;left:0;z-index: 2;backgr
 .pagination-item--next a .pagination-item-title{color:#0095de;opacity:0.7;}
 .pagination-item--next a:hover .pagination-item-title{opacity:1;}
 
-.search p.empty{color:#e87f3d;}
 
 .markdown-section ol, .markdown-section ul{
   padding:1rem 1rem 1rem 2.6rem;
