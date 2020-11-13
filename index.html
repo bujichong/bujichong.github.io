@@ -31,6 +31,8 @@
 <nav id="pageNav"></nav>
   <!-- footer -->
 
+<div id="backTop">返回<br />顶部</div>
+
 
 <script>
 	window.$docsify = {
@@ -84,6 +86,14 @@
 			depth: 2
 		}
 	}
+
+	document.getElementById('backTop').onClick = function () {
+		console.log(1);
+		var $conetent = document.getElementByClassName('.content');
+		console.log($conetent);
+		$conetent.scrollTop = 0;
+	}
+
 </script>
 <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
 <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>

@@ -39,6 +39,9 @@
 	* [绿化nodeJs](docs\nodejs\20190531-nodeConfig.md)
 	* [Express安装](docs\nodejs\20191104-expressInstall.md)
 
+* react
+	* [React Native打包apk超详细步骤](docs\react\20201113-nativebulidapk.md)
+
 * skill
 	* [利用CloudXNS将域名解析到不同服务器](docs\skill\20171130-CloudXNS.md)
 	* [github 创建密钥](docs\skill\20171130-githubkey.md)

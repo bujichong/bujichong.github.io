@@ -56,6 +56,8 @@ footer a{color:#3a7bce;}
 .markdown-section{width:100%;max-width:1000px;margin:0 auto 0 0;padding:2rem;}
 /* section.cover{height:auto;} */
 
+#backTop{position: absolute;right:0;bottom:40px;background-color:#e83d7c;color:#fff;width:50px;line-height:20px;padding:4px 0;text-align:center;font-size:12px;cursor:hand;cursor:pointer;}
+
 /* index */
 section.cover{position: absolute;top:0;right:0;bottom:0;left:0;z-index: 2;background-color:#ddeaff;}
 /* section.cover{position: fixed;top:70px;right:0;bottom:0;left:350px;} */
