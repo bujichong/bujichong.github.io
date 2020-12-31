@@ -35,6 +35,7 @@
 
 * mock
 	* [常用mock写法](docs\mock\20201231-mockDemo.md)
+	* [yapi安装](docs\mock\20201231-yapiInstall.md)
 
 * nodejs
 	* [nodeJs批量上传文件到七牛](docs\nodejs\20171129-nodeJsQiniu.md)
