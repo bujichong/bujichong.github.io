@@ -19,7 +19,10 @@ Yapi需要 **nodejs(npm)** 和 **MongoDB**
 ```javascript
 npm install -g yapi-cli --registry https://registry.npm.taobao.org
 ```
-- 注意node的版本要低于 13，不然后面安装配置会报错，安装完成后运行
+- 注意node的版本要低于 13（只安装配置时需要，后面可切换回最新版本），不然后面安装配置会报错，
+
+
+安装完成后运行
 ```
 yapi server
 ```
