@@ -33,6 +33,9 @@
 	* [发呆曲目](docs\life\20171103.md)
 	* [来来来，教教你怎么考科目三，我的科目三完整笔记](docs\life\kemu3.md)
 
+* mock
+	* [常用mock写法](docs\mock\20201231-mockDemo.md)
+
 * nodejs
 	* [nodeJs批量上传文件到七牛](docs\nodejs\20171129-nodeJsQiniu.md)
 	* [nodeJs NODE_PATH环境变量设置](docs\nodejs\20190529-nodepath.md)

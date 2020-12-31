@@ -1,3 +1,4 @@
+* [**[2020-12-31]** 常用mock写法](docs\mock\20201231-mockDemo.md)
 * [**[2020-11-13]** React Native打包apk超详细步骤](docs\react\20201113-nativebulidapk.md)
 * [**[2019-11-29]** gitbook使用感受和几个需要注意的问题](docs\skill\20191129-gitbookSkill.md)
 * [**[2019-11-04]** Express安装](docs\nodejs\20191104-expressInstall.md)
