@@ -42,6 +42,7 @@
 	* [nodeJs NODE_PATH环境变量设置](docs\nodejs\20190529-nodepath.md)
 	* [绿化nodeJs](docs\nodejs\20190531-nodeConfig.md)
 	* [Express安装](docs\nodejs\20191104-expressInstall.md)
+	* [安装node-sass正确姿势](docs\nodejs\20210315-npmnodesass.md)
 
 * react
 	* [React Native打包apk超详细步骤](docs\react\20201113-nativebulidapk.md)
