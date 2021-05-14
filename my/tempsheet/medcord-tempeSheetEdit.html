@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>体温单 - 爱尔医院</title>
+<link rel="stylesheet" type="text/css" media="all" href="js/lib/easyui/themes/gray/easyui.css" />
+<link type="text/css" rel="stylesheet" href="css/easy-plus.css" />
+<link type="text/css" rel="stylesheet" href="css/socss.css" />
+<link type="text/css" rel="stylesheet" href="css/plugins.css" />
+<link type="text/css" rel="stylesheet" href="css/base.css" />
+<!-- <link type="text/css" rel="stylesheet" href="css/tempsheet.css" /> -->
+<style type="text/css">
+/* input.txt{width:115px;} */
+.item-on{border-left:0;border-right:0;}
+.table-list-a th{padding:2px 3px;border-color:#d9d9d9;font-weight: bold;}
+.table-list-a td{border-color:#eee;}
+.table-list-a .tr-head td{border-color:#d9d9d9;color:#0063e2;font-weight: bold;}
+</style>
+</head>
+<body>
+<form class="soform form-validate form-tempOne form-enter" method="post" action="json/true.js">
+<table class="table-list-a" cellspacing="0" cellpadding="0">
+    <tr class="tr-head">
+        <th width="25%">床号</th>
+        <td colspan="2"><span class="s-data data-bedNumber">7</span>床</td>
+        <th>姓名</th>
+        <td><span class="s-data data-patientName">夏忠群</span></td>
+        <th>入院时间</th>
+        <td><span class="s-date data-inpTime">2019-02-25 10:19</span></td>
+    </tr>
+    <tr class="tr-head">
+        <th>日期</th>
+        <td colspan="2"><span class="s-date data-record-recordDate">2019-02-27</span></td>
+        <th>住院日数</th>
+        <td><span class="s-date data-record-inpDay"></span></td>
+        <th>手术后日数</th>
+        <td><span class="s-date data-record-surgeryDay"></span></td>
+    </tr>
+    <tr class="tr-head">
+        <th>时间</th>
+        <th>4</th>
+        <th>8</th>
+        <th>12</th>
+        <th>16</th>
+        <th>20</th>
+        <th>24</th>
+    </tr>
+    <tr>
+        <th>表单注释</th>
+        <td><select class="drop drop-formComment easyui-combobox" name="formComment-1" style="width:115px;" data-options="clearIcon:true,limitToList:false,reversed:false">
+            <option value=""></option>
+            <option value="入院十分十秒">入院十分十秒</option>
+            <option value="选项2">选项2</option>
+        </select>
+        </td>
+        <td><select class="drop drop-formComment easyui-combobox" name="formComment-2" style="width:115px;" data-options="clearIcon:true,limitToList:false,reversed:false">
+            <option value=""></option>
+            <option value="入院十分十秒">入院十分十秒</option>
+            <option value="选项2">选项2</option>
+        </select></td>
+        <td><select class="drop drop-formComment easyui-combobox" name="formComment-3" style="width:115px;" data-options="clearIcon:true,limitToList:false,reversed:false">
+            <option value=""></option>
+            <option value="入院十分十秒">入院十分十秒</option>
+            <option value="选项2">选项2</option>
+        </select>
+        </td>
+        <td><select class="drop drop-formComment easyui-combobox" name="formComment-4" style="width:115px;" data-options="clearIcon:true,limitToList:false,reversed:false">
+            <option value=""></option>
+            <option value="入院十分十秒">入院十分十秒</option>
+            <option value="选项2">选项2</option>
+        </select></td>
+        <td><select class="drop drop-formComment easyui-combobox" name="formComment-5" style="width:115px;" data-options="clearIcon:true,limitToList:false,reversed:false">
+            <option value=""></option>
+            <option value="入院十分十秒">入院十分十秒</option>
+            <option value="选项2">选项2</option>
+        </select>
+        </td>
+        <td><select class="drop drop-formComment easyui-combobox" name="formComment-6" style="width:115px;" data-options="clearIcon:true,limitToList:false,reversed:false">
+            <option value=""></option>
+            <option value="入院十分十秒">入院十分十秒</option>
+            <option value="选项2">选项2</option>
+        </select></td>
+    </tr>
+    <tr>
+        <th>体温类型</th>
+        <td><select class="drop drop-tempKind easyui-combobox" name="tempKind-1" style="width:115px;">
+            <option value="腋温">腋温</option>
+            <option value="口温">口温</option>
+            <option value="肛温">肛温</option>
+        </select></td>
+        <td><select class="drop drop-tempKind easyui-combobox" name="tempKind-2" style="width:115px;">
+            <option value="腋温">腋温</option>
+            <option value="口温">口温</option>
+            <option value="肛温">肛温</option>
+        </select></td>
+        <td><select class="drop drop-tempKind easyui-combobox" name="tempKind-3" style="width:115px;">
+            <option value="腋温">腋温</option>
+            <option value="口温">口温</option>
+            <option value="肛温">肛温</option>
+        </select></td>
+        <td><select class="drop drop-tempKind easyui-combobox" name="tempKind-4" style="width:115px;">
+            <option value="腋温">腋温</option>
+            <option value="口温">口温</option>
+            <option value="肛温">肛温</option>
+        </select></td>
+        <td><select class="drop drop-tempKind easyui-combobox" name="tempKind-5" style="width:115px;">
+            <option value="腋温">腋温</option>
+            <option value="口温">口温</option>
+            <option value="肛温">肛温</option>
+        </select></td>
+        <td><select class="drop drop-tempKind easyui-combobox" name="tempKind-6" style="width:115px;">
+            <option value="腋温">腋温</option>
+            <option value="口温">口温</option>
+            <option value="肛温">肛温</option>
+        </select></td>
+    </tr>
+    <tr>
+        <th>体温</th>
+        <td><input class="txt txt-n txt-temp" type="text" name="temperature-1" style="width:115px;" value="" /></td>
+        <td><input class="txt txt-n txt-temp" type="text" name="temperature-2" style="width:115px;" value="" /></td>
+        <td><input class="txt txt-n txt-temp" type="text" name="temperature-3" style="width:115px;" value="" /></td>
+        <td><input class="txt txt-n txt-temp" type="text" name="temperature-4" style="width:115px;" value="" /></td>
+        <td><input class="txt txt-n txt-temp" type="text" name="temperature-5" style="width:115px;" value="" /></td>
+        <td><input class="txt txt-n txt-temp" type="text" name="temperature-6" style="width:115px;" value="" /></td>
+    </tr>
+    <tr>
+        <th>物理降温</th>
+        <td><input class="txt txt-n txt-physic" type="text" name="physicalCooling-1" style="width:115px;" value="" /></td>
+        <td><input class="txt txt-n txt-physic" type="text" name="physicalCooling-2" style="width:115px;" value="" /></td>
+        <td><input class="txt txt-n txt-physic" type="text" name="physicalCooling-3" style="width:115px;" value="" /></td>
+        <td><input class="txt txt-n txt-physic" type="text" name="physicalCooling-4" style="width:115px;" value="" /></td>
+        <td><input class="txt txt-n txt-physic" type="text" name="physicalCooling-5" style="width:115px;" value="" /></td>
+        <td><input class="txt txt-n txt-physic" type="text" name="physicalCooling-6" style="width:115px;" value="" /></td>
+    </tr>
+    <tr>
+        <th>脉搏</th>
+        <td><input class="txt txt-n txt-pulse" type="text" name="pulse-1" style="width:115px;" value="" /></td>
+        <td><input class="txt txt-n txt-pulse" type="text" name="pulse-2" style="width:115px;" value="" /></td>
+        <td><input class="txt txt-n txt-pulse" type="text" name="pulse-3" style="width:115px;" value="" /></td>
+        <td><input class="txt txt-n txt-pulse" type="text" name="pulse-4" style="width:115px;" value="" /></td>
+        <td><input class="txt txt-n txt-pulse" type="text" name="pulse-5" style="width:115px;" value="" /></td>
+        <td><input class="txt txt-n txt-pulse" type="text" name="pulse-6" style="width:115px;" value="" /></td>
+    </tr>
+    <tr>
+        <th>心率</th>
+        <td><input class="txt txt-n txt-heartRate" type="text" name="heartRate-1" style="width:115px;" value="" /></td>
+        <td><input class="txt txt-n txt-heartRate" type="text" name="heartRate-2" style="width:115px;" value="" /></td>
+        <td><input class="txt txt-n txt-heartRate" type="text" name="heartRate-3" style="width:115px;" value="" /></td>
+        <td><input class="txt txt-n txt-heartRate" type="text" name="heartRate-4" style="width:115px;" value="" /></td>
+        <td><input class="txt txt-n txt-heartRate" type="text" name="heartRate-5" style="width:115px;" value="" /></td>
+        <td><input class="txt txt-n txt-heartRate" type="text" name="heartRate-6" style="width:115px;" value="" /></td>
+    </tr>
+    <tr>
+        <th>疼痛指数</th>
+        <td><input class="txt txt-n txt-pain" type="text" name="painScore-1" style="width:115px;" value="" /></td>
+        <td><input class="txt txt-n txt-pain" type="text" name="painScore-2" style="width:115px;" value="" /></td>
+        <td><input class="txt txt-n txt-pain" type="text" name="painScore-3" style="width:115px;" value="" /></td>
+        <td><input class="txt txt-n txt-pain" type="text" name="painScore-4" style="width:115px;" value="" /></td>
+        <td><input class="txt txt-n txt-pain" type="text" name="painScore-5" style="width:115px;" value="" /></td>
+        <td><input class="txt txt-n txt-pain" type="text" name="painScore-6" style="width:115px;" value="" /></td>
+    </tr>
+    <tr>
+        <th>呼吸</th>
+        <td><input class="txt txt-n txt-breathe" type="text" name="breathe-1" style="width:115px;" value="" /></td>
+        <td><input class="txt txt-n txt-breathe" type="text" name="breathe-2" style="width:115px;" value="" /></td>
+        <td><input class="txt txt-n txt-breathe" type="text" name="breathe-3" style="width:115px;" value="" /></td>
+        <td><input class="txt txt-n txt-breathe" type="text" name="breathe-4" style="width:115px;" value="" /></td>
+        <td><input class="txt txt-n txt-breathe" type="text" name="breathe-5" style="width:115px;" value="" /></td>
+        <td><input class="txt txt-n txt-breathe" type="text" name="breathe-6" style="width:115px;" value="" /></td>
+    </tr>
+    <tr>
+        <th>血压(mmHg)</th>
+        <td colspan="2"><div class="item-group">
+            <span class="fl wp-40"><input class="txt txt-n txt-diastolic item-l" type="text" name="diastolic-1" style="width:100%;" value="" /></span>
+            <span class="fl item-on wp-20">/</span>
+            <span class="fl wp-40"><input class="txt txt-n txt-systolic item-r" type="text" name="systolic-1" style="width:100%;" value="" /></span>
+        </td>
+
+        <td colspan="2"><div class="item-group">
+            <span class="fl wp-40"><input class="txt txt-n txt-diastolic item-l" type="text" name="diastolic-2" style="width:100%;" value="" /></span>
+            <span class="fl item-on wp-20">/</span>
+            <span class="fl wp-40"><input class="txt txt-n txt-systolic item-r" type="text" name="systolic-2" style="width:100%;" value="" /></span>
+        </td>
+
+        <td colspan="2"><div class="item-group">
+            <span class="fl wp-40"><input class="txt txt-n txt-diastolic item-l" type="text" name="diastolic-3" style="width:100%;" value="" /></span>
+            <span class="fl item-on wp-20">/</span>
+            <span class="fl wp-40"><input class="txt txt-n txt-systolic item-r" type="text" name="systolic-3" style="width:100%;" value="" /></span>
+        </td>
+    </tr>
+    <tr>
+        <th>体重(kg)</th>
+        <td colspan="6"><input class="txt txt-t txt-record-weight" type="text" name="weight" value="" /></td>
+    </tr>
+    <tr>
+        <th>身高(cm)</th>
+        <td colspan="6"><input class="txt txt-t txt-record-height" type="text" name="height" value="" /></td>
+    </tr>
+    <!-- <tr>
+        <th>大便(次)</th>
+        <td colspan="6"><input class="txt txt-t txt-stoolFrequency" type="text" name="stoolFrequency-1" value="" /></td>
+    </tr> -->
+    <tr>
+        <th>过敏药物</th>
+        <td colspan="6"><input class="txt txt-t txt-record-allergyMedication" type="text" name="allergyMedication" value="" /></td>
+    </tr>
+    <tr>
+        <th><input class="txt txt-dynamicFiled1" type="text" name="dynamicFiled1" value="" /></th>
+        <td colspan="6"><input class="txt txt-t txt-record-dynamic1" type="text" name="dynamic1" value="" /></td>
+    </tr>
+    <tr>
+        <th><input class="txt txt-dynamicFiled2" type="text" name="dynamicFiled2" value="" /></th>
+        <td colspan="6"><input class="txt txt-t txt-record-dynamic2" type="text" name="dynamic2" value="" /></td>
+    </tr>
+</table>
+
+<p class="row-btn">
+    <input type="button" class="btn btn-primary btn-save" name="btnSubmit" value="保 存" />
+    <!-- <input type="reset" class="btn btn-reset" name="btnReset" value="清空" /> -->
+    <input type="button" class="btn btn-cancel" name="btnCancel" value="取 消" />
+  </p>
+
+</form>
+</body>
+
+
+<script type="text/javascript" src="js/require.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript">
+function getQueryString(name) {
+    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) {
+        return unescape(r[2]);
+    }
+    return null;
+}
+requirejs(['pub'],function () {
+
+    var temEdit  = {
+        init : function (){
+            var me = this;
+            me.initCells();
+            me.ajaxData();
+            me.sendSaveData();
+        },
+        initCells : function (){
+            $('.txt-n').numberbox();
+        },
+        data : null,
+        ajaxData : function (){
+            var me = this;
+            var date = getQueryString('date');
+            $ajax.post({
+                url : 'json/bodytemperature.js',
+                data : {date:date},
+                success : function (rst){
+                    me.initData(rst.data);
+                    me.data = rst.data;
+                }
+            });
+        },
+        initData : function (data){
+            // window.console&&console.log(data);
+            var record = data.record[0];
+            var htmlVals = ['bedNumber','inpTime','patientName','record-recordDate','record-inpDay','record-surgeryDay'];//直接赋值的html
+            $.each(htmlVals,function (i,v){
+                var o = v.split('-');
+                if(o[1]){
+                    $('.data-'+v).html(data[o[0]][0][o[1]]);
+                }else{
+                    $('.data-'+v).html(data[v]);
+                }
+            });
+
+            var txtVals = ['dynamicFiled1','dynamicFiled2','record-height','record-weight','record-allergyMedication','record-dynamic1','record-dynamic2'];//直接赋值的txt
+            $.each(txtVals,function (i,v){
+                var o = v.split('-');
+                if(o[1]){
+                    $('.txt-'+v).val(data[o[0]][0][o[1]]);
+                }else{
+                    $('.txt-'+v).val(data[v]);
+                }
+            });
+
+            var formComment =  record.formComment;//表单注释
+            var temperature =  record.temperature;//体温类型 ,体温
+            var physicalCooling =  record.physicalCooling;//物理降温
+            var pulse =  record.pulse;//脉搏
+            var breathe =  record.breathe;//呼吸
+            var heartRate =  record.heartRate;//心率
+            var painScore =  record.painScore;//疼痛指数
+            var bloodPressure =  record.bloodPressure;//血压
+
+            $.each(formComment,function (k,v){//表单注释
+                $('.drop-formComment').eq(k-1).combobox('setValue',v);
+            });
+
+            $.each(temperature,function (k,v){
+                $('.drop-tempKind').eq(k-1).combobox('setValue',v.name);//体温类型
+                $('.txt-temp').eq(k-1).numberbox('setValue',v.value);//体温
+            });
+
+            $.each(physicalCooling,function (k,v){//物理降温
+                $('.txt-physic').eq(k-1).numberbox('setValue',v);
+            });
+
+            $.each(pulse,function (k,v){//脉搏
+                $('.txt-pulse').eq(k-1).numberbox('setValue',v);
+            });
+
+            $.each(breathe,function (k,v){//呼吸
+                $('.txt-breathe').eq(k-1).numberbox('setValue',v);
+            });
+
+            $.each(heartRate,function (k,v){
+                $('.txt-heartRate').eq(k-1).numberbox('setValue',v);
+            });
+
+            $.each(painScore,function (k,v){//疼痛指数
+                $('.txt-pain').eq(k-1).numberbox('setValue',v);
+            });
+
+            $.each(bloodPressure,function (k,v){//血压
+                $('.txt-diastolic').eq(k-1).numberbox('setValue',v.diastolic);
+                $('.txt-systolic').eq(k-1).numberbox('setValue',v.systolic);
+            });
+
+            // $('.txt-weight').val(record.weight);
+            // $('.txt-height').val(record.height);
+            // $('.txt-allergyMedication').val(record.allergyMedication);
+
+        },
+        sendSaveData : function (){
+            var me = this;
+            $('.btn-save').click(function (){
+                // window.console&&console.log(me.data);
+                var $form = $('.form-tempOne');
+                if($form.form('validate')){
+                    var vals = $form.sovals();
+                    window.console&&console.log(vals);
+
+                    me.data.dynamicFiled1 = vals.dynamicFiled1;//动态1标题
+                    me.data.dynamicFiled2 = vals.dynamicFiled2;//动态2标题
+
+                    var sData = me.data.record[0];
+
+                    sData.allergyMedication = vals.allergyMedication;//过敏药物
+                    sData.dynamic1 = vals.dynamic1;//动态1值
+                    sData.dynamic2 = vals.dynamic2;//动态2值
+                    sData.height = vals.height;//身高(cm)
+                    sData.weight = vals.weight;//体重(kg)
+
+                    $.each(vals,function (k,v){
+                        var nk = k.split('-');
+                        if(nk[1]){
+                            // window.console&&console.log(nk);
+                            if(nk[0]=='tempKind'){//体温类型
+                                sData.temperature[nk[1]].name= v;
+                                return;
+                            }
+                            if(nk[0]=='temperature'){//体温
+                                sData.temperature[nk[1]].value= v;
+                                return;
+                            }
+                            if(nk[0]=='diastolic'||nk[0]=='systolic'){//血压(mmHg)
+                                sData.bloodPressure[nk[1]][nk[0]]= v;
+                                return;
+                            }
+                            sData[nk[0]][nk[1]] = v;//其他
+                        }
+                    });
+
+                    // window.console&&console.log(me.data);
+
+                    $ajax.post({
+                        url : 'json/true.js',
+                        data : me.data,
+                        jsonData : true,
+                        tip:'确定提交此次体温单编辑？',
+                        success : function (rst){
+                            // window.console&&console.log(rst);
+                            setTimeout(function (){
+                                $pop.closePop({refreshGrid:true});
+                            },600);
+                        }
+                    });
+                }
+            });
+        }
+    }
+
+    temEdit.init();
+
+
+
+});
+</script>
+</body>
+
+</html>

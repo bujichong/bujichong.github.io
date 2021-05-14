@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>easyUI 列表数据生成器</title>
+<meta charset="utf-8">
+<link rel="icon" href="/images/logo.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" media="all" href="css/base.css" />
+<style type="text/css">
+.wrapper{margin:10px;}
+.resultbox{position: relative;width:50%;;float: left;}
+
+.result,.inputbox,.beifbox{background-color: #f9f9f9;border:1px solid #ccc;margin-top:10px;height:200px;width:96%;padding:10px;display: block;font-family:Verdana;line-height:1.5em;margin:0 auto 5px;}
+.inputbox,.beifbox{height:300px;}
+.result:hover{background-color:#f4f9ff;border-color:#8ec0ec;}
+.inputbox:focus{background-color:#fffcf6;border-color:orange;}
+
+.easyInput{position: relative;width:880px;margin:0 auto;clear:both;}
+.setLine{margin-bottom: 10px;padding-bottom:10px;border-bottom: 1px dotted #ddd;}
+.txt{background-color: #fff;}
+.one{padding-top:4px;padding-bottom: 4px;}
+.one:hover{background-color: #fdf6e9;}
+
+.p-item{padding:0;}
+.soForm .p-item{padding-left:55px;}
+.soForm .lab-item{width:50px;top:0;}
+.row-fluid label.lab-chk{width: auto;vertical-align: middle;cursor: hand;cursor:pointer;display: -moz-inline-stack;display:inline-block;*display:inline;*zoom:1;padding-top: 5px;line-height:20px;}
+.fieldArea .chk{width:20px;height:20px;margin-right:5px;}
+.drop:focus{border:1px solid #75a9e4;}
+.one{position: relative;}
+.row-fluid{overflow: visible;}
+.btn-del{position: absolute;top:4px;right:-60px;background-color: #ccc;border:0px;}
+.btn-del:hover{color: #000;}
+.hk_form .btn-submit{width:120px;background-color: #646769;height:40px;font-size: 1.4em;}
+.hk_form .btn-add{background-color: orange;}
+.soForm .drop{width:42%;}
+.p-tip{cline-height:1.5em;padding:10px 0 0;}
+.p-tip .s-title{font-weight: bold;color:orange;}
+.p-tip .s-cont{margin-right:10px; }
+.p-tip em{font-weight: bold;color:#0968f5;}
+
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+<div class="resultbox">
+  <textarea id="resultList" class="result" readonly="readonly"></textarea>
+</div>
+<div class="resultbox">
+    <textarea  id="resultJson"class="result resultJson" readonly="readonly"></textarea>
+</div>
+
+<div class="resultbox">
+    <textarea class="inputbox" placeholder="输入框只输入title和field，空格隔开，一行一条记录，示例demo数据默认宽度80，普通字符，无事件"></textarea>
+</div>
+<div class="resultbox">
+      <textarea class="beifbox" placeholder="生成后的字段备用"></textarea>
+</div>
+
+<div class="easyInput">
+    <form class="soForm hk_form pad-t10" method="post" data-opt="{'callback':'afterSubmitTurn','beforeCallback':'submitVPlus'}" id="vform" >
+
+        <div class="row-fluid setLine">
+          <div class="p3"><p class="p-item">
+              <label class="lab-item ">记录数：</label><input type="number" class="txt txt-number required" name="txt" value="6" />
+          </p></div>
+          <div class="p3"><p class="p-item">
+              <label class="lab-item ">字符长：</label><input type="number" class="txt txt-strLen required" name="txt" value="6" />
+          </p></div>
+          <div class="p3"><p class="p-item">
+              <label class="lab-item ">total：</label><input type="number" class="txt txt-total required" name="txt" value="18" />
+          </p></div>
+        </div>
+    <p class="p-tip"><span class="s-title">快捷键提示：</span> 任何状态下 <span class="s-cont"><em>小键盘+：</em>末尾增加一行 </span><span class="s-cont"><em>小键盘-：</em>末尾删除一行</span><span class="s-cont"><em>~键(左上角)：</em>快速生成结果</span></p>
+
+      <p class="pad-t15 pad-b15 center">
+          <input type="button" class="btn btn-submit" name="btnSubmit" value="生成" />
+          <input type="button" class="btn btn-submit btn-add" name="btnCancel" value="增加" />
+      </p>
+
+
+      <fieldset class="fieldArea">
+        <div class="one row-fluid">
+          <div class="p3"><p class="p-item">
+              <label class="lab-item ">标题：</label><input type="text" class="txt required" name="title" />
+          </p></div>
+          <div class="p3"><p class="p-item">
+              <label class="lab-item ">字段名：</label><input type="text" class="txt required" name="field" />
+          </p></div>
+          <div class="p3"><p class="p-item">
+              <label class="lab-item ">宽度：</label><input type="number" class="txt" name="width" value="80" />
+          </p></div>
+          <div class="p3">
+              <select class="drop" name="type" >
+                <option value="1" selected="selected">普通字符</option>
+                <option value="2">中文</option>
+                <option value="3">数字</option>
+                <option value="4">布尔值</option>
+                <option value="5">姓名</option>
+                <option value="6">部门</option>
+                <option value="7">职位</option>
+                <option value="8">药品</option>
+                <option value="9">公司</option>
+                <option value="10">单号</option>
+                <option value="11">药品单位</option>
+                <option value="12">数量</option>
+                <option value="13">规格</option>
+                <option value="14">短日期</option>
+                <option value="15">长日期</option>
+                <option value="16">电话</option>
+                <option value="17">价格</option>
+              </select>
+            <select class="drop" name="fn">
+                <option value="0" selected="selected">无事件</option>
+                <option value="1">有事件</option>
+              </select>
+          </div>
+        </div>
+
+        <div class="one row-fluid">
+          <div class="p3"><p class="p-item">
+              <label class="lab-item ">标题：</label><input type="text" class="txt required" name="title" />
+          </p></div>
+          <div class="p3"><p class="p-item">
+              <label class="lab-item ">字段名：</label><input type="text" class="txt required" name="field" />
+          </p></div>
+          <div class="p3"><p class="p-item">
+              <label class="lab-item ">宽度：</label><input type="number" class="txt" name="width" />
+          </p></div>
+          <div class="p3">
+              <select class="drop" name="type" >
+                <option value="1" selected="selected">普通字符</option>
+                <option value="2">中文</option>
+                <option value="3">数字</option>
+                <option value="4">布尔值</option>
+                <option value="5">姓名</option>
+                <option value="6">部门</option>
+                <option value="7">职位</option>
+                <option value="8">药品</option>
+                <option value="9">公司</option>
+                <option value="10">单号</option>
+                <option value="11">药品单位</option>
+                <option value="12">数量</option>
+                <option value="13">规格</option>
+                <option value="14">短日期</option>
+                <option value="15">长日期</option>
+				<option value="16">电话</option>
+				<option value="17">价格</option>
+              </select>
+            <select class="drop" name="fn">
+                <option value="0" selected="selected">无事件</option>
+                <option value="1">有事件</option>
+              </select>
+          </div>
+          <!-- <input type="button" class="btn btn-del" name="btnAdd" value="删除" /> -->
+        </div>
+
+      </fieldset>
+    </form>
+
+
+<!-- <div class="result">
+
+</div> -->
+
+  </div>
+</div>
+
+<div class="none"></div>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+$.fn.serializeObject = function() {
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+        if (o[this.name]) {
+            if (!o[this.name].push) {
+                o[this.name] = [ o[this.name] ];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    // $.each(o,function (k,v) {
+    //     if (v.push) {
+    //         o[k] = v.join(',');
+    //     }
+    // });
+    return o;
+}
+
+
+
+var easyAuto  = {
+  init : function () {
+    var me = this;
+    me.clickAdd();
+    me.clickSubmit();
+    me.keydownDo();
+    $('.result').focus(function() {
+      $(this).select();
+    });
+    // me.enterFn();
+  },
+  enterFn : function () {
+      var $input = $('.fieldArea').find(':input');
+      $input.eq(0).focus();
+      $input.keydown(function(e) {
+          if (e.keyCode == 13) {
+              if ($(this).hasClass('btn')) {return;};
+              var ix = $input.index(this);
+              // window.console && console.log(ix);
+              $input.eq(ix+1).focus();
+              return false;
+          };
+      });
+  },
+  clickAdd : function () {
+      var me = this;
+      $('.btn-add').click(function () {
+        me.addFn();
+      });
+  },
+  clickSubmit : function () {
+    var me = this;
+      $('.btn-submit').click(function  () {
+        me.submitFn();
+      });
+  },
+  keydownDo : function () {
+    var me = this;
+    $('.fieldArea .txt').eq(0).focus();
+    $(document).keydown(function(e) {
+      window.console && console.log(e.keyCode);
+        if (e.keyCode == 192) {//回车提交生成
+          me.submitFn();
+          return false;
+        };
+        if (e.keyCode == 107||e.keyCode == 187) {//按加号或等号添加一行
+           me.addFn();
+          return false;
+        };
+        if (e.keyCode == 109) {//按减号删除最后一行
+          me.delLastOne();
+          return false;
+        };
+    });
+  },
+  addHtml : '<div class="one row-fluid"><div class="p3"><p class="p-item"><label class="lab-item ">标题：</label><input type="text" class="txt required" name="title" /></p></div><div class="p3"><p class="p-item"><label class="lab-item ">字段名：</label><input type="text" class="txt required" name="field" /></p></div><div class="p3"><p class="p-item"><label class="lab-item ">宽度：</label><input type="number" class="txt" name="width" /></p></div><div class="p3"><select class="drop" name="type" ><option value="1" selected="selected">普通字符</option><option value="2">中文</option><option value="3">数字</option><option value="4">布尔值</option><option value="5">姓名</option><option value="6">部门</option><option value="7">职位</option><option value="8">药品</option><option value="9">公司</option><option value="10">单号</option><option value="11">药品单位</option><option value="12">数量</option><option value="13">规格</option><option value="14">短日期</option><option value="15">长日期</option><option value="16">电话</option><option value="17">价格</option></select><select class="drop" name="fn"><option value="0" selected="selected">无事件</option><option value="1">有事件</option></select></div><input type="button" class="btn btn-del" name="btnAdd" value="删除" /></div>',
+  addFn : function () {
+    var me = this;
+    $('.fieldArea').append(me.addHtml);
+    var $new = $('.fieldArea').find('.one:last');
+    $new.find('.txt:first').focus();
+    me.clickDel($new);
+  },
+  submitFn : function () {
+    var me = this;
+    var demoLenth = $('.txt-number').val()*1||6;
+    var demoStrLen = $('.txt-strLen').val()*1||6;
+    var demoSTotal = $('.txt-total').val()*1||18;
+    var $area = $('.inputbox');
+    var areaVals = $.trim($('.inputbox').val());
+    var vals={title:[],field:[],type:[],width:[],fn:[]};
+    if (areaVals) {
+      var tempV = areaVals.split('\n');
+      var tempHtml = '';
+      $.each(tempV,function (i,v) {
+        var tm = v.split(/ +/g);
+        vals.title.push(tm[0]);
+        vals.field.push(tm[1]);
+        vals.type.push('1');
+        vals.width.push('80');
+        vals.fn.push('0');
+        tempHtml += '<div class="one row-fluid"><div class="p3"><p class="p-item"><label class="lab-item ">标题：</label><input type="text" class="txt required" name="title" value="'+tm[0]+'" /></p></div><div class="p3"><p class="p-item"><label class="lab-item ">字段名：</label><input type="text" class="txt required" name="field" value="'+tm[1]+'" /></p></div><div class="p3"><p class="p-item"><label class="lab-item ">宽度：</label><input type="number" class="txt" name="width" value="80" /></p></div><div class="p3"><select class="drop" name="type" ><option value="1" selected="selected">普通字符</option><option value="2">中文</option><option value="3">数字</option><option value="4">布尔值</option><option value="5">姓名</option><option value="6">部门</option><option value="7">职位</option><option value="8">药品</option><option value="9">公司</option><option value="10">单号</option><option value="11">药品单位</option><option value="12">数量</option><option value="13">规格</option><option value="14">短日期</option><option value="15">长日期</option><option value="16">电话</option><option value="17">价格</option></select><select class="drop" name="fn"><option value="0" selected="selected">无事件</option><option value="1">有事件</option></select></div><input type="button" class="btn btn-del" name="btnAdd" value="删除" /></div>';
+        });
+        $('.fieldArea').html(tempHtml);
+        $('.fieldArea').find('.btn-del').click(function () {
+          $(this).parents('.one').remove();
+        });
+      };
+      vals = $('.soForm').serializeObject();
+      var areaV = $area.val();
+      if (areaV) {
+        $('.beifbox').val(areaV);
+        $area.val('');
+      };
+
+      // var vals = $.trim($area.val())||$('.soForm').serializeObject();
+      window.console && console.log(vals);
+      var len = vals.field.length;
+      var valsHtmlArr = [];
+
+      for (var i = 0 ; i <len; i++) {
+        var fmt = '';
+        // if (vals.type[i]==14) {fmt = ",format:'yyyy-MM-dd'";};
+        // if (vals.type[i]==15) {fmt = ",format:'yyyy-MM-dd HH:mm:ss'";};
+        var width = vals.width[i] || 80;
+        var fn = vals.fn[i]==1?",formatter: function(val,row,index){return val;}":"";
+        if (vals.type[i]==4) {fn = ",formatter: function(val,row,index){return ['否','是'][val];}'";};
+        valsHtmlArr.push("{title:'"+vals.title[i]+"',field:'"+vals.field[i]+"',width:"+width+fmt+fn+"}");
+      };
+
+      var demoJsonArr = [];
+      for (var j = 0 ; j <demoLenth; j++) {
+        demoJsonArr[j] ={};
+        (function(j){
+          $.each(vals.field, function (k,v) {
+            var txt = me.formatV(vals.type[k],demoStrLen);
+            demoJsonArr[j] [v] = txt;
+          });
+        })(j);
+      };
+      window.console && console.log(demoJsonArr);
+
+      var result = valsHtmlArr.join(',\n');
+      var resultJson = JSON.stringify(demoJsonArr);
+      resultJson ='{"rows":\n'+resultJson+',\n"total":'+demoSTotal+'}';
+      resultJson = resultJson.replace(/},{/g,'},\n{');
+      $('#resultList').val(result);
+      $('#resultJson').val(resultJson);
+  },
+  formatV : function (type,strLen) {
+// <option value="1" selected="selected">普通字符</option>
+// <option value="2">中文</option>
+// <option value="3">数字</option>
+// <option value="4">布尔值</option>
+// <option value="5">姓名</option>
+// <option value="6">部门</option>
+// <option value="7">职位</option>
+// <option value="8">药品</option>
+// <option value="9">公司</option>
+// <option value="10">单号</option>
+// <option value="11">药品单位</option>
+// <option value="12">数量</option>
+// <option value="13">规格</option>
+// <option value="14">规格</option>
+// <option value="15">短日期</option>
+// <option value="16">长日期</option>
+    var valsDic = ['',
+      'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678',//1字符
+      '的一是在不了有和人这中大为上个国我以要他时来用们生到作地于出就分对成会可主发年动同工也能下过子说产种面而方后多定行学法所民得经十三之进着等部度家电力里如水化高自二理起小物现实加量都两体制机当使点从业本去把性好应开它合还因由其些然前外天政四日那社义事平形相全表间样与关各重新线内数正心反你明看原又么利比或但质气第向道命此变条只没结解问意建月公无系军很情者最立代想已通并提直题党程展五果料象员革位入常文总次品式活设及管特件长求老头基资边流路级少图山统接知较将组见计别她手角期根论运农指几九区强放决西被干做必战先回则任取据处队南给色光门即保治北造百规热领七海口东导器压志世金增争济阶油思术极交受联什认六共权收证改清己美再采转更单风切打白教速花带安场身车例真务具万每目至达走积示议声报斗完类八离华名确才科张信马节话米整空元况今集温传土许步群广石记需段研界拉林律叫且究观越织装影算低持音众书布复容儿须际商非验连断深难近矿千周委素技备半办青省列习响约支般史感劳便团往酸历市克何除消构府称太准精值号率族维划选标写存候毛亲快效斯院查江型眼王按格养易置派层片始却专状育厂京识适属圆包火住调满县局照参红细引听该铁价严',//2 汉字
+      '1234567890',//3数字
+      [true,false],//4布尔
+      ["蔡开宇","蔡玲玉","蔡柳","蔡茂超","蔡青春","蔡山林","蔡维","蔡文祥","蔡欣孺","蔡杨","蔡瑶","蔡勇","蔡宇","曹冬梅","曹非洋","曹佳","曹佳","曹剑","曹娇","曹立黎","曹敏","曹倩","曹强","曹雪","曹雪","曹阳","曹艺雯","曹珍凤","曹子胭","曹紫微","柴发菊","车小强","车奕潇","陈安洋","陈柏旭","陈贝贝","陈碧玉","陈斌","陈冰","陈兵","陈波","陈昌达","陈昌达","陈超","陈晨","陈诚","陈诚","陈春","陈春梅","陈春艳","陈聪","陈大蓉","陈代言","陈丹","陈丹墨","陈定强","陈冬","陈冬","陈冬梅","陈娥","陈发兴","陈方强","陈飞","陈飞宏","陈凤","陈凤月","陈刚","陈刚","陈钢","陈光龙","陈果","陈海全","陈海伟","陈海瑜","陈浩","陈浩","陈红","陈红","陈红","陈红梅","陈红敏","陈华宣","陈欢","陈辉","陈纪均","陈继飞","陈继亚","陈建","陈建华","陈姜","陈杰","陈杰","陈杰","陈杰","陈洁","陈婧涵","陈静","陈静波","陈娟","陈娟","陈军","陈军","陈俊昊","陈凯","陈锴基","陈柯君","陈柯宇","陈珂","陈坤","陈磊","陈磊","陈莉","陈黎","陈礼容","陈力豪","陈良","陈亮","陈林","陈玲","陈留林","陈龙","陈龙","陈龙秀","陈露","陈璐","陈鹭","陈茂燕","陈美","陈美琪","陈珉冲","陈明奉","陈明星","陈鸣","陈娜","陈潘","陈佩","陈平","陈平","陈琦","陈麒地","陈潜","陈倩","陈倩","陈巧","陈庆","陈秋安","陈秋阳","陈然","陈荣艳","陈如梦","陈锐","陈世豪","陈世明","陈仕星","陈姝","陈姝羽","陈舒婷","陈蜀川","陈树骏","陈帅","陈帅","陈顺航","陈思成","陈思宏","陈思勤","陈思思","陈思彤","陈思宇","陈思宇","陈思雨","陈思远","陈涛","陈涛","陈滔","陈天东","陈天雷","陈甜甜","陈婷","陈婷婷","陈婉娇","陈婉秋","陈婉媛","陈韦西","陈炜","陈玮","陈魏程","陈文文","陈文轩","陈曦","陈祥","陈潇","陈潇","陈小伍","陈小英","陈晓娟","陈晓君","陈芯羽","陈新月","陈鑫","陈鑫","陈鑫","陈鑫","陈信蓉","陈兴宇","陈星","陈星星","陈幸嘉","陈雪","陈雪梅","陈勋","陈雅婷","陈娅","陈娅","陈彦羽","陈艳","陈艳","陈燕","陈阳","陈杨","陈洋","陈洋","陈洋","陈洋阳","陈遥","陈怡","陈怡","陈怡光","陈义琳","陈易","陈奕达","陈毅","陈银","陈英杰","陈莹","陈莹","陈莹","陈滢琦","陈颖","陈映鹏","陈永健","陈永亮","陈勇关","陈宇","陈宇航","陈羽","陈雨","陈雨","陈雨洁","陈玉娇","陈玉琳","陈玉崴","陈煜薇","陈园园","陈远凤","陈玥洁","陈悦","陈悦莹","陈悦玥","陈张露","陈振东","陈镇","陈正东","陈志宏","陈志琳","陈志强","陈治健","陈智豪","陈重鑫","陈竹","陈竹","陈卓","陈梓璇","陈紫君","陈紫珊","陈紫薇","谌虹兵","谌静","谌龙霄","谌强","成建军","成康瑶","成实","成宇","程安伟","程彬航","程德敏","程凤","程婕","程金平","程磊","程龙","程珑","程诗晴","程文轩","程依铭","程蕴贤","池佳","仇香凤","崔菁","崔颖","代国宏","代金阳","代明强","代鹏","代雯","代小丽","代莹","代钰","航","代悦","戴林","戴世发","戴思瑾","戴依婷","戴正啸","单洁","党雷","党晓婷","党宇希","邓艾瑾","邓超","邓超","邓晨雨","邓川","邓传坤","邓纯权","邓达红","邓东梅","邓符","邓富文","邓国莉","邓海宁","邓欢","邓辉","邓家林","邓江发","邓佼","邓军成","邓君","邓科","邓可然","邓莉红","邓李","邓丽","邓林","邓林玲","邓鳞峰","邓玲玲","邓美星","邓敏","邓娜","邓妮","邓沛","邓平","邓萍","邓倩","邓强","邓秋月","邓茹兰","邓瑞","邓胜飞","邓胜华","邓胜鑫","邓胜薛","邓世杰","邓世竹","邓舒文","邓思源","邓涛","邓涛","邓文豪","邓显波","邓小海","邓小敏","邓小燕","邓晓凡","邓效","邓欣雨","邓鑫","邓兴红","邓兴林","邓兴琼","邓徐","邓雪","邓雪娟","邓焱文","邓洋","邓莹玲","邓永超","邓勇","邓雨维","邓子豪","邓子豪","丁昌容","丁丹妮","丁浩","丁奎友","丁鹏","丁仕杰","丁仕军","丁辛良","董发武","董菲","董凤","董海伟","董红玲","董洪峰","董洪健","董欢","董惠文","董佳昕","董建新","董杰","董金","董锦","董俊旗","董开旗","董坤","董磊","董丽","董利","董蔓玲","董闵","董瑞","董莎","董帅","董顺奎","董思谋","董婷","董文","董习丽","董习伟","董霞","董逍","董小凤","董小磊","董小倩","董小蓉","董兴瑞","董秀","董旭","董煦豪","董学敏","董学婷","董堰平","董洋","董瑶瑶","董叶芳","董一恒","董一奎","董怡壤","董英","董莹","董映巧","董宇","董玉洁","董誉","董云","董泽伟","董泽右","董泽左","董振宇","董智勇","董宗国","窦明坤","杜承伟","杜飞","杜峰","杜观","杜贵林","杜航","杜浩","杜浩","杜皓","杜恒","杜季杨","杜佳红","杜金琼","杜静","杜久超","杜久雯","杜鹃","杜俊杰","杜里红","杜丽","杜明月","杜巧","杜诗瑀","杜希鹏","杜昕","杜馨","杜鑫","杜雪","易朝春","易传军","易春","易国浩","易国政","易杰","易连杰","易诗璐","易仕杰","易思潼","易小峰","易鑫月","易雪梅","易贞勇","易正明","易志博","易志刚","殷华","殷欢欢","殷强","殷如意","殷少华","殷耀丽","银永思","尹帮仪","尹大菊","尹富贵","尹洪","尹华贵","尹欢欢","尹俊平","尹科","尹奎","尹莉","尹莲","尹琪琦","尹茜","尹润寒","尹珊吉","尹诗","尹涛","尹县秋","尹小虎","尹小亮","尹艳冰","尹杨","尹业静","尹英明","尹泽阳","雍长兵","雍国超","雍晶","雍丽","雍强","雍玺玉","雍小琴","雍小燕","雍晓林","雍秀琴","尤亮","游莉","游露","游雨","于川","于金美","于志敏","余斌","余波","余春雨","余丹","余凤凰","余高峰","余欢","余欢","余季杭","余建","余剑","余菁玉","余晶晶","余静","余利","余玲","余明高","余倩","余琴","余胜琪","余胜伟","余胜雨阳","余双华","余婷","余婉贤","余星合","余星月","余雪","余阳","余阳","余瑶","余永刚","余永蓉","余韵竹","余泽明","余正伟","余左堽","俞春梅","俞鹏","俞世航","禹仁杰","喻慧","袁国熙","袁红梅","袁宏亮","袁佳","袁静","袁军","袁乐全","袁林韬","袁林玉","袁龙强","袁梦竹","袁敏","袁佩","袁漆宇","袁启会","袁倩倩","袁帅","袁帅","袁思维","袁淞","袁涛","袁伟","袁贤军","袁贤龙","袁贤志","袁小林","袁鑫","袁勇","袁跃","袁志坤","袁尊敏","岳冕","岳婷君","岳媛","岳跃文","岳兆君","云贵川","陨柯","昝龙锐","泽莫草","曾安谣","曾宝怡","曾碧琪","曾超","曾冬梅","曾岗","曾海涛","曾凯凡","曾锞","曾丽婷","曾良敏","曾良勇","曾麟捷","曾璐","曾璐","曾明聪","曾明圆","曾娜","曾琪","曾秋霜","曾锐","曾世豪","曾婷","曾伟","曾伟","曾文鸣","曾小青","曾小双","曾晓萌","曾晓庆","曾新悦","曾歆玥","曾彦豪","曾洋","曾莹","曾宇","曾宇","曾雨蒙","曾玉佳","曾裕雄","曾月","曾月","曾之","曾志阳","曾子凌","甑宛懿","甑梓艺","翟星","詹梨","詹晓","张安琪","张安琪","张傲","张蓓","张彪","张波","张波","张博","张彩虹","张操","张昌杰","张长虎"],//5姓名
+          ["营业部","人事部","人力资源部","总务部","财务部","销售部","促销部","国际部","出口部","进口部","公共关系","中心药房","企划部","产品开发部","研发部","秘书室","门诊药房","治疗室","行政部","人力资源部","市场部","技术部","客服部","行政部","财务部","总经理室","副总经理室","总经办","采购部","工程部","研发部","生产部","销售部","广东业务部","无线事业部","拓展部","物供部","业务拓展部","市场部","销售部","人力资源部","会计部","公共关系部","办公室","财务部","市场部","研发部","检验科","管理部","采购部","总经理办公室","监事会","战略研究部"],//6 部门
+          ["院长","副院长","办公室主任","医生","化验员","主治医生","专家","主任医生","副主任医生","护士","护士长","药剂师","后勤人员","研究员","保卫","财务总监","财务主管","财务助理","会计","出纳","人力资源经理","人力专员","招聘专员","培训师","web工程师","网络运营","文秘","前台"],//7 职位
+          ["氯化钠滴眼液","盐酸金霉素眼膏","地巴唑滴眼液","硫酸小诺霉素滴眼液","酞丁安滴眼液","近视乐眼药水","明目地黄胶囊","复方石斛片","拨云退翳丸","盐酸洛美沙星眼用凝胶","马应龙八宝眼膏","益视颗粒","硫酸庆大霉素注射液","加替沙星滴眼液","复方氯化钠注射液","盐酸左氧氟沙星眼用凝胶","牛磺酸滴眼液","萘敏维滴眼液"],//8 药品
+          ["杭州柯尼达医疗器械厂","宁波市北仑恒达医用敷料厂","东信医药集团","武汉泓强医药有限公司","浙江施比灵药业有限公司","哈尔滨市源清贸易有限公司","北京百亿怡达科技开发有限公司","辽宁美滋林药业有限公司","吉林省珍芝堂药业有限公司","湖南双舟医药有限责任公司","吉林省红石药业有限公司","诚芝堂品牌营销中心","陇药皇甫谧制药股份有限公司","山东朋欣药业有限公司","北京京康药业有限公司","青海央宗药业有限公司","四川海阔药业有限公司","吉林省红石药业有限公司","普洛药业股份有限公司","湖南千金协力药业有限公司","北京麦迪海药业有限责任公司","江苏鹏鹞药业有限公司","西藏诺迪康药业股份有限公司","黑龙江惠美佳制药有限公司","河南羚锐制药股份有限公司","曲阜市丽阳生物制品有限公司","北京紫竹医药经营有限公司","北京万东医疗装备股份有限公司","嵊州市天赐实业有限公司","上海铭源数康生物芯片有限公司","南昌华康医疗科技有限公司","盐城华灸生物科技有限公司","广州市番禺区海通医疗器械厂","江阴嘉源药化设备有限公司","上海洲祥制药机械有限公司","江门市康之源医疗设备科技有限公司","北京奕瑞祥科技有限公司","广州市乐邦医疗器械有限公司","哈尔滨尚悟科技开发有限公司","湖北远大天天明制药有限公司"],//9 公司
+          ['2018010514D','2018010534A','2018012213X','2018011701S','2018010527C','2018010934G','2018010561V','2018012501E','2018020104A','2018012636W','2018020214A','2018012711V'],//10 单号
+          ['支','盒','粒','袋','次','ml'],//11 药品单位
+          [50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,210,220,230,240,250,255,260,270,280,290,300,310,320,330,350,450,440,650,700,800,815,860,900,750,410,835,945,600,1200,1400,1520,1640,2145,1475,1532,1654,952,582,684,955,2145,2100,3140,3200,4510,2100,3210,2950,2840,1650,1820,2608,1244,2536],//12 数量
+          ['5g:0.015g','150ml','2ml:0.1g','0.5g*12粒*2板','0.15g*20片'],//13 规格
+          ['2018-01-15','2018-01-17','2018-01-19','2018-01-21','2018-01-22','2018-01-23','2018-01-24','2018-01-25','2018-01-26','2018-01-27','2018-01-28'],//14 短日期
+          ['2018-01-15 14:22','2018-01-17 16:31','2018-01-19 16:57','2018-01-21 08:46','2018-01-22 15:06','2018-01-23 22:47','2018-01-24 10:22','2018-01-25 21:14','2018-01-26 12:03','2018-01-27 13:19','2018-01-28 16:28'],//15 长日期
+          ['18684781447','15547841444','17487547778','18698485221','16612457887','13012147554','13102145776','18641028888','13201258741','13201214447','18614254777','18654210221','15520120018','16670122608','13220120066','13210201447'],//16 电话
+          [25.50,32.00,18.00,36.00,88.00,89.00,122.00,147.50,160.30,320.00,18.50,50.00,49.00,48.00,60.00,66.00,13.50,14.80,16.40,36.50,32.40,18.80,26.60,30.30,45.50,90.00,88.80,76.20,56.50]//17 价格
+    ];
+    //// <option value="10">单号</option>
+// <option value="11">药品单位</option>
+// <option value="12">数量</option>
+// <option value="13">规格</option>
+
+    var txt;
+    var type = type*1;
+    if (type<4) {
+      var dic = valsDic[type];
+      var len = dic.length;
+      txt = '';
+      for(var  i=0;i< strLen;i++)  {
+        txt += dic.charAt(Math.floor(Math.random()*len));
+        }
+      }else if(type>3){
+        window.console && console.log(type);
+      // }else if(type>3&&type<14){
+        var tArr = valsDic[type];
+        var tLen = tArr.length;
+        txt = tArr[Math.floor(Math.random()*tLen)];
+      }
+      // else{
+      //   txt = new Date().getTime();
+      // }
+      return txt;
+  },
+  clickDel : function ($o) {
+    $($o).find('.btn-del').click(function() {
+      $o.remove();
+    });
+  },
+  delLastOne : function () {
+    if($('.one').length>2){
+      $('.one:last').remove();
+    }
+  }
+}
+
+
+$(function () {
+  easyAuto.init();
+});
+
+</script>
+
+
+</body>
+</html>
