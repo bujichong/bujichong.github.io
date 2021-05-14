@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<meta name="viewport" content="user-scalable=no" />
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> -->
+<title>zRender - 爱尔医院</title>
+<link rel="stylesheet" type="text/css" media="all" href="js/lib/easyui/themes/gray/easyui.css" />
+<link type="text/css" rel="stylesheet" href="css/easy-plus.css" />
+<link type="text/css" rel="stylesheet" href="css/socss.css" />
+<link type="text/css" rel="stylesheet" href="css/plugins.css" />
+<link type="text/css" rel="stylesheet" href="css/base.css" />
+<link type="text/css" rel="stylesheet" href="css/tempsheet.css" />
+<style type="text/css">
+/* html{background-color:#eee;} */
+#wrapper{width:941px;margin:0 auto;}
+#main{width:941px;height:1140px;background-color:#fff;}
+#main canvas{width:941px;height:1140px;
+/* cursor: default; */
+}
+</style>
+</head>
+
+<body data-js="temSheetZ">
+
+<div id="wrapper">
+<h1 class="h1-title"><span class="s-hos">长沙爱尔眼科医院</span>体　　温　　单</h1>
+<p class="userBaseInfo">
+    <span class="s-userI"><em class="em-t">入院日期：</em><em class="em-v em-entryTime"></em></span>
+    <span class="s-userI"><em class="em-t">周数：</em><select class="drop drop-month" style="width:90px;" name="drop">
+    </select></span>
+    <!-- <button class="btn" id="btn-clear">清屏</button> -->
+</p>
+<div id="main"></div>
+<!-- <img id="img-drawL" src="../images/tempeSheet/drawL.png" alt="" /> -->
+<!-- <img id="main_img" src="" alt="" /> -->
+
+<div class="dotPopBox">
+    <p class="p-potInfo"><em class="em-t">时间</em>：<em class="em-v pot-v-time"></em></p>
+    <p class="p-potInfo"><em class="em-t pot-temp-t">体温</em>：<em class="em-v pot-v-temp"></em></p>
+    <p class="p-potBtn"><input type="button" class="btn btn-mini btn-primary btn-pot-edit" name="btn" value="编辑"> <input type="button" class="btn btn-mini btn-pot-del" name="btn" value="删除"></p>
+</div>
+
+
+<script id="potEditTem" type="text/html">
+    <form class="soform form-validate form-enter mar-r15 mar-t20" method="post" action="json/true.js">
+        <input type="hidden" name="id" value="{{id}}" />
+        <input type="hidden" name="type" value="{{type}}" />
+        <input type="hidden" name="name" value="{{name}}" />
+        <input type="hidden" name="n" value="{{n}}" />
+        <div class="row">
+            <div class="p12"><div class="item-one">
+                <label class="lab-item">时间：</label><input class="txt unedit" type="text" name="time" value="{{time}}" readonly="readonly" />
+            </div></div>
+        </div>
+        <div class="row">
+            <div class="p12"><div class="item-one">
+                <label class="lab-item">{{name}}：</label><input class="txt txt-editVal easyui-numberbox required" type="text" name="value" value="{{value}}" style="width:100%;" data-options="required:true{{type | typeValid:'opt'}}" validType="{{type | typeValid:'valid'}}" invalidMessage="{{type | typeValid:'msg'}}" />
+            </div></div>
+        </div>
+        {{if type=='t'||type=='pc'}}
+        <div class="row">
+            <div class="p12"><div class="item-one">
+                <label class="lab-item">物理降温：</label><input class="txt easyui-numberbox" type="text" name="pc" value="{{pc}}" style="width:100%;" data-options="precision:1" validType="{{type | typeValid:'valid'}}" invalidMessage="{{type | typeValid:'msg'}}" />
+            </div></div>
+        </div>
+        {{/if}}
+        <p class="row-btn">
+            <input type="button" class="btn btn-primary btn-easyFormSubmit" name="btnSubmit" value="保 存" />
+            <input type="button" class="btn btn-cancel" name="btnCancel" value="取 消" />
+        </p>
+    </form>
+</script>
+
+
+</div>
+<script type="text/javascript">
+var baseUrl = '/';
+var inpNumberVar='ZY201904150';
+var power = 'all';
+var pageUrl ={
+    initSheet : 'json/sheet.js',
+    oneDate : 'medcord-tempeSheetEdit.html'
+};
+var sTime = {
+    entry: '2019-06-01 10:10:29',
+    now: '2019-06-19',
+    out: ''
+}
+</script>
+<script type="text/javascript" src="js/require.js"></script>
+<script type="text/javascript" src="js/main.un.js"></script>
+
+<!-- <script type="text/javascript">
+require(["zrender","pub"],function(zrender){
+
+});
+
+</script> -->
+</body>
+</html>
