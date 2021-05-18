@@ -7,13 +7,12 @@ export default ({
 }) => {
 	// console.log(siteData.themeConfig)
 	let {routerSkip} = siteData.themeConfig;
-	console.log(routerSkip);
+	// console.log(routerSkip);
   // ...做一些其他的应用级别的优化
     router.beforeEach((to, from, next) => {
-		console.log(to);
+		// console.log(to);
 		if(routerSkip && routerSkip.length){
 			routerSkip.forEach(url=>{
-				console.log(to.path.startsWith(url))
 				if(to.path.startsWith(url)){
 					window.location.href = to.path;
 					return;
