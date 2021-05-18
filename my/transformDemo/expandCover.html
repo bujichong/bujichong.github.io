@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>css3之展开封面</title>
+<style type="text/css">
+.boxWrap{position: relative;width:200px;height:200px;margin:200px;}
+.bottom{width:200px;height:200px;background-color:rgb(45, 45, 163);}
+
+.trapezoid{
+position: absolute;
+width: 100px;
+height: 0;
+border: 50px solid rgba(0,0,0,0);
+border-top: 0 solid;
+border-bottom: 100px solid #1abc9c;
+-webkit-transition: transform 200ms cubic-bezier(0.68, -0.55, 0.265, 1.55) 10ms;
+  -moz-transition: transform 200ms cubic-bezier(0.68, -0.55, 0.265, 1.55) 10ms;
+  -o-transition: transform 200ms cubic-bezier(0.68, -0.55, 0.265, 1.55) 10ms;
+  transition: transform 200ms cubic-bezier(0.68, -0.55, 0.265, 1.55) 10ms;
+-webkit-transform-origin: 0 100% 0;transform-origin: 0 100% 0;
+}
+
+.trapezoid-t{
+top:-100px;left:0;
+border-bottom-color: #ebd725;
+-webkit-transform: rotateZ(0deg) rotateX(180deg);transform:rotateZ(0deg) rotateX(180deg);
+}
+.boxWrap:hover .trapezoid-t{
+-webkit-transform: rotateZ(0deg) rotateX(0deg);transform:rotateZ(0deg) rotateX(0deg);
+}
+.trapezoid-l{
+top:100px;left:0px;
+border-bottom-color: #eb25d1;
+-webkit-transform: rotateZ(-90deg) rotateX(180deg);transform: rotateZ(-90deg) rotateX(180deg);
+}
+.boxWrap:hover .trapezoid-l{
+-webkit-transform: rotateZ(-90deg) rotateX(0deg);transform:rotateZ(-90deg) rotateX(0deg);
+}
+.trapezoid-r{
+top:-100px;left:200px;
+border-bottom-color: #037e1e;
+-webkit-transform: rotateZ(90deg) rotateX(180deg);transform: rotateZ(90deg) rotateX(180deg);
+}
+.boxWrap:hover .trapezoid-r{
+-webkit-transform: rotateZ(90deg) rotateX(0deg);transform:rotateZ(90deg) rotateX(0deg);
+}
+
+.trapezoid-b{
+top:100px;left:200px;
+-webkit-transform: rotateZ(180deg) rotateX(180deg);transform: rotateZ(180deg) rotateX(180deg);
+}
+.boxWrap:hover .trapezoid-b{
+-webkit-transform: rotateZ(180deg) rotateX(0deg);transform:rotateZ(180deg) rotateX(0deg);
+}
+</style>
+</head>
+<body>
+    <div class="boxWrap">
+        <div class="bottom"></div>
+        <div class="trapezoid trapezoid-t"></div>
+        <div class="trapezoid trapezoid-l"></div>
+        <div class="trapezoid trapezoid-r"></div>
+        <div class="trapezoid trapezoid-b"></div>
+
+    </div>
+
+</body>
+</html>

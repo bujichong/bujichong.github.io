@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://www.iflong.top</id>
+    <title>不羁的空间</title>
+    <updated>2021-05-18T08:54:49.656Z</updated>
+    <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
+    <link rel="alternate" href="https://www.iflong.top"/>
+    <link rel="self" href="https://www.iflong.top/feed.atom"/>
+    <subtitle>疏言懒行，卖马为生</subtitle>
+    <entry>
+        <title type="html"><![CDATA[改了两套 typora themes：(haven | haven night)]]></title>
+        <id>https://www.iflong.top/post/2017/10/25/typorahavenstyle.html</id>
+        <link href="https://www.iflong.top/post/2017/10/25/typorahavenstyle.html">
+        </link>
+        <updated>2017-10-25T11:29:00.000Z</updated>
+        <summary type="html"><![CDATA[
+自从改用hexo做博客以后，就喜欢上markdown写文档了，顺便用上了typora，用起来很顺手，typora改themes很方便，顺便就制作了两套自己喜欢的，明暗各一套。
+]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[css3下的伪类:before和:after]]></title>
+        <id>https://www.iflong.top/post/2017/11/23/_20171123-pseudo-class.html</id>
+        <link href="https://www.iflong.top/post/2017/11/23/_20171123-pseudo-class.html">
+        </link>
+        <updated>2017-11-23T11:45:00.000Z</updated>
+        <summary type="html"><![CDATA[
+抛弃旧版本浏览器的兼容性，写起样式来真是爽多了，这篇记录一些伪类的使用及相关的一些css3属性
+]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[css3之object-fit]]></title>
+        <id>https://www.iflong.top/post/2017/11/28/_20171128-objectfit.html</id>
+        <link href="https://www.iflong.top/post/2017/11/28/_20171128-objectfit.html">
+        </link>
+        <updated>2017-11-28T09:45:00.000Z</updated>
+        <summary type="html"><![CDATA[
+在页面中，我们想对服务器传过来的一张图片给固定的宽高，but，还想让他保持宽高比，这麻烦吗？用了object-fit就不难了。
+]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[flex示例]]></title>
+        <id>https://www.iflong.top/post/2018/03/29/_2018-0329-flex.html</id>
+        <link href="https://www.iflong.top/post/2018/03/29/_2018-0329-flex.html">
+        </link>
+        <updated>2018-03-29T11:44:00.000Z</updated>
+        <summary type="html"><![CDATA[
+2009年，W3C 提出了一种新的方案----Flex 布局，可以简便、完整、响应式地实现各种页面布局。目前，它已经得到了所有浏览器的支持，这意味着在现代浏览器里可以放心使用这个布局方式。
+]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[css3之展开封面]]></title>
+        <id>https://www.iflong.top/post/2018/08/07/_2018-0807-extendcover.html</id>
+        <link href="https://www.iflong.top/post/2018/08/07/_2018-0807-extendcover.html">
+        </link>
+        <updated>2018-08-07T16:39:00.000Z</updated>
+        <summary type="html"><![CDATA[
+最近又重温了一下css3的动画，虽然以前在各种项目里用过不少次，但每次都是匆匆完成任务，做完基本就忘了，看了凹凸工作室的在h5中css3的大量应用，之前还是小看了css3的动画能力，手上如果有足够好用的调试或者编写样式工具，写花哨的css3代码应该不算问题，问题是你的想象力~
+]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[在firebug中调试显示用sublime text 2编译的scss代码]]></title>
+        <id>https://www.iflong.top/post/2014/11/20/firebugsass.html</id>
+        <link href="https://www.iflong.top/post/2014/11/20/firebugsass.html">
+        </link>
+        <updated>2014-11-20T16:53:00.000Z</updated>
+        <summary type="html"><![CDATA[在 sublime text 2中想直接ctrl+B就编译写的sass代码吗？
+可以的]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[GIF和几种PNG(8/24/32)以及Alpha/索引色透明对比]]></title>
+        <id>https://www.iflong.top/post/2014/11/28/pngalpha.html</id>
+        <link href="https://www.iflong.top/post/2014/11/28/pngalpha.html">
+        </link>
+        <updated>2014-11-28T13:43:00.000Z</updated>
+        <summary type="html"><![CDATA[PNG这种文件格式值得科普下,对比GIF来说]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[sass里写百分比宽度]]></title>
+        <id>https://www.iflong.top/post/2014/11/14/sasspre.html</id>
+        <link href="https://www.iflong.top/post/2014/11/14/sasspre.html">
+        </link>
+        <updated>2014-11-14T12:02:00.000Z</updated>
+        <summary type="html"><![CDATA[最近在用sass，记下一例：]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[自定义被选中文字的背景色：css之selection]]></title>
+        <id>https://www.iflong.top/post/2014/12/02/selection.html</id>
+        <link href="https://www.iflong.top/post/2014/12/02/selection.html">
+        </link>
+        <updated>2014-12-02T21:30:00.000Z</updated>
+        <summary type="html"><![CDATA[经常看到一片文字被选中后，文字背景色不是默认的深蓝色，而是其他色，如：
+]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[整理了一套图标 soIcon]]></title>
+        <id>https://www.iflong.top/post/2017/09/28/soicon.html</id>
+        <link href="https://www.iflong.top/post/2017/09/28/soicon.html">
+        </link>
+        <updated>2017-09-28T16:33:00.000Z</updated>
+        <summary type="html"><![CDATA[用 icomoon
+把 icomoon free 和 fontawesome整合了一下，去掉了一些国外社交网站的logo图标，
+另外把之前一套在iconfont上整理的图标整理了进去，
+打包下来以后，重写给他的demo写了一下样式，
+另外做了一个搜索的脚本，可以直接通过搜索框过滤图标，
+这些都不复杂，却很方便，
+一共1000多个图标，这下图标基本整理到位了，查阅起来很方便。
+上地址 ：  猛击这里
+下载文件： 猛击这里]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[用vis的timeline实现甘特图效果]]></title>
+        <id>https://www.iflong.top/post/2017/11/20/_20171120-gantt.html</id>
+        <link href="https://www.iflong.top/post/2017/11/20/_20171120-gantt.html">
+        </link>
+        <updated>2017-11-20T14:45:00.000Z</updated>
+        <summary type="html"><![CDATA[
+网上是有不少甘特图效果，说实话，不咋地，也无法满足自己的开发需要，vis的timeline很早就用过，做个甘特图还是不难的，小细节多处理一下就Ok。
+]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[利用cropper插件来做一个头像上传功能]]></title>
+        <id>https://www.iflong.top/post/2017/11/21/_20171121-cropper.html</id>
+        <link href="https://www.iflong.top/post/2017/11/21/_20171121-cropper.html">
+        </link>
+        <updated>2017-11-21T12:20:00.000Z</updated>
+        <summary type="html"><![CDATA[
+cropper这个插件真的做的蛮强大的，我开始绕了个圈子，用crop方法自己来对接预览图效果，总不如意，结果发现他提供了一个 &quot;preview&quot;接口，直接对应上，预览效果居然万事ok，自己只需要写上传部分代码就可以了，那还有啥费劲的？
+]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[简单的webuploader图片上传]]></title>
+        <id>https://www.iflong.top/post/2017/11/23/_20171123-webuploader.html</id>
+        <link href="https://www.iflong.top/post/2017/11/23/_20171123-webuploader.html">
+        </link>
+        <updated>2017-11-23T11:45:00.000Z</updated>
+        <summary type="html"><![CDATA[
+项目需要写个简单的图片上传，基本就是照官方的代码改改，没有做任何多的封装，仅做简单的备用吧.
+]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[基于easyui有农历的日历]]></title>
+        <id>https://www.iflong.top/post/2017/11/24/_20171124-calendar.html</id>
+        <link href="https://www.iflong.top/post/2017/11/24/_20171124-calendar.html">
+        </link>
+        <updated>2017-11-24T09:45:00.000Z</updated>
+        <summary type="html"><![CDATA[
+之前一直用的my97做库类的日历控件，但程序那边调用总是目录出错，easyUI的日历本来就还不错，干脆替换，随手baidu一下，居然找到一个万年历的扩展代码，easyUI中文社区出的，效果还不错，我就改改样式，分享给大家吧。
+]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[nodeJs批量上传文件到七牛]]></title>
+        <id>https://www.iflong.top/post/2017/11/29/_20171129-nodejsqiniu.html</id>
+        <link href="https://www.iflong.top/post/2017/11/29/_20171129-nodejsqiniu.html">
+        </link>
+        <updated>2017-11-29T13:50:00.000Z</updated>
+        <summary type="html"><![CDATA[
+昨晚我把七牛的服务限制了一下，被网上刷流量的情况吓着了，看来博客除了域名，其他统统免费爽不是那么容易的。
+]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[VUE.JS常用函数大全]]></title>
+        <id>https://www.iflong.top/post/2018/07/24/_2018-0724-vuecommon.html</id>
+        <link href="https://www.iflong.top/post/2018/07/24/_2018-0724-vuecommon.html">
+        </link>
+        <updated>2018-07-24T08:39:00.000Z</updated>
+        <summary type="html"><![CDATA[i.
+`]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[vue自定义全局公共方法]]></title>
+        <id>https://www.iflong.top/post/2018/07/24/_2018-0724-vueglobalfunc.html</id>
+        <link href="https://www.iflong.top/post/2018/07/24/_2018-0724-vueglobalfunc.html">
+        </link>
+        <updated>2018-07-24T09:27:00.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[再烂的代码也要现写：自动当前时间代码]]></title>
+        <id>https://www.iflong.top/post/2018/08/27/_20180827-runtime.html</id>
+        <link href="https://www.iflong.top/post/2018/08/27/_20180827-runtime.html">
+        </link>
+        <updated>2018-08-27T15:45:00.000Z</updated>
+        <summary type="html"><![CDATA[
+这种纯浪费时间的代码网上还找不到，啥都要自己写
+]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[nodeJs NODE_PATH环境变量设置]]></title>
+        <id>https://www.iflong.top/post/2019/05/29/_20190529-nodepath.html</id>
+        <link href="https://www.iflong.top/post/2019/05/29/_20190529-nodepath.html">
+        </link>
+        <updated>2019-05-29T13:50:00.000Z</updated>
+        <summary type="html"><![CDATA[
+重新装电脑，安装express到全局总是报错，要么是找不到express要么是express不是内部或外部命令，之前处理过，是通过设置NODE_PATH处理的，总是忘掉，记录一下。
+]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[绿化nodeJs]]></title>
+        <id>https://www.iflong.top/post/2019/05/31/_20190531-nodeconfig.html</id>
+        <link href="https://www.iflong.top/post/2019/05/31/_20190531-nodeconfig.html">
+        </link>
+        <updated>2019-05-31T13:50:00.000Z</updated>
+        <summary type="html"><![CDATA[
+绿化后直接解压安装包，配置环境变量及设置配置就可以用，配置文件及安装模块在安装包内
+]]></summary>
+    </entry>
+</feed>
