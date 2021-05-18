@@ -154,6 +154,11 @@ module.exports = {
 				icon: "reco-home"
 			},
 			{
+				text: "时间如流水",
+				link: "/archives/",
+				icon: "reco-date"
+			},
+			{
 				text: "相册",
 				link: "/photo/indexGallery.html",
 				icon: "reco-date"
@@ -161,11 +166,6 @@ module.exports = {
 			{
 				text: "soUni手册",
 				link: "/souni/index.html",
-				icon: "reco-date"
-			},
-			{
-				text: "时间如流水",
-				link: "/archives/",
 				icon: "reco-date"
 			},
 			//			{"text": "色彩","link": "/color/"},
