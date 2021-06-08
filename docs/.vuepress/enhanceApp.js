@@ -7,7 +7,7 @@ export default ({
 }) => {
 	// console.log(siteData.themeConfig)
 	let {routerSkip} = siteData.themeConfig;
-	// console.log(routerSkip);
+//	console.log(router.matcher.getRoutes());
   // ...做一些其他的应用级别的优化
     router.beforeEach((to, from, next) => {
 		// console.log(to);
@@ -18,7 +18,7 @@ export default ({
 					return;
 				}
 			})
-		}	
+		}
 		next();
     })
 }

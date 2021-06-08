@@ -3,7 +3,7 @@ module.exports = {
 	title: '不羁的空间',
 	description: '疏言懒行，卖马为生',
 	port: 1025,
-	theme: 'reco',
+//	theme: 'reco',
 //	theme: 'vuepress-theme-maker',
 	head: [
 		['meta', {
