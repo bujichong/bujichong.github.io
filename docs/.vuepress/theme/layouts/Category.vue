@@ -75,7 +75,8 @@ export default defineComponent({
 
 <style lang="stylus" scoped>
 .categories-wrapper
-  max-width: $contentWidth;
+  max-width: 960px;
+  min-width: $contentWidth;
   margin: 0 auto;
   padding: 4.6rem 2.5rem 0;
   .category-wrapper {

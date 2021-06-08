@@ -16,9 +16,9 @@ module.exports = {
 		}]
 	],
 	plugins: {
-		'one-click-copy':{
-			copyMessage: '拷贝成功，可以粘贴啦~'
-		},
+		// 'one-click-copy':{
+		// 	copyMessage: '拷贝成功，可以粘贴啦~'
+		// },
 		'@vuepress-reco/extract-code': {},
 		"vuepress-plugin-auto-sidebar": {
 		  sort: {
@@ -38,7 +38,6 @@ module.exports = {
 	},
 	themeConfig: {
 		routerSkip:  ['/my/','/photo/', '/souni/'],//路由跳过
-
 		type: "blog", //选择类型博客
 		fullscreen: true,
 		author: '不羁虫',

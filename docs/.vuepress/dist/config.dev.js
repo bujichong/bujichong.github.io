@@ -16,9 +16,9 @@ module.exports = {
     href: '/images/logo.png'
   }]],
   plugins: {
-    'one-click-copy': {
-      copyMessage: '拷贝成功，可以粘贴啦~'
-    },
+    // 'one-click-copy':{
+    // 	copyMessage: '拷贝成功，可以粘贴啦~'
+    // },
     '@vuepress-reco/extract-code': {},
     "vuepress-plugin-auto-sidebar": {
       sort: {
