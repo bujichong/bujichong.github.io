@@ -17,21 +17,21 @@ module.exports = {
 	],
 	plugins: {
 		'@vuepress-reco/extract-code': {},
-		// "vuepress-plugin-auto-sidebar": {
-		//   sort: {
-		// 	mode: "created_time_asc",
-		// 	readmeFirst: true,
-		//   },
-		//   title: {
-		// 	mode: "titlecase",
-		// 	map: {
-		// 		"/css/":"色彩",
-		// 		"/skill/":"技术技巧",
-		// 		"/life/":"生活",
-		// 	}
-		//   },
-		//   sidebarDepth:2,
-		// }
+		"vuepress-plugin-auto-sidebar": {
+		  sort: {
+			mode: "created_time_asc",
+			readmeFirst: true,
+		  },
+		  title: {
+			mode: "titlecase",
+			map: {
+				"/css/":"色彩",
+				"/skill/":"技术技巧",
+				"/life/":"生活",
+			}
+		  },
+		  sidebarDepth:2,
+		}
 	},
 	themeConfig: {
 		routerSkip:  ['/my/','/photo/', '/souni/'],//路由跳过
