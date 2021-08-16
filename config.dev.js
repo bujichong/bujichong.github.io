@@ -8,6 +8,13 @@ module.exports = {
   port: 1025,
   //	theme: 'reco',
   //	theme: 'vuepress-theme-maker',
+  locales: {
+    // 键名是该语言所属的子路径
+    // 作为特例，默认语言可以使用 '/' 作为其路径。
+    '/': {
+      lang: 'zh-CN'
+    }
+  },
   head: [['meta', {
     name: 'viewport',
     content: 'width=device-width,initial-scale=1,user-scalable=no'
@@ -16,9 +23,9 @@ module.exports = {
     href: '/images/logo.png'
   }]],
   plugins: {
-    // 'one-click-copy':{
-    // 	copyMessage: '拷贝成功，可以粘贴啦~'
-    // },
+    'one-click-copy': {
+      copyMessage: '拷贝成功，可以粘贴啦~'
+    },
     '@vuepress-reco/extract-code': {},
     "vuepress-plugin-auto-sidebar": {
       sort: {
