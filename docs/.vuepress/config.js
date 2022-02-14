@@ -9,7 +9,7 @@ module.exports = {
 		// 键名是该语言所属的子路径
 		// 作为特例，默认语言可以使用 '/' 作为其路径。
 		'/': {
-		lang: 'zh-CN', 
+		lang: 'zh-CN',
 		},
 	},
 	head: [
@@ -44,7 +44,7 @@ module.exports = {
 		}
 	},
 	themeConfig: {
-		routerSkip:  ['/my/','/photo/', '/souni/'],//路由跳过
+		routerSkip:  ['/my/','/photo/', '/souni/', '/jg-vue/'],//路由跳过
 		type: "blog", //选择类型博客
 		fullscreen: true,
 		author: '不羁虫',
