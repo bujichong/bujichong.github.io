@@ -44,7 +44,7 @@ module.exports = {
 		}
 	},
 	themeConfig: {
-		routerSkip:  ['/my/','/photo/', '/souni/', '/jg-vue/'],//路由跳过
+		routerSkip:  ['/my/','/photo/', '/souni/', '/zvue/'],//路由跳过
 		type: "blog", //选择类型博客
 		fullscreen: true,
 		author: '不羁虫',
