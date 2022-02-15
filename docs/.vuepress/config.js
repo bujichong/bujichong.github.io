@@ -90,11 +90,11 @@ module.exports = {
 				link: "/souni/index.html",
 				icon: "reco-date"
 			},
-			{
-				text: "VUE教程",
-				link: "/zvue/index.html",
-				icon: "reco-date"
-			},
+//			{
+//				text: "VUE教程",
+//				link: "/zvue/index.html",
+//				icon: "reco-date"
+//			},
 			//			{"text": "色彩","link": "/color/"},
 			//			{"text": "CSS","link": "/css/"},
 			//			{"text": "JS","link": "/js/"},
