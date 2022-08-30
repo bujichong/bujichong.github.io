@@ -13,7 +13,7 @@
   "author": "bujichong",
   "license": "ISC",
   "devDependencies": {
-    "vuepress": "^1.8.2",
+    "vuepress": "^1.9.7",
     "vuepress-plugin-auto-sidebar": "^2.2.2",
     "vuepress-plugin-handle-sidebar": "^1.0.3",
     "vuepress-plugin-permalink-pinyin": "^1.0.0",
