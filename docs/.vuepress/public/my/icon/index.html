@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" class="notranslate" translate="no">
+    <head>
+        <meta name="google" content="notranslate" />
+        <meta charset="UTF-8">
+        <meta name="description" content="Create a custom favicon.ico file.">
+        <meta name="keywords" content="Canvas,Image,Favicon,Encode">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />  
+        <meta http-equiv="Content-Language" content="en" />
+        <meta name="msapplication-TileColor" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="MobileOptimized" content="320" />  
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+        <link rel="stylesheet" href="css/bootstrap.css" />
+        <link id="favicon" rel="icon" href="favicon.ico" type="image/x-icon" />
+        <title>ᴄᴜsᴛᴏᴍ ғᴀᴠɪᴄᴏɴ.ɪᴄᴏ ɢᴇɴᴇʀᴀᴛᴏʀ</title>
+    </head>
+    <body>         
+        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <p id='copyrightBanner'>© Copyright <span id='yearDisplay'></span> | Created by <a href='https://medium.com/@geek-cc' target='_blank'>the Girl with a ribbon</a> ξ(🎀˶❛◡❛) | Based on Original Plugin by: 🔄ᴾᴺᴳ🇮🇨🇴&nbsp;<a href='https://png2icojs.com/' target='_blank'>PNG to ICO Icon Format</a></p>
+        <div class='container-fluid'>
+            <div id='faviconHTMLCodeSnippet'></div>
+            <hr>
+            <p id='outputArea' class='text-danger small'></p>
+            <div class='row'>
+                <div class='col-sm-4 col-12'>
+                    <div class="card rounded-0">
+                        <div class="card-header p-1"><strong>① Upload an Image File (PNG, JPG, GIF)</strong></div>
+                        <div class="card-body p-1 content-scrollable">
+                            <div class="jumbotron p-0 m-2">
+                                <p class='small m-0 p-1'>Favicons are icons that help identify a web page. Display instances on 💻PC devices include: <strong>Browser Tabs</strong>, <strong>Desktop Shortcuts</strong> and <strong>Browser Address Bars</strong>.</p>
+                                <p class='small m-0 p-1'>Since <code>.ico</code> is its pioneer file format, it continues to remain relevant to date. This utility aims to convert <mark>image files (PNG, JPG, GIF) to ICO format</mark> to address backward compatibility issues.</p>
+                            </div>
+                            <hr>
+                            🠞&nbsp;<button id="bfileBtn" class='btn btn-sm btn-outline-secondary rounded-0' type='button'>📂 Select File...<input id="bfile" type="file" accept="image/*" /></button>
+                            <p id='curFileInput'></p>
+                        </div>
+                    </div>
+                </div><!-- END GRID COLUMNS-->
+
+                <div class='col-sm-4 col-12'>
+                    <div class="card rounded-0">
+                        <div class="card-header p-1"><strong>② Specify Icon Dimensions</strong></div>
+                        <div class="card-body p-1 content-scrollable">
+                            <div class='row'>
+                              <div class='col-12 col-sm-12'>
+                                  <div class="container">
+                                    <form id="bIconSizeForm">
+                                        <div class="custom-control custom-switch"> 
+                                          <input id="isize_1" type="checkbox" class="isize custom-control-input" name="bIcosize" value="16" checked>
+                                          <label class="custom-control-label" for="isize_1">16 x 16 <small class='text-muted'>Browser Tabs</small></label>
+                                        </div>
+
+                                        <div class="custom-control custom-switch">
+                                          <input id="isize_2" type="checkbox" class="isize custom-control-input" name="bIcosize" value="32" checked>
+                                          <label class="custom-control-label" for="isize_2">32 x 32 <small class='text-muted'>Taskbar</small></label>
+                                        </div>
+
+                                        <div class="custom-control custom-switch">
+                                          <input id="isize_3" type="checkbox" class="isize custom-control-input" name="bIcosize" value="48" checked>
+                                          <label class="custom-control-label" for="isize_3">48 x 48 <small class='text-muted'>Desktop URL Shortcuts</small></label>
+                                        </div>
+                                        
+                                        <div class="custom-control custom-switch">
+                                          <input id="isize_4" type="checkbox" class="isize custom-control-input" name="bIcosize" value="64">
+                                          <label class="custom-control-label" for="isize_4">64 x 64</label>
+                                        </div>
+
+                                        <div class="custom-control custom-switch">
+                                          <input id="isize_5" type="checkbox" class="isize custom-control-input" name="bIcosize" value="128">
+                                          <label class="custom-control-label" for="isize_5">128 x 128</label>
+                                        </div>
+
+                                        <div class="custom-control custom-switch">
+                                          <input id="isize_6" type="checkbox" class="isize custom-control-input" name="bIcosize" value="256">
+                                          <label class="custom-control-label" for="isize_6">256 x 256</label>
+                                        </div>
+                                    </form>
+                                    <hr>
+                                    <button id='convertBtn' class='btn btn-sm btn-outline-dark rounded-0 pt-1 pb-1 float-right' type='button'>Convert ❯❯</button>
+                                </div>
+                             </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- END GRID COLUMNS-->
+
+                <div class='col-sm-4 col-12'>
+                    <div class="card rounded-0">
+                        <div class="card-header p-1"><strong>③ Generated <abbr title='Favourites Icon'>favicon.ico</abbr>(s)</div>
+                        <div class="card-body p-1 content-scrollable">
+                            <p id='imagelist'></p>
+                        </div>
+                    </div>
+                </div><!-- END GRID COLUMNS-->
+            </div>
+        </div>
+        <script src='js/main.js'></script>
+    </body>
+</html>
