@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "gitbook使用感受和几个需要注意的问题"
 date: "2019-11-29 10:33"
 comments: true

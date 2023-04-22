@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Mongodb 安装与卸载"
 date: "2018-08-08 10:00"
 comments: true

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Git TortoiseGit记住用户密码"
 date: "2018-08-08 10:00"
 comments: true

@@ -1,3 +1,5 @@
-/node_modules
-/docs/.vuepress/dist
-/docs/.vuepress/public/zvue
+.vuepress/.cache
+.vuepress/.temp
+node_modules
+/.vuepress/dist
+/.vuepress/stonefire

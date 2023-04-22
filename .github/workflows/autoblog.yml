@@ -20,10 +20,11 @@ jobs:
       - name: Install and Build  # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
         run: |
           npm install
-          npm run build
+          npm run go
+
       - name: Deploy 
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: vuepress # The branch the action should deploy to.
-          FOLDER: docs/.vuepress/dist # The folder the action should deploy.
+          BRANCH: page # The branch the action should deploy to.
+          FOLDER: .vuepress/dist # The folder the action should deploy.

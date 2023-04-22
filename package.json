@@ -1,27 +1,29 @@
 {
-  "name": "bujichong",
+  "name": "aierdever",
   "version": "1.0.0",
-  "description": "bujichong blog",
-  "main": "index.js",
+  "description": "aier front-end developer docs & blog",
+  "repository": "https://github.com/aierdever/aierdever.github.io",
+  "author": "bujichong <bujichong@qq.com>",
+  "license": "MIT",
   "scripts": {
-    "nav": "vuepress nav docs",
-    "navf": "vuepress nav docs -f",
-    "serve": "vuepress dev docs",
+    "dev": "vuepress dev .",
+    "start": "vuepress dev .",
+    "build": "vuepress build .",
+    "go": "node ./.vuepress/config/renderSidebar.js && vuepress build .",
     "clear": "rimraf ./**/node_modules/",
-    "build": "vuepress build docs"
-  },
-  "author": "bujichong",
-  "license": "ISC",
-  "devDependencies": {
-    "vuepress": "^1.8.2",
-    "vuepress-plugin-auto-sidebar": "^2.2.2",
-    "vuepress-plugin-handle-sidebar": "^1.0.3",
-    "vuepress-plugin-permalink-pinyin": "^1.0.0",
-    "vuepress-theme-reco": "^1.6.6"
+    "side": "node ./.vuepress/config/renderSidebar.js"
   },
   "dependencies": {
-    "@vuepress-reco/vuepress-plugin-extract-code": "^1.0.4",
-    "vuepress-bar": "^0.3.6",
-    "vuepress-plugin-one-click-copy": "^1.0.3"
+    "@vuepress/client": "2.0.0-beta.60",
+    "@vuepress/plugin-medium-zoom": "2.0.0-beta.60",
+    "vue": "^3.2.47",
+    "vuepress": "2.0.0-beta.60",
+    "vuepress-theme-reco": "2.0.0-beta.50"
+  },
+  "devDependencies": {
+    "@vuepress/plugin-container": "2.0.0-beta.60",
+    "@vuepress/utils": "2.0.0-alpha.1",
+    "package-name": "^0.1.0",
+    "rimraf": "^3.0.2"
   }
 }

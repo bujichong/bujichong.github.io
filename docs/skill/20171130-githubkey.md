@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "github 创建密钥"
 date: "2017-11-30 10:00"
 comments: true
