@@ -1,0 +1,1 @@
+import{_ as e,p as t,q as s,w as o,s as r}from"./framework-d4dfb5a8.js";const a={},c=r("p",null,"又回来了~~~",-1);function n(_,l){return t(),s("div",null,[c,o(" more ")])}const m=e(a,[["render",n],["__file","afirst.html.vue"]]);export{m as default};
