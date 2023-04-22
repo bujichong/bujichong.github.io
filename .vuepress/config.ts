@@ -17,11 +17,13 @@ export default defineUserConfig({
     }),
     ...navContainer, //自定义 nav 容器
   ],
+  
   port: 1208,
   theme: recoTheme({
     catalogTitle:'文档目录',
     lastUpdatedText: "最后更新时间：",
     autoSetBlogCategories: true,
+    routerSkip:  ['/my/','/photo/', '/souni/', '/zvue/'],
     // vuePreviewsDir : './.vuepress/vue-previews',
     // autoAddCategoryToNavbar: true,
     autoSetSeries: true,
@@ -32,7 +34,7 @@ export default defineUserConfig({
     docsRepo: "https://github.com/bujichong/bujichong.github.io",
     docsBranch: "master",
     docsDir: "",
-    primaryColor: "#269bfa",
+    primaryColor: "#c00",
     series,
     navbar,
     // bulletin: notice

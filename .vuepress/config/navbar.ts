@@ -3,7 +3,7 @@
  * @Email: bujichong@163.com
  * @Date: 2023-03-01 11:06:31
  * @LastEditors: SC-202002031034
- * @LastEditTime: 2023-04-22 11:29:30
+ * @LastEditTime: 2023-04-22 16:35:51
  * @Author: bujichong
  */
 const navbar = [
@@ -13,12 +13,12 @@ const navbar = [
     // { text: "标签", link: "/tags/shuoming/1/" },
     {
       text: "CSS",
-      link: "/docs/css/index/",
+      link: "/docs/css_year/index/",
       icon: 'CloudSatellite',
     },
     {
       text: "JS",
-      link: "/docs/js/index/",
+      link: "/docs/js_year/index/",
       icon: 'Explore',
     },
     // {
@@ -27,7 +27,7 @@ const navbar = [
     //   icon: 'Explore',
     // },
     {
-      text: "文档首页",
+      text: "文档",
       link: "/docs/index/",
       icon: 'DataCenter',
       children: [

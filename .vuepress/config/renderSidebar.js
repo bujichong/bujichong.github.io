@@ -68,18 +68,24 @@ let renderFn = {
         // console.log(kk);
         Object.keys(kk).forEach(k => {
             let item = kk[k];
-            kv[k] = item.map(kitem => {
+            let list = item.map(kitem => {
                 return newList[kitem];
             });
+            if(k.match(/.*_year/)){ //以年份为排序的(目录以 _year 结尾)，导航倒序
+                const fix = list.shift(); //挤出首页
+                list.reverse(); //颠掉
+                list.unshift(fix); // 插入首页
+            }
+            kv[k] = list;
         });
-        // console.log(kv);
+        // console.log('kv',kv);
         Object.keys(kk).forEach(k => {
             let item = kk[k];
             item.forEach(kitem => {
                 kw[kitem] = kv[k];
             }) 
         });
-        console.log(kw);
+        // console.log('kw:',kw);
         me.newFilesList = kw;
     },
     renderSidebar(){
