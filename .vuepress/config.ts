@@ -34,7 +34,7 @@ export default defineUserConfig({
     docsRepo: "https://github.com/bujichong/bujichong.github.io",
     docsBranch: "master",
     docsDir: "",
-    primaryColor: "#c00",
+    primaryColor: "#ff734a",
     series,
     navbar,
     // bulletin: notice
