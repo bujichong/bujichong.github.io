@@ -15,7 +15,7 @@ banner:
     height: 250px
 blog:
   socialLinks:
-    - { icon: 'LogoGithub', link: 'https://github.com/aierdever/aierdever.github.io' }
+    - { icon: 'LogoGithub', link: 'https://github.com/bujichong/bujichong.github.io' }
 footer: # 底部模块的配置
   record: 湘ICP备17016616号
   recordLink: https://beian.miit.gov.cn/

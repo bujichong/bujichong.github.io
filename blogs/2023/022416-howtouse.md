@@ -19,7 +19,7 @@ categories:
 书写博客请放置在 `blogs` 文件夹中，文档请在 `docs` 目录下根据文档类型，建立目录书写存放。
 
 ```js
-aierdever
+bujichong
  ├── blogs  //博客总目录
  │   ├── 2023 //博客分类文件夹
  │   └── howuse.md
