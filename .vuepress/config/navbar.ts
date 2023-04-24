@@ -2,8 +2,8 @@
  * @Descripttion:  博客主导航
  * @Email: bujichong@163.com
  * @Date: 2023-03-01 11:06:31
- * @LastEditors: SC-202002031034
- * @LastEditTime: 2023-04-22 16:35:51
+ * @LastEditors: bujichong
+ * @LastEditTime: 2023-04-24 12:50:11
  * @Author: bujichong
  */
 const navbar = [
@@ -39,6 +39,11 @@ const navbar = [
         {
           text: "uni小程序开发手册",
           link: "/docs/souni/index/",
+          // icon: 'IbmCloudVpcEndpoints',
+        },
+        {
+          text: "珠峰教案",
+          link: "/zvue/index.html",
           // icon: 'IbmCloudVpcEndpoints',
         },
       ]
