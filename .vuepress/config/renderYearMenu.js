@@ -4,7 +4,7 @@
  * @Email: bujichong@163.com
  * @Date: 2023-04-24 14:18:28
  * @LastEditors: bujichong
- * @LastEditTime: 2023-04-25 09:38:37
+ * @LastEditTime: 2023-04-25 10:09:04
  * @Author: bujichong
  */
 const { log } = require('console');
@@ -90,7 +90,7 @@ let renderFn = {
                 if(dateS){
                     me.barArr.push({
                         date : dateS,
-                        title : `- [${dateS?`**[${dateS}]**`:''} ${title}](${itemPath})\n`
+                        title : `- [${dateS?`[${dateS}]`:''} ${title}](${itemPath})\n`
                     });
                 }
 
