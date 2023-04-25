@@ -3,7 +3,7 @@
  * @Email: bujichong@163.com
  * @Date: 2023-03-01 11:06:31
  * @LastEditors: bujichong
- * @LastEditTime: 2023-04-24 12:50:11
+ * @LastEditTime: 2023-04-25 10:22:22
  * @Author: bujichong
  */
 const navbar = [
@@ -47,6 +47,11 @@ const navbar = [
           // icon: 'IbmCloudVpcEndpoints',
         },
       ]
+    },
+    {
+      text: "相册",
+      link: "/photo/indexGallery.html",
+      icon: 'ColorPalette',
     },
   ];
 
