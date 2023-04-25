@@ -11,7 +11,8 @@
     "build": "vuepress build .",
     "go": "node ./.vuepress/config/renderSidebar.js && vuepress build .",
     "clear": "rimraf ./**/node_modules/",
-    "side": "node ./.vuepress/config/renderSidebar.js"
+    "side": "node ./.vuepress/config/renderSidebar.js",
+    "yearmenu": "node ./.vuepress/config/renderYearMenu.js"
   },
   "dependencies": {
     "@vuepress/client": "2.0.0-beta.60",
