@@ -12,13 +12,13 @@ h4{font-size:1.1rem!important;color:#555;}
 strong{color:#a37bee;}
 p.custom-container-title{margin:0!important;}
 
-.banner-wrapper .banner-brand__content h1{color:#f1a650;}
-.banner-wrapper .banner-brand__content p{color:#dcd9fc;}
+.banner-wrapper .banner-brand__content h1{color:#f79729;}
+.banner-wrapper .banner-brand__content p{color:#268500;}
 @media (min-width: 768px){
 .site-brand{line-height: 2.2rem!important;}
 .site-brand .logo{position: relative;top:-3px;margin-right:0.3em!important;width:2.2rem!important;height:2.2rem!important;}
-.banner-wrapper .banner-brand__content h1{color:#ff9900;margin-top: 6rem;padding-left:360px;font-size:2rem;}
-.banner-wrapper .banner-brand__content p{color:#268500;padding-left:500px;}
+.banner-wrapper .banner-brand__content h1{margin-top: 6rem;padding-left:360px;font-size:2rem;}
+.banner-wrapper .banner-brand__content p{padding-left:500px;}
 .common-wrapper .page-catalog-container ul .page-catalog-menu-depth_2{padding-top:0.6rem;padding-bottom:0.6rem;}
 .common-wrapper .page-catalog-container{width:16rem;padding-right:2rem;}
 }
