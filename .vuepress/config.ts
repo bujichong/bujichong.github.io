@@ -38,7 +38,14 @@ export default defineUserConfig({
     series,
     navbar,
     // bulletin: notice
-
+    algolia: {
+      appId: 'D044II9N8C',
+      apiKey: 'c4f5b730336b403056a67c49ce18bec2',
+      indexName: 'iflong',
+      inputSelector: '### REPLACE ME ####',
+      algoliaOptions: { 'facetFilters': ["lang:$LANG"] },
+      debug: false // Set debug to true if you want to inspect the dropdown
+    },
     // valineConfig 配置与 1.x 一致
     // valineConfig: {
     //   appId: 'xxx',

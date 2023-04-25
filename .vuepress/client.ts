@@ -6,7 +6,7 @@ export default defineClientConfig({
   enhance({ app, router, siteData }) {
     console.log('enhance',siteData);
     router.beforeEach((to, from, next) => {
-        console.log('before navigation')
+        // console.log('before navigation')
         if(routerSkip && routerSkip.length){
           routerSkip.forEach(url=>{
             if(to.path.startsWith(url)){
@@ -23,7 +23,7 @@ export default defineClientConfig({
       })
   },
   setup() {
-    console.log(11,'setup');
+    // console.log('setup');
   },
   rootComponents: [],
 })
