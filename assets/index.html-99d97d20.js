@@ -1,1 +1,0 @@
-const e=JSON.parse('{"key":"v-147825fb","path":"/docs/","title":"爱尔前端文档目录","lang":"en-US","frontmatter":{"title":"爱尔前端文档目录","comments":true},"headers":[],"git":{"createdTime":1682312324000,"updatedTime":1682312324000,"contributors":[{"name":"bujichong@163.com","email":"bujichong@163.com","commits":1}]},"filePathRelative":"docs/index.md"}');export{e as data};
