@@ -10,7 +10,11 @@ import notice from "./config/notice";
 export default defineUserConfig({
   title: "不羁的空间",
   description: "疏行懒言，年轻无为，卖马为生",
-  head: [["link", { rel: "icon", href: "/images/logo.png" }]],
+  head: [
+    ["link", { rel: "icon", href: "/images/logo.png" }],
+    ["link", { rel: "stylesheet", href: "https://cdn.jsdelivr.net/npm/@docsearch/css@3" }],
+    ["script", { src: "https://cdn.jsdelivr.net/npm/@docsearch/js@3" }],
+  ],
   plugins: [
     mediumZoomPlugin({
       // 配置项
