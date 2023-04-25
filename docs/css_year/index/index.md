@@ -1,5 +1,5 @@
 ---
-title: "css文档集合"
+title: "css文集"
 date: "2023-04-22 09:45"
 comments: true
 categories:
