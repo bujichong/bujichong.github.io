@@ -3,7 +3,7 @@
  * @Email: bujichong@163.com
  * @Date: 2023-03-01 11:06:31
  * @LastEditors: bujichong
- * @LastEditTime: 2023-04-25 10:22:22
+ * @LastEditTime: 2023-04-25 11:25:37
  * @Author: bujichong
  */
 const navbar = [
@@ -12,22 +12,27 @@ const navbar = [
     // { text: "分类", link: "/categories/shuoming/1/" },
     // { text: "标签", link: "/tags/shuoming/1/" },
     {
-      text: "CSS",
+      text: "枫林望月",
+      link: "/docs/seemoon_year/index/",
+      icon: 'Moon',
+    },
+    {
+      text: "技术文集",
       link: "/docs/css_year/index/",
       icon: 'CloudSatellite',
+      children: [
+        {
+          text: "CSS文集",
+          link: "/docs/css_year/index/",
+        },
+        {
+          text: "JS文集",
+          link: "/docs/js_year/index/",
+        }
+      ]
     },
     {
-      text: "JS",
-      link: "/docs/js_year/index/",
-      icon: 'Explore',
-    },
-    // {
-    //   text: "相册",
-    //   link: "/photo/",
-    //   icon: 'Explore',
-    // },
-    {
-      text: "文档",
+      text: "手册文档",
       link: "/docs/index/",
       icon: 'DataCenter',
       children: [
