@@ -912,8 +912,10 @@ export default {
       "text": "6.other",
       "children": [
         "/docs/pcwork/6.other/1.uploader",
-        "/docs/pcwork/6.other/2.editor",
-        "/docs/pcwork/6.other/3.charts"
+        "/docs/pcwork/6.other/2.down",
+        "/docs/pcwork/6.other/3.export",
+        "/docs/pcwork/6.other/4.charts",
+        "/docs/pcwork/6.other/5.editor"
       ]
     }
   ],
@@ -978,8 +980,10 @@ export default {
       "text": "6.other",
       "children": [
         "/docs/pcwork/6.other/1.uploader",
-        "/docs/pcwork/6.other/2.editor",
-        "/docs/pcwork/6.other/3.charts"
+        "/docs/pcwork/6.other/2.down",
+        "/docs/pcwork/6.other/3.export",
+        "/docs/pcwork/6.other/4.charts",
+        "/docs/pcwork/6.other/5.editor"
       ]
     }
   ],
@@ -1044,8 +1048,10 @@ export default {
       "text": "6.other",
       "children": [
         "/docs/pcwork/6.other/1.uploader",
-        "/docs/pcwork/6.other/2.editor",
-        "/docs/pcwork/6.other/3.charts"
+        "/docs/pcwork/6.other/2.down",
+        "/docs/pcwork/6.other/3.export",
+        "/docs/pcwork/6.other/4.charts",
+        "/docs/pcwork/6.other/5.editor"
       ]
     }
   ],
@@ -1110,8 +1116,10 @@ export default {
       "text": "6.other",
       "children": [
         "/docs/pcwork/6.other/1.uploader",
-        "/docs/pcwork/6.other/2.editor",
-        "/docs/pcwork/6.other/3.charts"
+        "/docs/pcwork/6.other/2.down",
+        "/docs/pcwork/6.other/3.export",
+        "/docs/pcwork/6.other/4.charts",
+        "/docs/pcwork/6.other/5.editor"
       ]
     }
   ],
@@ -1176,8 +1184,10 @@ export default {
       "text": "6.other",
       "children": [
         "/docs/pcwork/6.other/1.uploader",
-        "/docs/pcwork/6.other/2.editor",
-        "/docs/pcwork/6.other/3.charts"
+        "/docs/pcwork/6.other/2.down",
+        "/docs/pcwork/6.other/3.export",
+        "/docs/pcwork/6.other/4.charts",
+        "/docs/pcwork/6.other/5.editor"
       ]
     }
   ],
@@ -1242,8 +1252,10 @@ export default {
       "text": "6.other",
       "children": [
         "/docs/pcwork/6.other/1.uploader",
-        "/docs/pcwork/6.other/2.editor",
-        "/docs/pcwork/6.other/3.charts"
+        "/docs/pcwork/6.other/2.down",
+        "/docs/pcwork/6.other/3.export",
+        "/docs/pcwork/6.other/4.charts",
+        "/docs/pcwork/6.other/5.editor"
       ]
     }
   ],
@@ -1308,8 +1320,18 @@ export default {
       "text": "6.other",
       "children": [
         "/docs/pcwork/6.other/1.uploader",
-        "/docs/pcwork/6.other/2.editor",
-        "/docs/pcwork/6.other/3.charts"
+        "/docs/pcwork/6.other/2.down",
+        "/docs/pcwork/6.other/3.export",
+        "/docs/pcwork/6.other/4.charts",
+        "/docs/pcwork/6.other/5.editor"
+      ]
+    }
+  ],
+  "/docs/seemoon_year/index": [
+    {
+      "text": "首页",
+      "children": [
+        "/docs/seemoon_year/index/index.html"
       ]
     }
   ],
